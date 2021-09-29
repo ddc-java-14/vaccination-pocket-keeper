@@ -6,11 +6,11 @@ My project is a goal tracker application.  The application will keep track of us
 
 * People who like to create goals for New Years
 
-> As someone who enjoys creating yearly goals for New Years, I want to a digital list and organization of my goals so that I can keep track of them, check their progress, and achieve them.
+    > As someone who enjoys creating yearly goals for New Years, I want to a digital list and organization of my goals so that I can keep track of them, check their progress, and achieve them.
 
 * People who like to create yearly, monthly, weekly, and/or daily goals, including financial, personal, professional, lifetime achievements/bucket list, spiritual, social, recreational, and physical
 
-> As someone who enjoys creating yearly, monthly, weekly, and/or daily goals for my financial, personal, professional, lifetime achievements/bucket list, spiritual, social, recreational, and physical needs, I want to a digital list and organization of my goals so that I can keep track of them, check their progress, and achieve them.
+    > As someone who enjoys creating yearly, monthly, weekly, and/or daily goals for my financial, personal, professional, lifetime achievements/bucket list, spiritual, social, recreational, and physical needs, I want to a digital list and organization of my goals so that I can keep track of them, check their progress, and achieve them.
 
 **Notes:**
 
