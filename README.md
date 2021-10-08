@@ -1,3 +1,3 @@
-# Goals Tracker
+# Vaccination PocketKeeper
 
-This app will be an app that helps people to track and achieve their goals.  
+This app will be an app that helps people to track their vaccination history.  

@@ -1,41 +1,35 @@
 ## Summary
 
-My project is a goal tracker application.  The application will keep track of user-defined goals.   It will use the SMCRT methodology and allow users to define sub-goals as well.  It will also allow users to prioritize goals and sub-goals.
+My project is a digital vaccination record keeper.  The application will keep track yearly and lifetime vaccination dates and shots.
 
 ## Intended users
 
-* People who like to create goals for New Years
+* People who want to have a digital copy of thier vaccination history
 
-    > As someone who enjoys creating yearly goals for New Years, I want to a digital list and organization of my goals so that I can keep track of them, check their progress, and achieve them.
+    > As someone who wants a digital copy of my vaccination history, I want to record and keep important vaccinations and received dates, so that I can reference them when needed and share with doctors, schools, and public transportation systems.
 
-* People who like to create yearly, monthly, weekly, and/or daily goals, including financial, personal, professional, lifetime achievements/bucket list, spiritual, social, recreational, and physical
+* People who need to keep track of when their last COVID-19 or flu shots were.  
 
-    > As someone who enjoys creating yearly, monthly, weekly, and/or daily goals for my financial, personal, professional, lifetime achievements/bucket list, spiritual, social, recreational, and physical needs, I want to a digital list and organization of my goals so that I can keep track of them, check their progress, and achieve them.
-
-**Notes:**
-
-*Goals can include financial, personal, professional, bucket list, spiritual, social, recreational, physical, etc.*
-
-*Goals can include yearly, monthly, weekly, daily, lifetime achievements, etc.*
+    > As someone who needs to keep track of when my last COVID-19 vaccination or flu shots were, I want to store my vaccintion history and received dates on my phone, so that I can share them with doctors, schools, and public transportation system, as appropriate.
 
 ## Functionality
 
-* Create goals
-* List goals
-* Update goals
-* Delete goals
-* Organize goals
-* Track goal achievement
+* Create vaccination entry
+* List vaccination entry
+* Update vaccination entry
+* Delete vaccination entry
+* Organize vaccination shots
+* Track vaccination due dates
 
 ## Persistent data
 
-* Goal and all pertinent metadata surrounding the goal
-* Status of the goal
+* Vaccinations
+* Dates vaccinations were received
 
 ## Device/external services
 
-* SMS messaging or email messaging for reminders for the goals
+* None
 
 ## Stretch goals/possible enhancements 
 
-* User accountability by inviting friends for the goals
+* Track when vaccinations are due (for example, tetanus and COVID-19 shots) and send friendly reminders to the user.
