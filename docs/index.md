@@ -4,13 +4,13 @@ My project is a digital vaccination record keeper.  The application will keep tr
 
 ## Intended users
 
-* People who want to have a digital copy of thier vaccination history
+* People who want to have a digital copy of their vaccination history
 
     > As someone who wants a digital copy of my vaccination history, I want to record and keep important vaccinations and received dates, so that I can reference them when needed and share with doctors, schools, and public transportation systems.
 
 * People who need to keep track of when their last COVID-19 or flu shots were.  
 
-    > As someone who needs to keep track of when my last COVID-19 vaccination or flu shots were, I want to store my vaccintion history and received dates on my phone, so that I can share them with doctors, schools, and public transportation system, as appropriate.
+    > As someone who needs to keep track of when my last COVID-19 vaccination or flu shots were, I want to store my vaccination history and received dates on my phone, so that I can share them with doctors, schools, and public transportation system, as appropriate.
 
 ## Functionality
 
