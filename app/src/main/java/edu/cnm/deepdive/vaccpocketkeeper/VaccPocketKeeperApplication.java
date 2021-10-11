@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.goaltracker;
+package edu.cnm.deepdive.vaccpocketkeeper;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
@@ -8,7 +8,7 @@ import com.facebook.stetho.Stetho;
  * <strong>must</strong> be referenced in {@code AndroidManifest.xml}, or it will not be loaded and
  * used by the Android system.
  */
-public class GoalTrackerApplication extends Application {
+public class VaccPocketKeeperApplication extends Application {
 
   @Override
   public void onCreate() {

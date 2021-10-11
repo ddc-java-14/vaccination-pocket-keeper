@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.goaltracker;
+package edu.cnm.deepdive.vaccpocketkeeper;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
