@@ -28,8 +28,9 @@ My project is a digital vaccination record keeper.  The application will keep tr
 
 ## Device/external services
 
-* None
+* Google sign-in
+* Camera Integration
 
 ## Stretch goals/possible enhancements 
 
-* Track when vaccinations are due (for example, tetanus and COVID-19 shots) and send friendly reminders to the user.
+* Track when vaccinations are due (for example, tetanus and COVID-19 shots) and send friendly reminders to the user through email or SMS.
