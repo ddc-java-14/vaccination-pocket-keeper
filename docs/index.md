@@ -57,6 +57,7 @@ This app will use the following services:
 
 * Service: Camera Integration
   * [Developer Documentation for Camera Service](https://developer.android.com/guide/topics/media/camera)
+    * [Storing and Retrieving Images in SQLite](https://www.youtube.com/watch?v=X7T0g5kBYJk)
   * [Sample Camera App (in Java)](https://github.com/googlearchive/android-Camera2Basic/blob/master/Application/src/main/java/com/example/android/camera2basic/Camera2BasicFragment.java)
   * This app will use the camera to take a picture of a vaccination card (such as a CDC COVID-19 card) and store the picture in the app.
   * This app will be able to function without full-time access to the camera.
