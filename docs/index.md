@@ -53,7 +53,7 @@ This app will use the following services:
 * Service: Google sign-in
   * [Developer Documentation for Google Sign-in](https://developers.google.com/identity/sign-in/android/start-integrating)
   * This app will use this service to authenticate users through a google account.
-  * This app will not not be able to function without full-time access to Google sign-in services.
+  * This app will not be able to function without full-time access to Google sign-in services.
 
 * Service: Camera Integration
   * [Developer Documentation for Camera Service](https://developer.android.com/guide/topics/media/camera)
