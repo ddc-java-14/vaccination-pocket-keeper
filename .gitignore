@@ -1,8 +1,5 @@
 ### IntelliJ/Android Studio ###
 
-# - documentation
-*.drawio
-
 # - metadata
 /.idea/
 *.iml
