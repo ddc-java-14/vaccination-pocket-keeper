@@ -7,7 +7,7 @@ order: 0
 
 ## Summary
 
-Oftentimes, individuals would like to keep track of which vaccinations they have received.  These records are often held at doctor's offices.  However, some people who were born before 2000 have only paper copies of their vaccination history.  Also, individuals who have moved around a lot may have their vaccination histories spread across multiple doctors' offices.  Thus it can be difficult to keep track of which vaccinations one has had and which vaccinations are needed in the near future.  With the addition of COVID related illnesses, keeping track of which shots were given when is critical, and some people even require proof of vaccination for their jobs or for travel on public transportation.  This app is a personal digital record keeper that keeps track of what vaccinations an individual has had throughout their lifetime as well as what vaccinations are upcoming. 
+Oftentimes, individuals would like to keep track of which vaccinations they have received.  These records are often held at doctor's offices.  However, some people who were born before 2000 have only paper copies of their vaccination history.  Also, individuals who have moved around a lot may have their vaccination histories spread across multiple doctors' offices.  Thus, it can be difficult to keep track of which vaccinations one has had and which vaccinations are needed in the near future.  With the addition of COVID-19 related illnesses, keeping track of which shots were given when is critical, and some people even require proof of vaccination for their jobs or for travel on public transportation.  This app is a personal digital record keeper that keeps track of what vaccinations an individual has had throughout their lifetime as well as what vaccinations are upcoming. 
 
 The application will keep track yearly and lifetime vaccination dates and shots.  That is, users will have the ability to see a list of vaccinations that they have received in the past as well as a list of upcoming vaccinations that they need in the near future.  In order to accomplish these functionalities, users will be able to add new vaccinations to their vaccination history, update vaccination information, delete a vaccination from their history, and see a list of CDC and additional  vaccination recommendations (from a phone browser).  
 
@@ -52,7 +52,7 @@ The application will keep track yearly and lifetime vaccination dates and shots.
 This app will use the following services: 
 * Service: Google sign-in
   * [Developer Documentation for Google Sign-in](https://developers.google.com/identity/sign-in/android/start-integrating)
-  * This app will use this service to authenticate users through a google account.
+  * This app will use this service to authenticate users through a Google account.
   * This app will not be able to function without full-time access to Google sign-in services.
 
 * Service: Camera Integration
