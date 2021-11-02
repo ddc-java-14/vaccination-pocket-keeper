@@ -3,13 +3,13 @@ apply plugin: 'androidx.navigation.safeargs'
 
 android {
 
-    compileSdkVersion = 30
+    compileSdkVersion = 31
 
     defaultConfig {
 
         applicationId "edu.cnm.deepdive.vaccpocketkeeper"
         minSdkVersion 26
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -46,7 +46,7 @@ dependencies {
 
     // Basic Android components
     implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
 
@@ -56,7 +56,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$navigationVersion"
 
     // Lifecycle (LiveData and ViewModel) libraries
-    def lifecycleVersion = '2.3.1'
+    def lifecycleVersion = '2.4.0'
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
@@ -88,7 +88,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     // OkHttp logging dependency
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
 
     // Stetho (inspection) dependency
     implementation 'com.facebook.stetho:stetho:1.6.0'
