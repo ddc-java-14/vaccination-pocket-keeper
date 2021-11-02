@@ -32,4 +32,39 @@ public class Doctor {
   @NonNull
   @ColumnInfo(unique = true)
   private String name;
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  @NonNull
+  public String getServiceKey() {
+    return serviceKey;
+  }
+
+  public void setServiceKey(@NonNull String serviceKey) {
+    this.serviceKey = serviceKey;
+  }
+
+  @NonNull
+  public Date getCreated() {
+    return created;
+  }
+
+  public void setCreated(@NonNull Date created) {
+    this.created = created;
+  }
+
+  @NonNull
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@NonNull String name) {
+    this.name = name;
+  }
 }

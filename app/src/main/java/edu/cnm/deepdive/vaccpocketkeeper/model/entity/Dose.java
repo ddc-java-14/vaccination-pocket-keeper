@@ -60,4 +60,72 @@ public class Dose {
   @NonNull
   private String image;
 
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  @NonNull
+  public String getServiceKey() {
+    return serviceKey;
+  }
+
+  public void setServiceKey(@NonNull String serviceKey) {
+    this.serviceKey = serviceKey;
+  }
+
+  @NonNull
+  public Date getCreated() {
+    return created;
+  }
+
+  public void setCreated(@NonNull Date created) {
+    this.created = created;
+  }
+
+  public long getVaccineId() {
+    return vaccineId;
+  }
+
+  public void setVaccineId(long vaccineId) {
+    this.vaccineId = vaccineId;
+  }
+
+  public long getDoctorId() {
+    return doctorId;
+  }
+
+  public void setDoctorId(long doctorId) {
+    this.doctorId = doctorId;
+  }
+
+  @NonNull
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@NonNull String name) {
+    this.name = name;
+  }
+
+  @NonNull
+  public Date getDateAdministered() {
+    return dateAdministered;
+  }
+
+  public void setDateAdministered(@NonNull Date dateAdministered) {
+    this.dateAdministered = dateAdministered;
+  }
+
+  @NonNull
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(@NonNull String image) {
+    this.image = image;
+  }
 }
