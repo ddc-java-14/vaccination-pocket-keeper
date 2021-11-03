@@ -34,10 +34,6 @@ public class VaccineRepository {
 
   public Single<Vaccine> insertDosesForVaccine(Vaccine vaccine) {
     Calendar cal = Calendar.getInstance();
-    //Date today = cal.getTime();
-    //cal.add(Calendar.YEAR, 1); // to get previous year add 1
-    //cal.add(Calendar.DAY_OF_MONTH, -1); // to get previous day add -1
-    //Date expiryDate = cal.getTime();
     return Single
         .fromCallable(() -> {
           for (int i = 0; i < vaccine.getTotalNunberOfDoses(); i++) {
