@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
+import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -46,4 +47,10 @@ public interface DoseDao {
 
   @Query("SELECT * FROM dose WHERE dose_id = :doseId")
   LiveData<Dose> select(long doseId );
+
+//  @Query("SELECT * FROM vaccine_summary WHERE administered = :isAdministered ORDER BY date_administered DESC")
+//  LiveData<List<VaccineSummary>> selectPastVaccines(boolean isAdministered);
+//
+//  @Query("SELECT * FROM vaccine_summary WHERE administered = :isAdministered ORDER BY date_administered DESC")
+//  LiveData<List<VaccineSummary>> selectUpcomingVaccines(boolean isAdministered);
 }

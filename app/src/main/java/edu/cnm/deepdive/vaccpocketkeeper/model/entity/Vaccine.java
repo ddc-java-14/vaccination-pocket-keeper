@@ -12,7 +12,16 @@ import java.util.Date;
 @Entity(
     tableName = "vaccine",
     indices = {
-        @Index(value = {"service_key"}, unique = true)
+        @Index(value = {"service_key"}, unique = true),
+        @Index(value = {"name"}, unique = true)
+    },
+    foreignKeys = {
+        @ForeignKey(
+            entity = User.class,
+            parentColumns = "user_id",
+            childColumns = "user_id",
+            onDelete = ForeignKey.CASCADE
+        )
     }
 )
 public class Vaccine {
@@ -28,28 +37,27 @@ public class Vaccine {
 
   @NonNull
   @ColumnInfo(index = true)
-  private Date created;
+  private Date created = new Date();
 
   @NonNull
-  @ColumnInfo(unique = true)
-  private String name;
+  @ColumnInfo
+  private String name = "";
 
   @NonNull
-  private String description;
+  private String description = "";
 
-  @NonNull
+  @ColumnInfo(name = "user_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
+  private long userId;
+
   @ColumnInfo(name = "frequency_first")
   private double frequencyFirst;
 
-  @NonNull
   @ColumnInfo(name = "out_of_frequency")
   private double outOfFrequency;
 
-  @NonNull
   @ColumnInfo(name = "age_range_lower_limit")
   private double ageRangeLowerLimit;
 
-  @NonNull
   @ColumnInfo(name = "age_range_upper_limit")
   private double ageRangeUpperLimit;
 
@@ -95,6 +103,14 @@ public class Vaccine {
 
   public void setDescription(@NonNull String description) {
     this.description = description;
+  }
+
+  public long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
   }
 
   public double getFrequencyFirst() {

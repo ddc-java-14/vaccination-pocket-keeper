@@ -3,22 +3,22 @@ package edu.cnm.deepdive.vaccpocketkeeper.model.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
-@Entity(tableName = "doctor",
+@Entity(tableName = "user",
     indices = {
         @Index(value = {"service_key"}, unique = true),//column name, not field name
-        @Index(value = {"name"})
+        @Index(value = {"name"}),
+        @Index(value = {"email"}, unique = true)
     }
 )
-public class Doctor {
+public class User {
 
   @PrimaryKey(autoGenerate = true)
-  @ColumnInfo(name = "doctor_id") //type affinity, if the type doesn't match one of the types in SQLite, can use type affitinity; pimarykey is automatically indeed and automatically unique
+  @ColumnInfo(name = "user_id") //type affinity, if the type doesn't match one of the types in SQLite, can use type affitinity; pimarykey is automatically indeed and automatically unique
   private long id;
 
   @NonNull
@@ -33,6 +33,14 @@ public class Doctor {
   @NonNull
   @ColumnInfo
   private String name = "";
+
+  @NonNull
+  @ColumnInfo
+  private String email = "";
+
+  @NonNull
+  @ColumnInfo(index = true)
+  private Date birthday = new Date();
 
   public long getId() {
     return id;
@@ -67,5 +75,23 @@ public class Doctor {
 
   public void setName(@NonNull String name) {
     this.name = name;
+  }
+
+  @NonNull
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(@NonNull String email) {
+    this.email = email;
+  }
+
+  @NonNull
+  public Date getBirthday() {
+    return birthday;
+  }
+
+  public void setBirthday(@NonNull Date birthday) {
+    this.birthday = birthday;
   }
 }

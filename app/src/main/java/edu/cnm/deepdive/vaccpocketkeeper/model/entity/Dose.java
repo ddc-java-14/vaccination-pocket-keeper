@@ -9,9 +9,10 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
-@Entity(tableName = "guess",
+@Entity(tableName = "dose",
     indices = {
-        @Index(value = {"service_key","name"})//column name, not field name
+        @Index(value = {"service_key"}, unique = true),//column name, not field name
+        @Index(value = {"name"}, unique = true)
     },
     foreignKeys = {
         @ForeignKey(
@@ -36,28 +37,29 @@ public class Dose {
 
   @NonNull
   @SerializedName("id") //get id from server, but call serviceKey in gson.
-  @ColumnInfo(name = "service_key", unique = true)
+  @ColumnInfo(name = "service_key")
   private String serviceKey;
 
   @NonNull
   @ColumnInfo(index = true)
-  private Date created;
+  private Date created = new Date();
 
-  @ColumnInfo(name = "vaccine_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affitinity; pimarykey is automatically indeed and automatically unique
+  @ColumnInfo(name = "vaccine_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
   private long vaccineId;
 
-  @ColumnInfo(name = "doctor_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affitinity; pimarykey is automatically indeed and automatically unique
+  @ColumnInfo(name = "doctor_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
   private long doctorId;
 
   @NonNull
-  @ColumnInfo(unique = true)
-  private String name;
+  @ColumnInfo
+  private String name = "";
 
-  @NonNull
   @ColumnInfo(name = "date_administered")
   private Date dateAdministered;
 
-  @NonNull
+  @ColumnInfo(index = true)
+  private boolean administered = false;
+
   private String image;
 
   public long getId() {
@@ -111,21 +113,27 @@ public class Dose {
     this.name = name;
   }
 
-  @NonNull
   public Date getDateAdministered() {
     return dateAdministered;
   }
 
-  public void setDateAdministered(@NonNull Date dateAdministered) {
+  public void setDateAdministered(Date dateAdministered) {
     this.dateAdministered = dateAdministered;
   }
 
-  @NonNull
+  public boolean isAdministered() {
+    return administered;
+  }
+
+  public void setAdministered(boolean administered) {
+    this.administered = administered;
+  }
+
   public String getImage() {
     return image;
   }
 
-  public void setImage(@NonNull String image) {
+  public void setImage(String image) {
     this.image = image;
   }
 }
