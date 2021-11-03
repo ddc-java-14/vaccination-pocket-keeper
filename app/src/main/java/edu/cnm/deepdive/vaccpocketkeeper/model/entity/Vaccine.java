@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity(
     tableName = "vaccine",
@@ -49,11 +52,10 @@ public class Vaccine {
   @ColumnInfo(name = "user_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
   private long userId;
 
-  @ColumnInfo(name = "frequency_first")
-  private double frequencyFirst;
+  private int frequency;
 
-  @ColumnInfo(name = "out_of_frequency")
-  private double outOfFrequency;
+  @ColumnInfo(name = "total_number_of_doses")
+  private double totalNunberOfDoses;
 
   @ColumnInfo(name = "age_range_lower_limit")
   private double ageRangeLowerLimit;
@@ -64,6 +66,9 @@ public class Vaccine {
   public long getId() {
     return id;
   }
+
+  @Ignore
+  private final List<Dose> doses = new LinkedList<>();
 
   public void setId(long id) {
     this.id = id;
@@ -113,20 +118,20 @@ public class Vaccine {
     this.userId = userId;
   }
 
-  public double getFrequencyFirst() {
-    return frequencyFirst;
+  public int getFrequency() {
+    return frequency;
   }
 
-  public void setFrequencyFirst(double frequencyFirst) {
-    this.frequencyFirst = frequencyFirst;
+  public void setFrequency(int frequency) {
+    this.frequency = frequency;
   }
 
-  public double getOutOfFrequency() {
-    return outOfFrequency;
+  public double getTotalNunberOfDoses() {
+    return totalNunberOfDoses;
   }
 
-  public void setOutOfFrequency(double outOfFrequency) {
-    this.outOfFrequency = outOfFrequency;
+  public void setTotalNunberOfDoses(double totalNunberOfDoses) {
+    this.totalNunberOfDoses = totalNunberOfDoses;
   }
 
   public double getAgeRangeLowerLimit() {
@@ -143,5 +148,9 @@ public class Vaccine {
 
   public void setAgeRangeUpperLimit(double ageRangeUpperLimit) {
     this.ageRangeUpperLimit = ageRangeUpperLimit;
+  }
+
+  public List<Dose> getDoses() {
+    return doses;
   }
 }

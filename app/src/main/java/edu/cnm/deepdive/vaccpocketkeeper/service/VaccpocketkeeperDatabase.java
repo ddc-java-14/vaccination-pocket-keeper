@@ -21,7 +21,7 @@ import java.util.Date;
 
 @Database(
     entities = {User.class, Vaccine.class, Dose.class, Doctor.class},
-    views = {VaccineSummary.class, DoseSummary.class},//TODO: come back to this
+    views = {VaccineSummary.class, DoseSummary.class},
     version = 1,
     exportSchema = true
 ) //when you uninstall an app, it wipes out the database too.
