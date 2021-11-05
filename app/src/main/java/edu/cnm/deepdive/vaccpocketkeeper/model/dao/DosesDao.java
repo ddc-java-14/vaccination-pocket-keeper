@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Dao
-public interface VaccineDao {
+public interface DosesDao {
 
   @Insert
   Single<Long> insert(Vaccine vaccine);

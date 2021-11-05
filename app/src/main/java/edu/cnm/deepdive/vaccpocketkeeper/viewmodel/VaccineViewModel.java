@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.vaccpocketkeeper.service;
+package edu.cnm.deepdive.vaccpocketkeeper.viewmodel;
 
 import android.app.Application;
 import android.util.Log;
@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.service.VaccineRepository;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class VaccineViewModel extends AndroidViewModel implements LifecycleObserver {
@@ -40,7 +41,7 @@ public class VaccineViewModel extends AndroidViewModel implements LifecycleObser
     throwable.postValue(null);
     pending.add(
         repository
-            .insertNewVaccine()
+            .addNewVaccine()
             .subscribe(
                 this.vaccine::postValue,
                 this::postThrowable
@@ -48,10 +49,10 @@ public class VaccineViewModel extends AndroidViewModel implements LifecycleObser
     );
   }
 
-  public void insertDosesForVaccine() {
+  public void addDosesForVaccine() {
     throwable.postValue(null); //clears the exceptions.
     pending.add(
-        repository.insertDosesForVaccine(vaccine.getValue())
+        repository.addDosesForVaccine(vaccine.getValue())
             .subscribe(
                 vaccine::postValue,
                 this::postThrowable //if we didn't get a POST? postValue, then get a throwable

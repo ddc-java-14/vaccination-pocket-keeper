@@ -15,7 +15,6 @@ import java.util.List;
 @Entity(
     tableName = "vaccine",
     indices = {
-        @Index(value = {"service_key"}, unique = true),
         @Index(value = {"name"}, unique = true)
     },
     foreignKeys = {
@@ -32,11 +31,6 @@ public class Vaccine {
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "vaccine_id") //type affinity, if the type doesn't match one of the types in SQLite, can use type affitinity; pimarykey is automatically indeed and automatically unique
   private long id;
-
-  @NonNull
-  @SerializedName("id") //get id from server, but call serviceKey in gson.
-  @ColumnInfo(name = "service_key")
-  private String serviceKey;
 
   @NonNull
   @ColumnInfo(index = true)
@@ -63,24 +57,15 @@ public class Vaccine {
   @ColumnInfo(name = "age_range_upper_limit")
   private double ageRangeUpperLimit;
 
+  @Ignore
+  private final List<Dose> doses = new LinkedList<>();
+
   public long getId() {
     return id;
   }
 
-  @Ignore
-  private final List<Dose> doses = new LinkedList<>();
-
   public void setId(long id) {
     this.id = id;
-  }
-
-  @NonNull
-  public String getServiceKey() {
-    return serviceKey;
-  }
-
-  public void setServiceKey(@NonNull String serviceKey) {
-    this.serviceKey = serviceKey;
   }
 
   @NonNull

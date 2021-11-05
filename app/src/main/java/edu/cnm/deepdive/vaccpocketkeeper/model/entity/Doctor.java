@@ -4,14 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity(tableName = "doctor",
     indices = {
-        @Index(value = {"service_key"}, unique = true),//column name, not field name
         @Index(value = {"name"})
     }
 )
@@ -22,11 +24,6 @@ public class Doctor {
   private long id;
 
   @NonNull
-  @SerializedName("id") //get id from server, but call serviceKey in gson.
-  @ColumnInfo(name = "service_key")
-  private String serviceKey;
-
-  @NonNull
   @ColumnInfo(index = true)
   private Date created = new Date();
 
@@ -34,21 +31,15 @@ public class Doctor {
   @ColumnInfo
   private String name = "";
 
+  @Ignore
+  private final List<Dose> doses = new LinkedList<>();
+
   public long getId() {
     return id;
   }
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  @NonNull
-  public String getServiceKey() {
-    return serviceKey;
-  }
-
-  public void setServiceKey(@NonNull String serviceKey) {
-    this.serviceKey = serviceKey;
   }
 
   @NonNull
@@ -67,5 +58,9 @@ public class Doctor {
 
   public void setName(@NonNull String name) {
     this.name = name;
+  }
+
+  public List<Dose> getDoses() {
+    return doses;
   }
 }

@@ -11,7 +11,6 @@ import java.util.Date;
 
 @Entity(tableName = "dose",
     indices = {
-        @Index(value = {"service_key"}, unique = true),//column name, not field name
         @Index(value = {"name"}, unique = true)
     },
     foreignKeys = {
@@ -34,11 +33,6 @@ public class Dose {
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "dose_id") //type affinity, if the type doesn't match one of the types in SQLite, can use type affitinity; pimarykey is automatically indeed and automatically unique
   private long id;
-
-  @NonNull
-  @SerializedName("id") //get id from server, but call serviceKey in gson.
-  @ColumnInfo(name = "service_key")
-  private String serviceKey;
 
   @NonNull
   @ColumnInfo(index = true)
@@ -68,15 +62,6 @@ public class Dose {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  @NonNull
-  public String getServiceKey() {
-    return serviceKey;
-  }
-
-  public void setServiceKey(@NonNull String serviceKey) {
-    this.serviceKey = serviceKey;
   }
 
   @NonNull

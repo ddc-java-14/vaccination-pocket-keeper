@@ -3,14 +3,16 @@ package edu.cnm.deepdive.vaccpocketkeeper.model.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity(tableName = "user",
     indices = {
-        @Index(value = {"service_key"}, unique = true),//column name, not field name
         @Index(value = {"name"}),
         @Index(value = {"email"}, unique = true)
     }
@@ -20,11 +22,6 @@ public class User {
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "user_id") //type affinity, if the type doesn't match one of the types in SQLite, can use type affitinity; pimarykey is automatically indeed and automatically unique
   private long id;
-
-  @NonNull
-  @SerializedName("id") //get id from server, but call serviceKey in gson.
-  @ColumnInfo(name = "service_key")
-  private String serviceKey;
 
   @NonNull
   @ColumnInfo(index = true)
@@ -39,8 +36,11 @@ public class User {
   private String email = "";
 
   @NonNull
-  @ColumnInfo(index = true)
+  @ColumnInfo
   private Date birthday = new Date();
+
+  @Ignore
+  private final List<Vaccine> vaccines = new LinkedList<>();
 
   public long getId() {
     return id;
@@ -48,15 +48,6 @@ public class User {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  @NonNull
-  public String getServiceKey() {
-    return serviceKey;
-  }
-
-  public void setServiceKey(@NonNull String serviceKey) {
-    this.serviceKey = serviceKey;
   }
 
   @NonNull
@@ -93,5 +84,9 @@ public class User {
 
   public void setBirthday(@NonNull Date birthday) {
     this.birthday = birthday;
+  }
+
+  public List<Vaccine> getVaccines() {
+    return vaccines;
   }
 }

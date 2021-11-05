@@ -9,7 +9,7 @@ import androidx.room.TypeConverters;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoctorDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.UserDao;
-import edu.cnm.deepdive.vaccpocketkeeper.model.dao.VaccineDao;
+import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DosesDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.User;
@@ -42,7 +42,7 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
 
   public abstract DoseDao getDoseDao();
 
-  public abstract VaccineDao getVaccineDao();
+  public abstract DosesDao getVaccineDao();
 
   public abstract UserDao getUserDao();
 
