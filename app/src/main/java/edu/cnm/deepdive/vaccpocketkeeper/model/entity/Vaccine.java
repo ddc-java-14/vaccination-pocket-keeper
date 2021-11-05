@@ -46,7 +46,7 @@ public class Vaccine {
   @ColumnInfo(name = "user_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
   private long userId;
 
-    private int frequency;
+  private int frequency;
 
   @ColumnInfo(name = "total_number_of_doses")
   private int totalNumberOfDoses;

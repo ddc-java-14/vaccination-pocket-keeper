@@ -2,6 +2,7 @@ package edu.cnm.deepdive.vaccpocketkeeper;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
+import edu.cnm.deepdive.vaccpocketkeeper.service.VaccpocketkeeperDatabase;
 
 /**
  * Initializes (in the {@link #onCreate()} method) application-level resources. This class
@@ -14,6 +15,7 @@ public class VaccPocketKeeperApplication extends Application {
   public void onCreate() {
     super.onCreate();
     Stetho.initializeWithDefaults(this);
+    VaccpocketkeeperDatabase.setContext(this);
   }
 
 }
