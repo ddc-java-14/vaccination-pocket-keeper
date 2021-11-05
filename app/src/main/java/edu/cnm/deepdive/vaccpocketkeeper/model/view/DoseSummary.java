@@ -14,7 +14,7 @@ public class DoseSummary extends Dose {
   //"SELECT v.*, d.* FROM vaccine AS v INNER JOIN (SELECT * FROM dose GROUP BY vaccine_id) AS d ON v.vaccine_id = d.vaccine_id";
   static final String QUERY = "SELECT v.*, d.* \n"
       + "FROM vaccine AS v \n"
-      + "INNER JOIN (SELECT vaccine_id \n"
+      + "INNER JOIN (SELECT * \n"
       + "FROM dose GROUP BY vaccine_id) AS d \n"
       + "ON v.vaccine_id = d.vaccine_id";
 }

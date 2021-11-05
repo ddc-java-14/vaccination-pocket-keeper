@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.vaccpocketkeeper.service;
 
+import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoctorDao;
@@ -15,13 +16,13 @@ import java.util.List;
 
 public class DoctorRepository {
 
+  private final Application context;
   private final DoctorDao doctorDao;
-  private final DoseDao doseDao;
-  
-  public DoctorRepository() {
+
+  public DoctorRepository(Application context) {
+    this.context = context;
     VaccpocketkeeperDatabase database = VaccpocketkeeperDatabase.getInstance();
     doctorDao = database.getDoctorDao();
-    doseDao = database.getDoseDao();
   }
 
   public LiveData<Doctor> get(long doctorId) {
@@ -61,43 +62,5 @@ public class DoctorRepository {
             .delete(doctor)
             .ignoreElement() //not interested in how many records deleted; .ignore turns from single to completable.  or .flatmap (takes single and daisy chains completable to it)
             .subscribeOn(Schedulers.io());
-  }
-
-//  public Single<Doctor> addNewDose() {
-//    return Single
-//        .fromCallable(() -> {
-//          Doctor doctor = new Doctor();
-//          return doctor;
-//        }) //asynchronous call
-//        .subscribeOn(Schedulers.io());
-//  }
-
-  public Single<Doctor> addDosesForDoctor(Doctor doctor) {
-    return Single
-        .fromCallable(() -> {
-          Dose dose = new Dose();
-          doctor.getDoses().add(dose);
-          return doctor;
-        })
-        .flatMap(this::addDoctorWithDoses)
-        .subscribeOn(Schedulers.io());
-  }
-
-  @NonNull
-  private Single<Doctor> addDoctorWithDoses(Doctor doctor) {
-    return doctorDao
-        .insert(doctor)
-        .map((id) -> {
-          doctor.setId(id);
-          for (Dose dose : doctor.getDoses()) {
-            dose.setId(id);
-          }
-          return doctor;
-        })
-        .flatMap((doctor2) -> doseDao
-            .insert(doctor2.getDoses())
-            //TODO invoke Dose.setId for all of the doses
-            .map((ids) -> doctor2));
-    //: Single.just(dose);
   }
 }

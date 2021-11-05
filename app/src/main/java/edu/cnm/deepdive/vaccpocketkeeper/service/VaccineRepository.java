@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.vaccpocketkeeper.service;
 
+import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
@@ -17,9 +18,11 @@ import java.util.List;
 
 public class VaccineRepository {
 
+  private final Application context;
   private final VaccineDao vaccineDao;
 
-  public VaccineRepository() {
+  public VaccineRepository(Application context) {
+    this.context = context;
     VaccpocketkeeperDatabase database = VaccpocketkeeperDatabase.getInstance();
     vaccineDao = database.getVaccineDao();
   }

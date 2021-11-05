@@ -10,39 +10,42 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.Transformations;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoctorWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
+import edu.cnm.deepdive.vaccpocketkeeper.service.DoctorRepository;
 import edu.cnm.deepdive.vaccpocketkeeper.service.VaccineRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 
-public class VaccineViewModel extends AndroidViewModel implements LifecycleObserver {
+public class DoctorViewModel extends AndroidViewModel implements LifecycleObserver {
 
-  private final VaccineRepository repository;
-  private final LiveData<VaccineWithDoses> vaccine;
-  private final MutableLiveData<Long> vaccineId;
+  private final DoctorRepository repository;
+  private final LiveData<Doctor> doctor;
+  private final MutableLiveData<Long> doctorId;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
 
-  public VaccineViewModel(@NonNull Application application) {
+  public DoctorViewModel(@NonNull Application application) {
     super(application);
-    repository = new VaccineRepository(application);
+    repository = new DoctorRepository(application);
     throwable = new MutableLiveData<>();
     pending = new CompositeDisposable();
-    vaccineId = new MutableLiveData<>();
+    doctorId = new MutableLiveData<>();
     //whenever the contents of this vaccineId changes, it invokes the lambda
-    vaccine = Transformations.switchMap(vaccineId, repository::get
+    doctor = Transformations.switchMap(doctorId, repository::get
         //but query doesn't execute unless someone is observing that livedata.
     );//triggers a refresh of live data
   }
 
-  public LiveData<VaccineWithDoses> getVaccine() {
-    return vaccine;
+  public LiveData<Doctor> getVaccine() {
+    return doctor;
   }
 
-  public void setVaccineId(long id) {
-    vaccineId.setValue(
+  public void setDoctorId(long id) {
+    doctorId.setValue(
         id);//if someone is observing this, it will cause a refresh of note assignment in constructor
   }
 
@@ -51,39 +54,30 @@ public class VaccineViewModel extends AndroidViewModel implements LifecycleObser
   }
 
   //getAll
-  public LiveData<List<Vaccine>> getVaccines() {
+  public LiveData<List<Doctor>> getVaccines() {
     return repository.getAll();
   }
 
-  //getPastVaccines
-  public LiveData<List<VaccineSummary>> getPastVaccines() {
-    return repository.getPastVaccines();
-  }
-
-  //getFutureVaccines
-  public LiveData<List<VaccineSummary>> getFutureVaccines() {
-    return repository.getUpcomingVaccines();
-  }
-
   //save
-  public void save(Vaccine vaccine) {
+  public void save(Doctor doctor) {
     pending.add(
         repository
-            .save(vaccine)
+            .save(doctor)
             .subscribe(
-                (savedVaccine) -> {},
+                (savedDoctor) -> {},
                 this::postThrowable //replace expression lambda with method reference lambda.
             ) //causes this to execute; first parameter is consume of succesful results, second is consumer of unsucessful result
+
     );
   }
 
   //delete
-  public void deleteVaccine(Vaccine vaccine) {
+  public void deleteVaccine(Doctor doctor) {
     //Vaccine vaccine = new Vaccine();
     throwable.postValue(null);
     pending.add(
         repository
-            .delete(vaccine)
+            .delete(doctor)
             .subscribe(
                 () -> {},
                 this::postThrowable
