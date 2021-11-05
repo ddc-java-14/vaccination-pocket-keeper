@@ -3,9 +3,10 @@ package edu.cnm.deepdive.vaccpocketkeeper.service;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.UserDao;
-import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DosesDao;
+import edu.cnm.deepdive.vaccpocketkeeper.model.dao.VaccineDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.User;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.UserWithVaccines;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
@@ -15,7 +16,7 @@ import java.util.List;
 public class UserRepository {
 
   private final UserDao userDao;
-  private final DosesDao vaccineDao;
+  private final VaccineDao vaccineDao;
 
 
   public UserRepository() {
@@ -24,7 +25,7 @@ public class UserRepository {
     vaccineDao = database.getVaccineDao();
   }
 
-  public LiveData<User> get(long userId) {
+  public LiveData<UserWithVaccines> get(long userId) {
     return userDao.select(userId);
   }
 
@@ -72,16 +73,6 @@ public class UserRepository {
 //        .subscribeOn(Schedulers.io());
 //  }
 
-  public Single<User> addVaccinesForUser(User user) {
-    return Single
-        .fromCallable(() -> {
-          Vaccine vaccine = new Vaccine();
-          user.getVaccines().add(vaccine);
-          return user;
-        })
-        .flatMap(this::addUserWithVaccines)
-        .subscribeOn(Schedulers.io());
-  }
 
   @NonNull
   private Single<User> addUserWithVaccines(User user) {
@@ -89,15 +80,7 @@ public class UserRepository {
         .insert(user)
         .map((id) -> {
           user.setId(id);
-          for (Vaccine vaccine : user.getVaccines()) {
-            vaccine.setId(id);
-          }
           return user;
-        })
-        .flatMap((user2) -> vaccineDao
-            .insert(user2.getVaccines())
-            //TODO invoke Dose.setId for all of the doses
-            .map((ids) -> user2));
-    //: Single.just(vaccine);
+        });
   }
 }

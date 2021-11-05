@@ -6,10 +6,12 @@ import androidx.room.Delete;
 import androidx.room.Ignore;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.User;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.UserWithVaccines;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -48,6 +50,7 @@ public interface UserDao {
   @Query("SELECT * FROM user ORDER BY created DESC") //we named our table dose
   LiveData<List<User>> selectAll();
 
+  @Transaction
   @Query("SELECT * FROM user WHERE user_id = :userId")
-  LiveData<User> select(long userId);
+  LiveData<UserWithVaccines> select(long userId);
 }

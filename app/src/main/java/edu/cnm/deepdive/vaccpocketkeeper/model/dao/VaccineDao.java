@@ -5,15 +5,17 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
 @Dao
-public interface DosesDao {
+public interface VaccineDao {
 
   @Insert
   Single<Long> insert(Vaccine vaccine);
@@ -45,8 +47,9 @@ public interface DosesDao {
   @Query("SELECT * FROM vaccine ORDER BY created DESC") //we named our table vaccine
   LiveData<List<Vaccine>> selectAll();
 
+  @Transaction
   @Query("SELECT * FROM vaccine WHERE vaccine_id = :vaccineId")
-  LiveData<Vaccine> select(long vaccineId );
+  LiveData<VaccineWithDoses> select(long vaccineId );
 
   @Query("SELECT * FROM vaccine_summary WHERE administered = :isAdministered ORDER BY date_administered DESC")
   LiveData<List<VaccineSummary>> selectPastVaccines(boolean isAdministered);

@@ -39,9 +39,6 @@ public class User {
   @ColumnInfo
   private Date birthday = new Date();
 
-  @Ignore
-  private final List<Vaccine> vaccines = new LinkedList<>();
-
   public long getId() {
     return id;
   }
@@ -86,7 +83,5 @@ public class User {
     this.birthday = birthday;
   }
 
-  public List<Vaccine> getVaccines() {
-    return vaccines;
-  }
+
 }

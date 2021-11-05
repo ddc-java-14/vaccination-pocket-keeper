@@ -3,9 +3,10 @@ package edu.cnm.deepdive.vaccpocketkeeper.service;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
-import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DosesDao;
+import edu.cnm.deepdive.vaccpocketkeeper.model.dao.VaccineDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -16,16 +17,14 @@ import java.util.List;
 
 public class VaccineRepository {
 
-  private final DosesDao vaccineDao;
-  private final DoseDao doseDao;
+  private final VaccineDao vaccineDao;
 
   public VaccineRepository() {
     VaccpocketkeeperDatabase database = VaccpocketkeeperDatabase.getInstance();
     vaccineDao = database.getVaccineDao();
-    doseDao = database.getDoseDao();
   }
 
-  public LiveData<Vaccine> get(long vaccineId) {
+  public LiveData<VaccineWithDoses> get(long vaccineId) {
     return vaccineDao.select(vaccineId);
   }
 
@@ -45,6 +44,13 @@ public class VaccineRepository {
     Single<Vaccine> task;
     if (vaccine.getId() == 0) {
       vaccine.setCreated(new Date());
+      Calendar cal = Calendar.getInstance();
+      for (int i = 0; i < vaccine.getTotalNunberOfDoses(); i++) {
+        Dose dose = new Dose();
+        cal.add(Calendar.YEAR, vaccine.getFrequency());
+        dose.setDateAdministered(cal.getTime());
+        vaccine.getDoses().add(dose);
+      }
       task = vaccineDao
           .insert(vaccine)
           .map((id) -> {
@@ -68,48 +74,5 @@ public class VaccineRepository {
             .delete(vaccine)
             .ignoreElement() //not interested in how many records deleted; .ignore turns from single to completable.  or .flatmap (takes single and daisy chains completable to it)
             .subscribeOn(Schedulers.io());
-  }
-
-  public Single<Vaccine> addNewVaccine() {
-    return Single
-        .fromCallable(() -> {
-          Vaccine vaccine = new Vaccine();
-          return vaccine;
-        }) //asynchronous call
-        .subscribeOn(Schedulers.io());
-  }
-
-  public Single<Vaccine> addDosesForVaccine(Vaccine vaccine) {
-    Calendar cal = Calendar.getInstance();
-    return Single
-        .fromCallable(() -> {
-          for (int i = 0; i < vaccine.getTotalNunberOfDoses(); i++) {
-            Dose dose = new Dose();
-            cal.add(Calendar.YEAR, vaccine.getFrequency());
-            dose.setDateAdministered(cal.getTime());
-            vaccine.getDoses().add(dose);
-          }
-          return vaccine;
-        })
-        .flatMap(this::addVaccineWithDoses)
-        .subscribeOn(Schedulers.io());
-  }
-
-  @NonNull
-  private Single<Vaccine> addVaccineWithDoses(Vaccine vaccine) {
-    return vaccineDao
-        .insert(vaccine)
-        .map((id) -> {
-          vaccine.setId(id);
-          for (Dose dose : vaccine.getDoses()) {
-            dose.setVaccineId(id);
-          }
-          return vaccine;
-        })
-        .flatMap((vaccine2) -> doseDao
-            .insert(vaccine2.getDoses())
-            //TODO invoke Dose.setId for all of the doses
-            .map((ids) -> vaccine2));
-    //: Single.just(vaccine);
   }
 }
