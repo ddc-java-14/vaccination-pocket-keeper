@@ -10,9 +10,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 @Entity(tableName = "dose",
-    indices = {
-        @Index(value = {"name"}, unique = true)
-    },
     foreignKeys = {
         @ForeignKey(
             entity = Vaccine.class,
@@ -43,10 +40,6 @@ public class Dose {
 
   @ColumnInfo(name = "doctor_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
   private long doctorId;
-
-  @NonNull
-  @ColumnInfo
-  private String name = "";
 
   @ColumnInfo(name = "date_administered")
   private Date dateAdministered;
@@ -87,15 +80,6 @@ public class Dose {
 
   public void setDoctorId(long doctorId) {
     this.doctorId = doctorId;
-  }
-
-  @NonNull
-  public String getName() {
-    return name;
-  }
-
-  public void setName(@NonNull String name) {
-    this.name = name;
   }
 
   public Date getDateAdministered() {

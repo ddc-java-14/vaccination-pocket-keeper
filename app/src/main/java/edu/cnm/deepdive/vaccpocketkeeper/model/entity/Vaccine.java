@@ -46,19 +46,16 @@ public class Vaccine {
   @ColumnInfo(name = "user_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
   private long userId;
 
-  private int frequency;
+    private int frequency;
 
   @ColumnInfo(name = "total_number_of_doses")
-  private double totalNunberOfDoses;
+  private int totalNumberOfDoses;
 
   @ColumnInfo(name = "age_range_lower_limit")
-  private double ageRangeLowerLimit;
+  private int ageRangeLowerLimit;
 
   @ColumnInfo(name = "age_range_upper_limit")
-  private double ageRangeUpperLimit;
-
-  @Ignore
-  private final List<Dose> doses = new LinkedList<>();
+  private int ageRangeUpperLimit;
 
   public long getId() {
     return id;
@@ -112,18 +109,18 @@ public class Vaccine {
   }
 
   public double getTotalNunberOfDoses() {
-    return totalNunberOfDoses;
+    return totalNumberOfDoses;
   }
 
-  public void setTotalNunberOfDoses(double totalNunberOfDoses) {
-    this.totalNunberOfDoses = totalNunberOfDoses;
+  public void setTotalNunberOfDoses(int totalNumberOfDoses) {
+    this.totalNumberOfDoses = totalNumberOfDoses;
   }
 
   public double getAgeRangeLowerLimit() {
     return ageRangeLowerLimit;
   }
 
-  public void setAgeRangeLowerLimit(double ageRangeLowerLimit) {
+  public void setAgeRangeLowerLimit(int ageRangeLowerLimit) {
     this.ageRangeLowerLimit = ageRangeLowerLimit;
   }
 
@@ -131,11 +128,8 @@ public class Vaccine {
     return ageRangeUpperLimit;
   }
 
-  public void setAgeRangeUpperLimit(double ageRangeUpperLimit) {
+  public void setAgeRangeUpperLimit(int ageRangeUpperLimit) {
     this.ageRangeUpperLimit = ageRangeUpperLimit;
   }
 
-  public List<Dose> getDoses() {
-    return doses;
-  }
 }
