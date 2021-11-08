@@ -9,7 +9,7 @@ order: 0
 
 Oftentimes, individuals would like to keep track of which vaccinations they have received.  These records are often held at doctor's offices.  However, some people who were born before 2000 have only paper copies of their vaccination history.  Also, individuals who have moved around a lot may have their vaccination histories spread across multiple doctors' offices.  Thus, it can be difficult to keep track of which vaccinations one has had and which vaccinations are needed in the near future.  With the addition of COVID-19 related illnesses, keeping track of which shots were given when is critical, and some people even require proof of vaccination for their jobs or for travel on public transportation.  This app is a personal digital record keeper that keeps track of what vaccinations an individual has had throughout their lifetime as well as what vaccinations are upcoming. 
 
-The application will keep track yearly and lifetime vaccination dates and shots.  That is, users will have the ability to see a list of vaccinations that they have received in the past as well as a list of upcoming vaccinations that they need in the near future.  In order to accomplish these functionalities, users will be able to add new vaccinations to their vaccination history, update vaccination information, and delete a vaccination from their history. [comment]: <> (and see a list of CDC and additional  vaccination recommendations &#40;from a phone browser&#41;.  )
+The application will keep track yearly and lifetime vaccination dates and shots.  That is, users will have the ability to see a list of vaccinations that they have received in the past as well as a list of upcoming vaccinations that they need in the near future.  In order to accomplish these functionalities, users will be able to add new vaccinations to their vaccination history, update vaccination information, and delete a vaccination from their history. [//]: # (and see a list of CDC and additional  vaccination recommendations &#40;from a phone browser&#41;.  )
 
 ## Intended users
 
@@ -31,7 +31,7 @@ The application will keep track yearly and lifetime vaccination dates and shots.
 * Create and view a list of past vaccinations
 * Create and view a list of vaccinations needed in the next 6 months
 * Update a vaccination entry
-* Delete a vaccination entry [comment]: <> (* List a few additional resources where individuals can go to get more information about vaccines.)
+* Delete a vaccination entry [//]: # (* List a few additional resources where individuals can go to get more information about vaccines.)
 * Take a photo of a vaccination card (such as a COVID-19 vaccination card)
 * Store a photo of a vaccination card (such as a COVID-19 vaccination card)
 
