@@ -57,6 +57,9 @@ public class Vaccine {
   @ColumnInfo(name = "age_range_upper_limit")
   private int ageRangeUpperLimit;
 
+  @Ignore
+  private final List<Dose> doses = new LinkedList<>();
+
   public long getId() {
     return id;
   }
@@ -108,15 +111,15 @@ public class Vaccine {
     this.frequency = frequency;
   }
 
-  public double getTotalNunberOfDoses() {
+  public int getTotalNumberOfDoses() {
     return totalNumberOfDoses;
   }
 
-  public void setTotalNunberOfDoses(int totalNumberOfDoses) {
+  public void setTotalNumberOfDoses(int totalNumberOfDoses) {
     this.totalNumberOfDoses = totalNumberOfDoses;
   }
 
-  public double getAgeRangeLowerLimit() {
+  public int getAgeRangeLowerLimit() {
     return ageRangeLowerLimit;
   }
 
@@ -124,7 +127,7 @@ public class Vaccine {
     this.ageRangeLowerLimit = ageRangeLowerLimit;
   }
 
-  public double getAgeRangeUpperLimit() {
+  public int getAgeRangeUpperLimit() {
     return ageRangeUpperLimit;
   }
 
@@ -132,4 +135,7 @@ public class Vaccine {
     this.ageRangeUpperLimit = ageRangeUpperLimit;
   }
 
+  public List<Dose> getDoses() {
+    return doses;
+  }
 }
