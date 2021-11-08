@@ -71,7 +71,7 @@ This app will use the following services:
   * This app will use the WebView to render additional resources as specified in [Additional Resources](#additional-resources)
   * This app will be able to function without full-time access to a WebView.
 
-#### Additional Resources
+### Additional Resources
 
 These additional resources will be integrated into the WebView:
 * [Recommended Immunization Schedule For Children](https://healthychildren.org/English/safety-prevention/immunizations/Pages/Recommended-Immunization-Schedules.aspx?gclid=CjwKCAjwh5qLBhALEiwAioodsz1-zBQxR35agsYeBt4t1fmXJvEmUJUKcMPg3VOTd_XLX_Uq_h5uXxoCDbsQAvD_BwE)
@@ -80,4 +80,3 @@ These additional resources will be integrated into the WebView:
 
 **Note**
 These resources are subject to change as additional information is discovered.
-
