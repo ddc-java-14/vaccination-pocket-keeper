@@ -67,9 +67,9 @@
       android:layout_margin="@dimen/half_dynamic_spacing"
       app:hintEnabled="true"
       app:hintAnimationEnabled="true"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/vacc_vaccine_layout"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/save">
+      app:layout_constraintEnd_toEndOf="parent">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/vacc_description"
@@ -87,9 +87,9 @@
       android:layout_margin="@dimen/half_dynamic_spacing"
       app:hintEnabled="true"
       app:hintAnimationEnabled="true"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/vacc_desciption_layout"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/save">
+      app:layout_constraintEnd_toEndOf="parent">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/vacc_frequency"
@@ -107,9 +107,9 @@
       android:layout_margin="@dimen/half_dynamic_spacing"
       app:hintEnabled="true"
       app:hintAnimationEnabled="true"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/vacc_frequency_layout"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/save">
+      app:layout_constraintEnd_toEndOf="parent">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/vacc_total_number_of_doses"
@@ -126,9 +126,9 @@
       android:layout_margin="@dimen/half_dynamic_spacing"
       app:hintEnabled="true"
       app:hintAnimationEnabled="true"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/vacc_total_number_of_doses_layout"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/save">
+      app:layout_constraintEnd_toEndOf="parent">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/vacc_age_range_lower_limit"
@@ -145,9 +145,9 @@
       android:layout_margin="@dimen/half_dynamic_spacing"
       app:hintEnabled="true"
       app:hintAnimationEnabled="true"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/vacc_age_range_lower_limit_layout"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/save">
+      app:layout_constraintEnd_toEndOf="parent">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/vacc_age_range_upper_limit"

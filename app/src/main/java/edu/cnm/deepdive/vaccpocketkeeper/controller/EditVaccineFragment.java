@@ -36,6 +36,11 @@ public class EditVaccineFragment extends BottomSheetDialogFragment implements Te
     binding.cancel.setOnClickListener((v) -> dismiss());
     binding.save.setOnClickListener((v) -> {
       vaccine.setName(binding.vaccVaccineName.getText().toString().trim());
+      vaccine.setDescription(binding.vaccDescription.getText().toString().trim());
+      vaccine.setTotalNumberOfDoses(Integer.parseInt(binding.vaccTotalNumberOfDoses.getText().toString().trim()));
+      vaccine.setFrequency(Integer.parseInt(binding.vaccFrequency.getText().toString().trim()));
+      vaccine.setAgeRangeLowerLimit(Integer.parseInt(binding.vaccAgeRangeLowerLimit.getText().toString().trim()));
+      vaccine.setAgeRangeUpperLimit(Integer.parseInt(binding.vaccAgeRangeUpperLimit.getText().toString().trim()));
       viewModel.save(vaccine);
       dismiss();
     });

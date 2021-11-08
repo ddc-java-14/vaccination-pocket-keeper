@@ -26,8 +26,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
     inflator = LayoutInflater.from(context);
     dateFormat = android.text.format.DateFormat.getDateFormat(context);
     this.onDoctorEditHelper = onDoctorEditHelper;
-    this.doctors = doctors;
     this.onDoctorDeleteHelper = onDoctorDeleteHelper;
+    this.doctors = doctors;
   }
 
   @NonNull

@@ -48,7 +48,7 @@ public class VaccineRepository {
     if (vaccine.getId() == 0) {
       vaccine.setCreated(new Date());
       Calendar cal = Calendar.getInstance();
-      for (int i = 0; i < vaccine.getTotalNumberOfDoses(); i++) {
+      for (int i = 0; i < vaccine.getTotalNumberOfDoses(); i++) { //TODO: getTotalNumberOfDoses is empty
         Dose dose = new Dose();
         cal.add(Calendar.YEAR, vaccine.getFrequency());
         dose.setDateAdministered(cal.getTime());
