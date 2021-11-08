@@ -1,16 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'androidx.navigation.safeargs'
 
-String getLocalProperty(String name) {
-    Properties properties = new Properties()
-    properties.load(new FileInputStream("$projectDir/local.properties"))
-    return properties.getProperty(name)
-}
-
-static String quoted(String input) {
-    return "\"$input\""
-}
-
 android {
 
     compileSdkVersion = 31
@@ -24,8 +14,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField 'String', 'BASE_URL', quoted(getLocalProperty('base_url'))
 
         resValue "string", "app_name", rootProject.name
 
@@ -97,7 +85,7 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$roomVersion"
 
     // Gson (Google JSON parser) library
-    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     // Retrofit (REST client) with ReactiveX & Gson integration
     def retrofitVersion = '2.9.0'
