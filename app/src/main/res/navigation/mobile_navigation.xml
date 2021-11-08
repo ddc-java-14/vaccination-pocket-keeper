@@ -21,10 +21,7 @@
         android:defaultValue="0L"
         />
     </action>
-    <action
-      android:id="@+id/doctor_fragment_to_dialogue"
-      app:destination="@id/doctor_dialogue"
-      />
+
   </fragment>
 
   <dialog

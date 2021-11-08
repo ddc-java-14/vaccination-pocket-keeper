@@ -92,49 +92,51 @@
     style="@style/TextAppearance.MaterialComponents.Body1"
     tools:text="3"/>
 
-<!--  <TextView-->
-<!--    android:id="@+id/age_range_lower_limit_label"-->
-<!--    android:layout_width="0dp"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_margin="@dimen/half_static_spacing"-->
-<!--    android:text="@string/age_range_lower_limit_label"-->
-<!--    android:labelFor="@id/age_range_lower_limit"-->
-<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
-<!--    app:layout_constraintStart_toStartOf="parent"-->
-<!--    app:layout_constraintEnd_toStartOf="@id/age_range_lower_limit"-->
-<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--    tools:text="Age Range: "/>-->
+  <TextView
+    android:id="@+id/age_range_lower_limit_label"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/age_range_lower_limit_label"
+    android:labelFor="@id/age_range_lower_limit"
+    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/age_range_lower_limit"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="Age Range: "/>
 
-<!--  <TextView-->
-<!--    android:id="@+id/age_range_lower_limit"-->
-<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--    android:layout_margin="@dimen/half_static_spacing"-->
-<!--    app:layout_constraintEnd_toStartOf="age_range_upper_limit_label"-->
-<!--    app:layout_constraintStart_toEndOf="@id/age_range_lower_limit_label"-->
-<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
-<!--    tools:text="25"/>-->
+  <TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/age_range_lower_limit"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintEnd_toStartOf="@id/age_range_upper_limit_label"
+    app:layout_constraintStart_toEndOf="@id/age_range_lower_limit_label"
+    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"
+    tools:text="25"/>
 
-<!--  <TextView-->
-<!--    android:id="@+id/age_range_upper_limit_label"-->
-<!--    android:layout_width="0dp"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_margin="@dimen/half_static_spacing"-->
-<!--    android:text="@string/age_range_upper_limit_label"-->
-<!--    android:labelFor="@id/age_range_upper_limit"-->
-<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
-<!--    app:layout_constraintStart_toEndOf="age_range_lower_limit"-->
-<!--    app:layout_constraintEnd_toStartOf="@id/age_range_upper_limit"-->
-<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--    tools:text="  "/>-->
+  <TextView
+    android:id="@+id/age_range_upper_limit_label"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/age_range_upper_limit_label"
+    android:labelFor="@id/age_range_upper_limit"
+    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"
+    app:layout_constraintStart_toEndOf="@id/age_range_lower_limit"
+    app:layout_constraintEnd_toStartOf="@id/age_range_upper_limit"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text=" to "/>
 
-<!--  <TextView-->
-<!--    android:id="@+id/age_range_upper_limit"-->
-<!--    android:layout_width="0dp"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_margin="@dimen/half_static_spacing"-->
-<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
-<!--    app:layout_constraintStart_toEndOf="@id/age_range_upper_limit_label"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--    tools:text=""/>-->
+  <TextView
+    android:id="@+id/age_range_upper_limit"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"
+    app:layout_constraintStart_toEndOf="@id/age_range_upper_limit_label"
+    app:layout_constraintEnd_toEndOf="parent"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="35"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

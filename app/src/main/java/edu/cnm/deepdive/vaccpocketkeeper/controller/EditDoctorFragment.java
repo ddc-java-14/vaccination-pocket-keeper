@@ -47,8 +47,11 @@ public class EditDoctorFragment extends BottomSheetDialogFragment implements Tex
     super.onViewCreated(view, savedInstanceState);
     viewModel = new ViewModelProvider(this).get(DoctorViewModel.class);
     if (doctorId != 0) { //previous doctor
-      //TODO Set doctorID in viewmodel and observe viewmodel.getDoctor()
-      //viewModel.getDoctor()
+      viewModel.setDoctorId(doctorId);
+      viewModel.getDoctor().observe(getViewLifecycleOwner(),(doctor) -> {
+        this.doctor = doctor;
+        binding.doctorName.setText(doctor.getName());
+      });
     } else { //new doctor
       doctor = new Doctor();
     }

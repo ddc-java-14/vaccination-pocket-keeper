@@ -39,7 +39,7 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
     //binding.guess.setFilters(new InputFilter[]{this});
     //compiler infers that v is a view : (View v)
     binding.addDoctor.setOnClickListener(
-        this::onClick);
+        v -> onDoctorClick(0,v));
     return binding.getRoot();
   }
 
@@ -103,16 +103,9 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
     }
   }
 
-  private void onClick(View v) {
-    Navigation.findNavController(binding.getRoot())
-        .navigate(DoctorFragmentDirections.openDoctor()); //generated for us from fragment
-  }
-
   @Override
   public void onDoctorClick(long id, View view) {
-    DoctorFragmentDirections.DoctorFragmentToDialogue toDoctorDialogue
-        = DoctorFragmentDirections.doctorFragmentToDialogue();
-    toDoctorDialogue.setDoctorId(id);
-    Navigation.findNavController(view).navigate(toDoctorDialogue);
+    Navigation.findNavController(binding.getRoot())
+        .navigate(DoctorFragmentDirections.openDoctor().setDoctorId(id));
   }
 }
