@@ -2,8 +2,9 @@
 title: Implementation
 description: Entity, DAO, and Database Classes.
 menu: Implementation
-order: 30
+order: 25
 ---
+
 ## Entity Classes
 [`User`](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/User.java)  
 [`Doctor`](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/Doctor.java)  
