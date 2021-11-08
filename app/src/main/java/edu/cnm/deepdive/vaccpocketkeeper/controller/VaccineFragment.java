@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter;
+import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentVaccineBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
@@ -34,7 +35,7 @@ public class VaccineFragment extends Fragment {
     //binding.guess.setFilters(new InputFilter[]{this});
     //compiler infers that v is a view : (View v)
     binding.addVaccine.setOnClickListener(
-        this::onClick);
+        v -> editVaccine(0,v));
     return binding.getRoot();
   }
 
@@ -50,7 +51,8 @@ public class VaccineFragment extends Fragment {
     viewModel
         .getVaccines()
         .observe(getViewLifecycleOwner(),(vaccines) -> {
-          VaccineAdapter adapter = new VaccineAdapter(getContext(), vaccines);
+          VaccineAdapter adapter = new VaccineAdapter(getContext(), vaccines, this::editVaccine,
+              (vaccine,v) -> viewModel.deleteVaccine(vaccine));//TODO: show alert confirming deletion to user (have delete vaccine method to confirm and say to delete)
           binding.vaccines.setAdapter(adapter);
         });
   } //when fragment dies, then cleans up
@@ -98,9 +100,9 @@ public class VaccineFragment extends Fragment {
     }
   }
 
-  private void onClick(View v) {
+  public void editVaccine(long id, View view) {
     Navigation.findNavController(binding.getRoot())
-        .navigate(VaccineFragmentDirections.openVaccine()); //generated for us from fragment from actions in mobile navigation
+        .navigate(VaccineFragmentDirections.openVaccine().setVaccineId(id));
   }
 
 }

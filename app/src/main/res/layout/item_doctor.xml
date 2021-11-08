@@ -15,8 +15,34 @@
     android:layout_margin="@dimen/half_static_spacing"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/edit"
     style="@style/TextAppearance.MaterialComponents.Headline5"
     tools:text="Dr. Vacc"/>
+
+  <ImageButton
+    android:id="@+id/edit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_mode_edit_black_24dp"
+    app:tint="@color/edit"
+    android:background="?android:selectableItemBackgroundBorderless"
+    android:padding="@dimen/half_dynamic_spacing"
+    app:layout_constraintEnd_toStartOf="@id/delete"
+    app:layout_constraintTop_toTopOf="@id/doctor_name"
+    app:layout_constraintTop_toBottomOf="@id/doctor_name"
+    />
+
+  <ImageButton
+    android:id="@+id/delete"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:tint="@color/cancel"
+    android:background="?android:selectableItemBackgroundBorderless"
+    android:padding="@dimen/half_dynamic_spacing"
+    android:src="@drawable/ic_close_black_24dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/doctor_name"
+    app:layout_constraintTop_toBottomOf="@id/doctor_name"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

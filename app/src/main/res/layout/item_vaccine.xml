@@ -20,6 +20,32 @@
     style="@style/TextAppearance.MaterialComponents.Headline5"
     tools:text="Vaccine 1"/>
 
+  <ImageButton
+    android:id="@+id/vacc_edit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_mode_edit_black_24dp"
+    app:tint="@color/edit"
+    android:background="?android:selectableItemBackgroundBorderless"
+    android:padding="@dimen/half_dynamic_spacing"
+    app:layout_constraintEnd_toStartOf="@id/vacc_delete"
+    app:layout_constraintTop_toTopOf="@id/vaccine_name"
+    app:layout_constraintTop_toBottomOf="@id/vaccine_name"
+    />
+
+  <ImageButton
+    android:id="@+id/vacc_delete"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:tint="@color/cancel"
+    android:background="?android:selectableItemBackgroundBorderless"
+    android:padding="@dimen/half_dynamic_spacing"
+    android:src="@drawable/ic_close_black_24dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/vaccine_name"
+    app:layout_constraintTop_toBottomOf="@id/vaccine_name"
+    />
+
   <TextView
     android:id="@+id/description_label"
     android:layout_width="0dp"

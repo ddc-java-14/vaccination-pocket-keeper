@@ -2,9 +2,6 @@ package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
@@ -15,12 +12,10 @@ import androidx.navigation.Navigation;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoctorAdapter;
-import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoctorAdapter.OnDoctorClickHelper;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoctorBinding;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
 
-public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
+public class DoctorFragment extends Fragment {
 
   private DoctorViewModel viewModel;
   private FragmentDoctorBinding binding;
@@ -39,7 +34,7 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
     //binding.guess.setFilters(new InputFilter[]{this});
     //compiler infers that v is a view : (View v)
     binding.addDoctor.setOnClickListener(
-        v -> onDoctorClick(0,v));
+        v -> editDoctor(0,v));
     return binding.getRoot();
   }
 
@@ -55,7 +50,8 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
     viewModel
         .getDoctors()
         .observe(getViewLifecycleOwner(),(doctors) -> {
-          DoctorAdapter adapter = new DoctorAdapter(getContext(), doctors, this);
+          DoctorAdapter adapter = new DoctorAdapter(getContext(), doctors, this::editDoctor,
+              (doctor,v) -> viewModel.deleteDoctor(doctor));//TODO: show alert confirming deletion to user (have delete doctor method to confirm and say to delete)
           binding.doctors.setAdapter(adapter);
         });
   } //when fragment dies, then cleans up
@@ -103,8 +99,7 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
     }
   }
 
-  @Override
-  public void onDoctorClick(long id, View view) {
+  public void editDoctor(long id, View view) {
     Navigation.findNavController(binding.getRoot())
         .navigate(DoctorFragmentDirections.openDoctor().setDoctorId(id));
   }

@@ -2,10 +2,14 @@ package edu.cnm.deepdive.vaccpocketkeeper.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter.OnVaccineDeleteHelper;
+import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter.OnVaccineEditHelper;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ItemVaccineBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import java.text.DateFormat;
@@ -16,10 +20,16 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
   private final LayoutInflater inflator;
   private final DateFormat dateFormat;
   private final List<Vaccine> vaccines;
+  private final OnVaccineEditHelper onVaccineEditHelper;
+  private final OnVaccineDeleteHelper onVaccineDeleteHelper;
 
-  public VaccineAdapter(Context context, List<Vaccine> vaccines) {
+  public VaccineAdapter(Context context, List<Vaccine> vaccines,
+      OnVaccineEditHelper onVaccineEditHelper,
+      OnVaccineDeleteHelper onVaccineDeleteHelper) {
     inflator = LayoutInflater.from(context);
     dateFormat = android.text.format.DateFormat.getDateFormat(context);
+    this.onVaccineEditHelper = onVaccineEditHelper;
+    this.onVaccineDeleteHelper = onVaccineDeleteHelper;
     this.vaccines = vaccines;
   }
 
@@ -52,7 +62,20 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
       //Use contents of model object to set contents of binding fields.
       Vaccine vaccine = vaccines.get(position);
       binding.vaccineName.setText(vaccine.getName());
-      //binding..setText(vaccine.getName());
+      binding.vaccEdit.setOnClickListener(
+          (v) -> onVaccineEditHelper.onVaccineClick(vaccine.getId(), v));
+      binding.vaccDelete.setOnClickListener(
+          (v) -> onVaccineDeleteHelper.onVaccineClick(vaccine, v));
     }
+  }
+
+  public interface OnVaccineEditHelper {
+
+    void onVaccineClick(long id, View view);
+  }
+
+  public interface OnVaccineDeleteHelper {
+
+    void onVaccineClick(Vaccine doctor, View view);
   }
 }
