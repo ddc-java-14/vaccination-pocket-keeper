@@ -3,11 +3,11 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/nav_graph"
-  app:startDestination="@id/nav_note">
+  app:startDestination="@id/nav_doctor">
 
   <fragment
-    android:id="@+id/nav_note"
-    android:label="@string/app_name"
+    android:id="@+id/nav_doctor"
+    android:label="@string/doctors_label"
     android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.DoctorFragment"
     tools:layout="@layout/fragment_doctor">
 

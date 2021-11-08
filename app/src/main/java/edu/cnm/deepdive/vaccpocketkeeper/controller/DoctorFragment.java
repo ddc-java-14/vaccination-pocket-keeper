@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoctorAdapter;
@@ -36,6 +37,9 @@ public class DoctorFragment extends Fragment {
     //    viewModel.submitGuess(binding.guess.getText().toString().trim()));
     //binding.guess.setFilters(new InputFilter[]{this});
     //compiler infers that v is a view : (View v)
+    binding = FragmentDoctorBinding.inflate(inflater, container, false);
+    binding.addDoctor.setOnClickListener(
+        this::onClick);
     return binding.getRoot();
   }
 
@@ -97,6 +101,11 @@ public class DoctorFragment extends Fragment {
           (v) -> snackbar.dismiss());//gets access to livedata from viewmodel - just observing, run contents of bucket once this object changes.
       snackbar.show();
     }
+  }
+
+  private void onClick(View v) {
+    Navigation.findNavController(binding.getRoot())
+        .navigate(DoctorFragmentDirections.openDoctor()); //generated for us from fragment
   }
 
 }

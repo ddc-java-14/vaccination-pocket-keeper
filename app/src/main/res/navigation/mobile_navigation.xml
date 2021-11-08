@@ -8,7 +8,7 @@
   <fragment
     android:id="@+id/nav_home"
     android:label="@string/menu_home"
-    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.HomeFragment"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.DoctorFragment"
     tools:layout="@layout/fragment_doctor"/>
 
 <!--  <fragment-->
