@@ -62,7 +62,10 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
       //Use contents of model object to set contents of binding fields.
       Vaccine vaccine = vaccines.get(position);
       binding.vaccineName.setText(vaccine.getName());
-      binding.description.setText(vaccine.getDescription());//TODO: add more names here
+      binding.description.setText(vaccine.getDescription());
+      binding.frequency.setText(vaccine.getFrequency());
+      binding.ageRangeLowerLimit.setText(vaccine.getAgeRangeLowerLimit());
+      binding.ageRangeUpperLimit.setText(vaccine.getAgeRangeUpperLimit());
       binding.vaccEdit.setOnClickListener(
           (v) -> onVaccineEditHelper.onVaccineClick(vaccine.getId(), v));
       binding.vaccDelete.setOnClickListener(
