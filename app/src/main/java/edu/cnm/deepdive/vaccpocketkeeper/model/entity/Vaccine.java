@@ -44,7 +44,7 @@ public class Vaccine {
   private String description = "";
 
   @ColumnInfo(name = "user_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
-  private long userId;
+  private Long userId; // FIXME: make this a primitive
 
   private int frequency;
 
@@ -95,13 +95,13 @@ public class Vaccine {
     this.description = description;
   }
 
-  public long getUserId() {
+  public Long getUserId() {
     return userId;
-  }
+  }// FIXME: make this get a primitive
 
-  public void setUserId(long userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
-  }
+  }// FIXME: make this return a primitive
 
   public int getFrequency() {
     return frequency;

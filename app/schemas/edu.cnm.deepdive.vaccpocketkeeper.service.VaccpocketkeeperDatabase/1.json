@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "00aa7a5ac3c92ff1c5e5f0e56b4185f6",
+    "identityHash": "36674d5d7a4ba6e51cabd133027f8c56",
     "entities": [
       {
         "tableName": "user",
@@ -75,7 +75,7 @@
       },
       {
         "tableName": "vaccine",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`vaccine_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `user_id` INTEGER NOT NULL, `frequency` INTEGER NOT NULL, `total_number_of_doses` INTEGER NOT NULL, `age_range_lower_limit` INTEGER NOT NULL, `age_range_upper_limit` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`vaccine_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `user_id` INTEGER, `frequency` INTEGER NOT NULL, `total_number_of_doses` INTEGER NOT NULL, `age_range_lower_limit` INTEGER NOT NULL, `age_range_upper_limit` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -105,7 +105,7 @@
             "fieldPath": "userId",
             "columnName": "user_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "frequency",
@@ -352,7 +352,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '00aa7a5ac3c92ff1c5e5f0e56b4185f6')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '36674d5d7a4ba6e51cabd133027f8c56')"
     ]
   }
 }
