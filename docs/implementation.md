@@ -5,7 +5,7 @@ menu: Implementation
 order: 30
 ---
 ## Entity Classes
-[‘User’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/User.java)
+[‘User’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/User.java)&nbsp;
 [‘Doctor’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/Doctor.java)
 [‘Dose’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/Dose.java)
 [‘Vaccine’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/Vaccine.java)
