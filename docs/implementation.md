@@ -11,10 +11,10 @@ order: 30
 [‘Vaccine’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/entity/Vaccine.java)  
 
 ## DAO Interfaces
-[‘UserDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/UserDao.java)<br/>
-[‘DoctorDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/DoctorDao.java)
-[‘DoseDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/DoseDao.java)
-[‘VaccineDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/VaccineDao.java)
+[‘UserDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/UserDao.java)  
+[‘DoctorDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/DoctorDao.java)  
+[‘DoseDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/DoseDao.java)  
+[‘VaccineDao’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/model/dao/VaccineDao.java)  
 
 ## Database Class
-[‘VaccpocketkeeperDatabase’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/service/VaccpocketkeeperDatabase.java)
+[‘VaccpocketkeeperDatabase’](https://github.com/ddc-java-14/vaccination-pocket-keeper/blob/main/app/src/main/java/edu/cnm/deepdive/vaccpocketkeeper/service/VaccpocketkeeperDatabase.java)  
