@@ -2,9 +2,6 @@ package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
@@ -14,16 +11,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
-import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoctorAdapter;
-import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoctorAdapter.OnDoctorClickHelper;
-import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoctorBinding;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
-import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
+import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter;
+import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentVaccineBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
-public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
+public class VaccineFragment extends Fragment {
 
-  private DoctorViewModel viewModel;
-  private FragmentDoctorBinding binding;
+  private VaccineViewModel viewModel;
+  private FragmentVaccineBinding binding;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,12 +28,12 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
 
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
-    binding = FragmentDoctorBinding.inflate(inflater, container, false);
+    binding = FragmentVaccineBinding.inflate(inflater, container, false);
     //binding.submit.setOnClickListener((v) ->
     //    viewModel.submitGuess(binding.guess.getText().toString().trim()));
     //binding.guess.setFilters(new InputFilter[]{this});
     //compiler infers that v is a view : (View v)
-    binding.addDoctor.setOnClickListener(
+    binding.addVaccine.setOnClickListener(
         this::onClick);
     return binding.getRoot();
   }
@@ -47,16 +42,16 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     //noinspection ConstantConditions
-//    viewModel = new ViewModelProvider(getActivity()).get(DoctorViewModel.class);
+//    viewModel = new ViewModelProvider(getActivity()).get(VaccineViewModel.class);
 //    getLifecycle().addObserver(viewModel);
 //    viewModel.getThrowable().observe(getViewLifecycleOwner(), this::displayError);
 //    viewModel.getVaccines().observe(getViewLifecycleOwner(), this::update); //observes a vaccine
-    viewModel = new ViewModelProvider(this).get(DoctorViewModel.class);
+    viewModel = new ViewModelProvider(this).get(VaccineViewModel.class);
     viewModel
-        .getDoctors()
-        .observe(getViewLifecycleOwner(),(doctors) -> {
-          DoctorAdapter adapter = new DoctorAdapter(getContext(), doctors, this);
-          binding.doctors.setAdapter(adapter);
+        .getVaccines()
+        .observe(getViewLifecycleOwner(),(vaccines) -> {
+          VaccineAdapter adapter = new VaccineAdapter(getContext(), vaccines);
+          binding.vaccines.setAdapter(adapter);
         });
   } //when fragment dies, then cleans up
 
@@ -86,10 +81,10 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
     binding = null;
   }
 
-//  private void update(Doctor doctor) { //updates the display model
-//    DoctorAdapter adapter = new DoctorAdapter(getContext(),
-//        doctor.getName());// how we get a context in a fragment
-//    binding.doctor.setAdapter(adapter);//this adapter can tell us our guesses
+//  private void update(Vaccine vaccine) { //updates the display model
+//    VaccineAdapter adapter = new VaccineAdapter(getContext(),
+//        vaccine.getName());// how we get a context in a fragment
+//    binding.vaccine.setAdapter(adapter);//this adapter can tell us our guesses
 //  }
 
   private void displayError(Throwable throwable) {
@@ -105,14 +100,7 @@ public class DoctorFragment extends Fragment implements OnDoctorClickHelper {
 
   private void onClick(View v) {
     Navigation.findNavController(binding.getRoot())
-        .navigate(DoctorFragmentDirections.openDoctor()); //generated for us from fragment
+        .navigate(VaccineFragmentDirections.openVaccine()); //generated for us from fragment from actions in mobile navigation
   }
 
-  @Override
-  public void onDoctorClick(long id, View view) {
-    DoctorFragmentDirections.DoctorFragmentToDialogue toDoctorDialogue
-        = DoctorFragmentDirections.doctorFragmentToDialogue();
-    toDoctorDialogue.setDoctorId(id);
-    Navigation.findNavController(view).navigate(toDoctorDialogue);
-  }
 }

@@ -8,8 +8,8 @@
   <string name="action_settings">Settings</string>
 
   <string name="menu_home">Home</string>
-  <string name="menu_gallery">Gallery</string>
-  <string name="menu_slideshow">Slideshow</string>
+<!--  <string name="menu_gallery">Gallery</string>-->
+<!--  <string name="menu_slideshow">Slideshow</string>-->
   <string name="menu_doctors">Doctors</string>
 
   <string name="error_message">Unable to process request. (%s)</string>
@@ -21,4 +21,18 @@
   <string name="cancel_label">Cancel</string>
   <string name="add_doctor">Add Doctor</string>
   <string name="doctors_label">Doctors</string>
+  <string name="add_vaccine">Add Vaccine</string>
+  <string name="description_label">Description:</string>
+  <string name="frequency_label">Frequency</string>
+  <string name="menu_doctor">Doctors</string>
+  <string name="total_number_of_doses_label">Total Number of Doses:</string>
+  <string name="age_range_lower_limit_label">Age Range:</string>
+  <string name="age_range_upper_limit_label">" to "</string>
+  <string name="menu_vaccine">Vaccines</string>
+  <string name="vaccine_name_hint">Vaccine Name</string>
+  <string name="description_hint">Description</string>
+  <string name="frequency_hint">Frequency</string>
+  <string name="total_number_of_doses_hint">Total Number of Doses</string>
+  <string name="age_range_lower_limit_hint">Age Range Lower Limit</string>
+  <string name="age_range_upper_limit_hint">Age Range Upper Limit</string>
 </resources>

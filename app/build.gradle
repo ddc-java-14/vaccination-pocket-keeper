@@ -85,7 +85,7 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$roomVersion"
 
     // Gson (Google JSON parser) library
-    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.google.code.gson:gson:2.8.8'
 
     // Retrofit (REST client) with ReactiveX & Gson integration
     def retrofitVersion = '2.9.0'

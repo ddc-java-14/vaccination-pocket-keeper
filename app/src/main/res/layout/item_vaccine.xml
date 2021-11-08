@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:padding="@dimen/half_dynamic_spacing"
+  android:background="?android:selectableItemBackground">
+
+  <TextView
+    android:id="@+id/vaccine_name"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/description_label"
+    style="@style/TextAppearance.MaterialComponents.Headline5"
+    tools:text="Vaccine 1"/>
+
+  <TextView
+    android:id="@+id/description_label"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/description_label"
+    android:labelFor="@id/description"
+    app:layout_constraintTop_toBottomOf="@id/vaccine_name"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="Description: "/>
+
+  <TextView
+    android:id="@+id/description"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintTop_toBottomOf="@id/description_label"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="This vaccine is for COVID-19....."/>
+
+  <TextView
+    android:id="@+id/frequency_label"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/frequency_label"
+    android:labelFor="@id/frequency"
+    app:layout_constraintTop_toBottomOf="@id/description"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/frequency"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="Frequency: "/>
+
+  <TextView
+    android:id="@+id/frequency"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintTop_toBottomOf="@id/description"
+    app:layout_constraintStart_toEndOf="@id/frequency_label"
+    app:layout_constraintEnd_toEndOf="parent"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="4"/>
+
+  <TextView
+    android:id="@+id/total_number_of_doses_label"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/total_number_of_doses_label"
+    android:labelFor="@id/description"
+    app:layout_constraintTop_toBottomOf="@id/frequency_label"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/frequency"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="Total Number of Doses: "/>
+
+  <TextView
+    android:id="@+id/total_number_of_doses"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintTop_toBottomOf="@id/frequency"
+    app:layout_constraintStart_toEndOf="@id/total_number_of_doses_label"
+    app:layout_constraintEnd_toEndOf="parent"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    tools:text="3"/>
+
+<!--  <TextView-->
+<!--    android:id="@+id/age_range_lower_limit_label"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_margin="@dimen/half_static_spacing"-->
+<!--    android:text="@string/age_range_lower_limit_label"-->
+<!--    android:labelFor="@id/age_range_lower_limit"-->
+<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintEnd_toStartOf="@id/age_range_lower_limit"-->
+<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
+<!--    tools:text="Age Range: "/>-->
+
+<!--  <TextView-->
+<!--    android:id="@+id/age_range_lower_limit"-->
+<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
+<!--    android:layout_margin="@dimen/half_static_spacing"-->
+<!--    app:layout_constraintEnd_toStartOf="age_range_upper_limit_label"-->
+<!--    app:layout_constraintStart_toEndOf="@id/age_range_lower_limit_label"-->
+<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
+<!--    tools:text="25"/>-->
+
+<!--  <TextView-->
+<!--    android:id="@+id/age_range_upper_limit_label"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_margin="@dimen/half_static_spacing"-->
+<!--    android:text="@string/age_range_upper_limit_label"-->
+<!--    android:labelFor="@id/age_range_upper_limit"-->
+<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
+<!--    app:layout_constraintStart_toEndOf="age_range_lower_limit"-->
+<!--    app:layout_constraintEnd_toStartOf="@id/age_range_upper_limit"-->
+<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
+<!--    tools:text="  "/>-->
+
+<!--  <TextView-->
+<!--    android:id="@+id/age_range_upper_limit"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_margin="@dimen/half_static_spacing"-->
+<!--    app:layout_constraintTop_toBottomOf="@id/total_number_of_doses"-->
+<!--    app:layout_constraintStart_toEndOf="@id/age_range_upper_limit_label"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    style="@style/TextAppearance.MaterialComponents.Body1"-->
+<!--    tools:text=""/>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

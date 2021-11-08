@@ -1,9 +1,7 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     appBarConfiguration = new AppBarConfiguration.Builder(
-        R.id.nav_home)//,R.id.nav_gallery, R.id.nav_slideshow//TODO: come back to this and add in other fragments
+        R.id.nav_home, R.id.nav_vaccine)//,R.id.nav_gallery, R.id.nav_slideshow//TODO: come back to this and add in other fragments
         .setDrawerLayout(drawer)
         .build();
     NavController navController = Navigation.findNavController(this,

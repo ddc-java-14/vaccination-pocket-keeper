@@ -13,7 +13,7 @@
     android:padding="@dimen/half_dynamic_spacing">
 
     <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/subject_layout"
+      android:id="@+id/doctor_name_layout"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/half_dynamic_spacing"
@@ -40,9 +40,9 @@
       android:src="@drawable/ic_check_black_24dp"
       app:tint="@color/submit"
       android:background="?android:selectableItemBackground"
-      app:layout_constraintTop_toTopOf="@id/subject_layout"
+      app:layout_constraintTop_toTopOf="@id/doctor_name_layout"
       app:layout_constraintEnd_toStartOf="@id/cancel"
-      app:layout_constraintBottom_toBottomOf="@id/subject_layout"
+      app:layout_constraintBottom_toBottomOf="@id/doctor_name_layout"
       android:text="@string/save_label"
       android:contentDescription="@string/save_label"/>
 
@@ -54,8 +54,8 @@
       android:src="@drawable/ic_close_black_24dp"
       app:tint="@color/cancel"
       android:background="?android:selectableItemBackground"
-      app:layout_constraintTop_toTopOf="@id/subject_layout"
-      app:layout_constraintBottom_toBottomOf="@id/subject_layout"
+      app:layout_constraintTop_toTopOf="@id/doctor_name_layout"
+      app:layout_constraintBottom_toBottomOf="@id/doctor_name_layout"
       app:layout_constraintEnd_toEndOf="parent"
       android:text="@string/cancel_label"
       android:contentDescription="@string/cancel_label"/>
