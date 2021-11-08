@@ -31,6 +31,9 @@ public class Doctor {
   @ColumnInfo
   private String name = "";
 
+  @Ignore
+  private final List<Dose> doses = new LinkedList<>();
+
   public long getId() {
     return id;
   }
@@ -57,4 +60,7 @@ public class Doctor {
     this.name = name;
   }
 
+  public List<Dose> getDoses() {
+    return doses;
+  }
 }

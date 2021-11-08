@@ -40,7 +40,7 @@ public class DoctorViewModel extends AndroidViewModel implements LifecycleObserv
     );//triggers a refresh of live data
   }
 
-  public LiveData<Doctor> getVaccine() {
+  public LiveData<Doctor> getDoctor() {
     return doctor;
   }
 
@@ -54,7 +54,7 @@ public class DoctorViewModel extends AndroidViewModel implements LifecycleObserv
   }
 
   //getAll
-  public LiveData<List<Doctor>> getVaccines() {
+  public LiveData<List<Doctor>> getDoctors() {
     return repository.getAll();
   }
 
@@ -72,7 +72,7 @@ public class DoctorViewModel extends AndroidViewModel implements LifecycleObserv
   }
 
   //delete
-  public void deleteVaccine(Doctor doctor) {
+  public void deleteDoctor(Doctor doctor) {
     //Vaccine vaccine = new Vaccine();
     throwable.postValue(null);
     pending.add(

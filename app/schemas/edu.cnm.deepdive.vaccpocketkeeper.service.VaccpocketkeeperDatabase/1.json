@@ -2,22 +2,16 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5f7d53d6e154ee7d4b424289e2751c97",
+    "identityHash": "00aa7a5ac3c92ff1c5e5f0e56b4185f6",
     "entities": [
       {
         "tableName": "user",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `service_key` TEXT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL, `email` TEXT NOT NULL, `birthday` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL, `email` TEXT NOT NULL, `birthday` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "user_id",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "serviceKey",
-            "columnName": "service_key",
-            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -53,14 +47,6 @@
         },
         "indices": [
           {
-            "name": "index_user_service_key",
-            "unique": true,
-            "columnNames": [
-              "service_key"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_user_service_key` ON `${TABLE_NAME}` (`service_key`)"
-          },
-          {
             "name": "index_user_name",
             "unique": false,
             "columnNames": [
@@ -83,32 +69,18 @@
               "created"
             ],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_user_created` ON `${TABLE_NAME}` (`created`)"
-          },
-          {
-            "name": "index_user_birthday",
-            "unique": false,
-            "columnNames": [
-              "birthday"
-            ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_user_birthday` ON `${TABLE_NAME}` (`birthday`)"
           }
         ],
         "foreignKeys": []
       },
       {
         "tableName": "vaccine",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`vaccine_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `service_key` TEXT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `user_id` INTEGER NOT NULL, `frequency` INTEGER NOT NULL, `total_number_of_doses` REAL NOT NULL, `age_range_lower_limit` REAL NOT NULL, `age_range_upper_limit` REAL NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`vaccine_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `user_id` INTEGER NOT NULL, `frequency` INTEGER NOT NULL, `total_number_of_doses` INTEGER NOT NULL, `age_range_lower_limit` INTEGER NOT NULL, `age_range_upper_limit` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "vaccine_id",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "serviceKey",
-            "columnName": "service_key",
-            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -142,21 +114,21 @@
             "notNull": true
           },
           {
-            "fieldPath": "totalNunberOfDoses",
+            "fieldPath": "totalNumberOfDoses",
             "columnName": "total_number_of_doses",
-            "affinity": "REAL",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
             "fieldPath": "ageRangeLowerLimit",
             "columnName": "age_range_lower_limit",
-            "affinity": "REAL",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
             "fieldPath": "ageRangeUpperLimit",
             "columnName": "age_range_upper_limit",
-            "affinity": "REAL",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -167,14 +139,6 @@
           "autoGenerate": true
         },
         "indices": [
-          {
-            "name": "index_vaccine_service_key",
-            "unique": true,
-            "columnNames": [
-              "service_key"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_vaccine_service_key` ON `${TABLE_NAME}` (`service_key`)"
-          },
           {
             "name": "index_vaccine_name",
             "unique": true,
@@ -216,18 +180,12 @@
       },
       {
         "tableName": "dose",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dose_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `service_key` TEXT NOT NULL, `created` INTEGER NOT NULL, `vaccine_id` INTEGER NOT NULL, `doctor_id` INTEGER NOT NULL, `name` TEXT NOT NULL, `date_administered` INTEGER, `administered` INTEGER NOT NULL, `image` TEXT, FOREIGN KEY(`vaccine_id`) REFERENCES `vaccine`(`vaccine_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`doctor_id`) REFERENCES `doctor`(`doctor_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dose_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `vaccine_id` INTEGER NOT NULL, `doctor_id` INTEGER NOT NULL, `date_administered` INTEGER, `administered` INTEGER NOT NULL, `image` TEXT, FOREIGN KEY(`vaccine_id`) REFERENCES `vaccine`(`vaccine_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`doctor_id`) REFERENCES `doctor`(`doctor_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "dose_id",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "serviceKey",
-            "columnName": "service_key",
-            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -246,12 +204,6 @@
             "fieldPath": "doctorId",
             "columnName": "doctor_id",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "name",
-            "columnName": "name",
-            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -280,22 +232,6 @@
           "autoGenerate": true
         },
         "indices": [
-          {
-            "name": "index_dose_service_key",
-            "unique": true,
-            "columnNames": [
-              "service_key"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_dose_service_key` ON `${TABLE_NAME}` (`service_key`)"
-          },
-          {
-            "name": "index_dose_name",
-            "unique": true,
-            "columnNames": [
-              "name"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_dose_name` ON `${TABLE_NAME}` (`name`)"
-          },
           {
             "name": "index_dose_created",
             "unique": false,
@@ -356,18 +292,12 @@
       },
       {
         "tableName": "doctor",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`doctor_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `service_key` TEXT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`doctor_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `name` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "doctor_id",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "serviceKey",
-            "columnName": "service_key",
-            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -390,14 +320,6 @@
           "autoGenerate": true
         },
         "indices": [
-          {
-            "name": "index_doctor_service_key",
-            "unique": true,
-            "columnNames": [
-              "service_key"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_doctor_service_key` ON `${TABLE_NAME}` (`service_key`)"
-          },
           {
             "name": "index_doctor_name",
             "unique": false,
@@ -430,7 +352,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5f7d53d6e154ee7d4b424289e2751c97')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '00aa7a5ac3c92ff1c5e5f0e56b4185f6')"
     ]
   }
 }
