@@ -63,10 +63,10 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
       Vaccine vaccine = vaccines.get(position);
       binding.vaccineName.setText(vaccine.getName());
       binding.description.setText(vaccine.getDescription());
-//      binding.frequency.setText(vaccine.getFrequency());//TODO: when I uncomment these lines, it crashes
-//      binding.totalNumberOfDoses.setText(vaccine.getTotalNumberOfDoses());
-//      binding.ageRangeLowerLimit.setText(vaccine.getAgeRangeLowerLimit());
-//      binding.ageRangeUpperLimit.setText(vaccine.getAgeRangeUpperLimit());
+      binding.frequency.setText(String.valueOf(vaccine.getFrequency()));
+      binding.totalNumberOfDoses.setText(String.valueOf(vaccine.getTotalNumberOfDoses()));
+      binding.ageRangeLowerLimit.setText(String.valueOf(vaccine.getAgeRangeLowerLimit()));
+      binding.ageRangeUpperLimit.setText(String.valueOf(vaccine.getAgeRangeUpperLimit()));
       binding.vaccEdit.setOnClickListener(
           (v) -> onVaccineEditHelper.onVaccineClick(vaccine.getId(), v));
       binding.vaccDelete.setOnClickListener(
@@ -75,12 +75,10 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
   }
 
   public interface OnVaccineEditHelper {
-
     void onVaccineClick(long id, View view);
   }
 
   public interface OnVaccineDeleteHelper {
-
     void onVaccineClick(Vaccine vaccine, View view);
   }
 }

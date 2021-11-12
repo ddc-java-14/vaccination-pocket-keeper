@@ -14,17 +14,20 @@ import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class VaccineRepository {
 
   private final Application context;
   private final VaccineDao vaccineDao;
+  private final DoseDao doseDao;
 
   public VaccineRepository(Application context) {
     this.context = context;
     VaccpocketkeeperDatabase database = VaccpocketkeeperDatabase.getInstance();
     vaccineDao = database.getVaccineDao();
+    doseDao = database.getDoseDao();
   }
 
   public LiveData<VaccineWithDoses> get(long vaccineId) {
@@ -43,8 +46,8 @@ public class VaccineRepository {
     return vaccineDao.selectUpcomingVaccines(false);
   }
 
-  public Single<Vaccine> save(Vaccine vaccine) {
-    Single<Vaccine> task;
+  public Single<VaccineWithDoses> save(VaccineWithDoses vaccine) {
+    Single<VaccineWithDoses> task;
     if (vaccine.getId() == 0) {
       vaccine.setCreated(new Date());
       Calendar cal = Calendar.getInstance();
@@ -57,9 +60,23 @@ public class VaccineRepository {
       task = vaccineDao
           .insert(vaccine)
           .map((id) -> {
-            vaccine.setId(id);
+            vaccine.setId(id);//id of record added, then puts note back on the conveyor belt
+            for (Dose dose: vaccine.getDoses()) {
+              dose.setVaccineId(id);
+            }
             return vaccine;
-          }); //id of record added, then puts note back on the conveyor belt
+          })
+          .flatMap((savedVaccine) -> doseDao.insert(savedVaccine.getDoses()))
+          .map((ids) -> {
+            Iterator<Long> idIterator = ids.iterator();
+            Iterator<Dose> doseIterator = vaccine.getDoses().iterator();
+            while (idIterator.hasNext()) {
+              Dose dose = doseIterator.next();
+              Long id = idIterator.next();
+              dose.setId(id);
+            }
+            return vaccine;
+          });
     } else {
       task = vaccineDao
           .update(vaccine)

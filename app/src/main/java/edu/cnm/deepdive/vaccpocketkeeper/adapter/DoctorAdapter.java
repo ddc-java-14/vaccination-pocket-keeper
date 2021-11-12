@@ -19,8 +19,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
   private final OnDoctorEditHelper onDoctorEditHelper;
   private final OnDoctorDeleteHelper onDoctorDeleteHelper;
 
-
-
   public DoctorAdapter(Context context, List<Doctor> doctors, OnDoctorEditHelper onDoctorEditHelper,
       OnDoctorDeleteHelper onDoctorDeleteHelper) {
     inflator = LayoutInflater.from(context);

@@ -57,9 +57,6 @@ public class Vaccine {
   @ColumnInfo(name = "age_range_upper_limit")
   private int ageRangeUpperLimit;
 
-  @Ignore
-  private final List<Dose> doses = new LinkedList<>();
-
   public long getId() {
     return id;
   }
@@ -135,7 +132,4 @@ public class Vaccine {
     this.ageRangeUpperLimit = ageRangeUpperLimit;
   }
 
-  public List<Dose> getDoses() {
-    return doses;
-  }
 }

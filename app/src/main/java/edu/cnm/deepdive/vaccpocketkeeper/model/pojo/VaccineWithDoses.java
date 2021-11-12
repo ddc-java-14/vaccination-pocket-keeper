@@ -3,6 +3,7 @@ package edu.cnm.deepdive.vaccpocketkeeper.model.pojo;
 import androidx.room.Relation;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import java.util.LinkedList;
 import java.util.List;
 
 public class VaccineWithDoses extends Vaccine {
@@ -12,9 +13,8 @@ public class VaccineWithDoses extends Vaccine {
       entityColumn = "vaccine_id",
       parentColumn = "vaccine_id"
   )
-  private List<Dose> doses;
+  private List<Dose> doses = new LinkedList<>();
 
-  @Override
   public List<Dose> getDoses() {
     return doses;
   }

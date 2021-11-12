@@ -39,7 +39,7 @@ public class Dose {
   private long vaccineId;
 
   @ColumnInfo(name = "doctor_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
-  private long doctorId;
+  private Long doctorId;
 
   @ColumnInfo(name = "date_administered")
   private Date dateAdministered;
@@ -74,11 +74,11 @@ public class Dose {
     this.vaccineId = vaccineId;
   }
 
-  public long getDoctorId() {
+  public Long getDoctorId() {
     return doctorId;
   }
 
-  public void setDoctorId(long doctorId) {
+  public void setDoctorId(Long doctorId) {
     this.doctorId = doctorId;
   }
 

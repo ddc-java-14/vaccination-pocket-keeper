@@ -66,7 +66,7 @@ public class VaccineViewModel extends AndroidViewModel implements LifecycleObser
   }
 
   //save
-  public void save(Vaccine vaccine) {
+  public void save(VaccineWithDoses vaccine) {
     pending.add(
         repository
             .save(vaccine)
