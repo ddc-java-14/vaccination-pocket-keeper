@@ -35,4 +35,9 @@
   <string name="total_number_of_doses_hint">Total Number of Doses</string>
   <string name="age_range_lower_limit_hint">Age Range Lower Limit</string>
   <string name="age_range_upper_limit_hint">Age Range Upper Limit</string>
+  <string name="add_dose">Add Dose</string>
+  <string name="dose_doctor_label">"Doctor: "</string>
+  <string name="date_administered_label">Date Administered</string>
+  <string name="dose_name_hint">Dose Name</string>
+  <string name="date_administered_hint">Date Administered</string>
 </resources>
