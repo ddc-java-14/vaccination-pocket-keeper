@@ -78,9 +78,34 @@
 
   </dialog>
 
-  <!--  <fragment-->
-  <!--    android:id="@+id/nav_slideshow"-->
-  <!--    android:label="@string/menu_slideshow"-->
-  <!--    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.SlideshowFragment"-->
-  <!--    tools:layout="@layout/fragment_slideshow"/>-->
+  <fragment
+    android:id="@+id/nav_dose"
+    android:label="@string/menu_dose"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.DoseFragment"
+    tools:layout="@layout/fragment_dose">
+
+    <action
+      android:id="@+id/open_dose"
+      app:destination="@id/nav_edit_dose">
+
+      <argument
+        android:name="dose_id"
+        app:argType="long"
+        android:defaultValue="0L"
+        />
+    </action>
+  </fragment>
+  <dialog
+    android:id="@+id/nav_edit_dose"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditDoseFragment"
+    tools:layout="@layout/fragment_edit_dose">
+
+    <argument
+      android:name="dose_id"
+      app:argType="long"
+      android:defaultValue="0L"
+      />
+
+  </dialog>
+
 </navigation>

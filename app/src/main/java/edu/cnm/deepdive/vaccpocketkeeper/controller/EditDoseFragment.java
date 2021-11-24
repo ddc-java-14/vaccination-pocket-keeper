@@ -3,6 +3,7 @@ package edu.cnm.deepdive.vaccpocketkeeper.controller;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentEditDoseBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Locale;
 
 public class EditDoseFragment extends BottomSheetDialogFragment implements TextWatcher {
   
@@ -37,7 +42,15 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
     binding.doseName.addTextChangedListener(this);
     binding.cancel.setOnClickListener((v) -> dismiss());
     binding.save.setOnClickListener((v) -> {
-      dose.setName(binding.doseName.getText().toString().trim());
+      //TODO: make this into a date picker
+      //format: LocalDate.parse("2018-05-05");
+      SimpleDateFormat formatter = new SimpleDateFormat("MMM-dd-yyyy", Locale.ENGLISH);
+      try {
+        dose.setDateAdministered(formatter.parse(binding.dateAdministered.getText().toString().trim()));
+      } catch (ParseException e) {
+        e.printStackTrace();
+        Log.e(getClass().getSimpleName(), "There was an error parsing the date from a user string.");
+      }
       viewModel.save(dose);
       dismiss();
     });
@@ -52,7 +65,7 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
       viewModel.setDoseId(doseId);
       viewModel.getDose().observe(getViewLifecycleOwner(),(dose) -> {
         this.dose = dose;
-        binding.doseName.setText(dose.getName());
+        binding.dateAdministered.setText(dose.getDateAdministered().toString());
       });
     } else { //new dose
       dose = new Dose();

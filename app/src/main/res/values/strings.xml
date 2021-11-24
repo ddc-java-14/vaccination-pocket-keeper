@@ -40,4 +40,5 @@
   <string name="date_administered_label">Date Administered</string>
   <string name="dose_name_hint">Dose Name</string>
   <string name="date_administered_hint">Date Administered</string>
+  <string name="menu_dose">Doses</string>
 </resources>

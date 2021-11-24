@@ -39,11 +39,12 @@ public class VaccineRepository {
   }
 
   public LiveData<List<VaccineSummary>> getPastVaccines() {
-    return vaccineDao.selectPastVaccines(true);
+    return vaccineDao.selectPastVaccines();
   }
 
   public LiveData<List<VaccineSummary>> getUpcomingVaccines() {
-    return vaccineDao.selectUpcomingVaccines(false);
+    //TODO: get limit from shared preferences
+    return vaccineDao.selectUpcomingVaccines(5);
   }
 
   public Single<VaccineWithDoses> save(VaccineWithDoses vaccine) {

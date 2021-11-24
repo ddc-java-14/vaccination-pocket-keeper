@@ -57,8 +57,8 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     private void bind(int position) {
       //Use contents of model object to set contents of binding fields.
       Dose dose = doses.get(position);
-      binding.doseVaccineName.setText("Doses for Vaccine: " + dose.getVaccineId().getName());//TODO get this from nav argument/database
-      binding.doseDoctor.setText(dose.getDoctorId().getName());//TODO retrieve this from database
+      binding.doseVaccineName.setText("Doses for Vaccine: " + dose.getVaccineId());//TODO get this from nav argument/database
+      binding.doseDoctor.setText(dose.getDoctorId().toString());//TODO retrieve this from database
       binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));//TODO double check this line doesn't cause the app to crash
       binding.doseEdit.setOnClickListener(
           (v) -> onDoseEditHelper.onDoseClick(dose.getId(), v));
