@@ -3,6 +3,7 @@ package edu.cnm.deepdive.vaccpocketkeeper.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,21 +23,24 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
   private final List<Vaccine> vaccines;
   private final OnVaccineEditHelper onVaccineEditHelper;
   private final OnVaccineDeleteHelper onVaccineDeleteHelper;
+  private final OnVaccineClicktHelper onVaccineClicktHelper;
 
   public VaccineAdapter(Context context, List<Vaccine> vaccines,
       OnVaccineEditHelper onVaccineEditHelper,
-      OnVaccineDeleteHelper onVaccineDeleteHelper) {
+      OnVaccineDeleteHelper onVaccineDeleteHelper, OnVaccineClicktHelper onVaccineClicktHelper) {
     inflator = LayoutInflater.from(context);
     dateFormat = android.text.format.DateFormat.getDateFormat(context);
     this.onVaccineEditHelper = onVaccineEditHelper;
     this.onVaccineDeleteHelper = onVaccineDeleteHelper;
+    this.onVaccineClicktHelper = onVaccineClicktHelper;
     this.vaccines = vaccines;
   }
 
   @NonNull
   @Override
   public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    return new Holder(ItemVaccineBinding.inflate(inflator, parent, false));
+    ItemVaccineBinding binding = ItemVaccineBinding.inflate(inflator, parent, false);
+    return new Holder(binding, onVaccineClicktHelper);
   }
 
   @Override
@@ -49,13 +53,17 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
     return vaccines.size();
   }
 
-  class Holder extends RecyclerView.ViewHolder {
+  class Holder extends RecyclerView.ViewHolder implements OnClickListener {
 
     private final ItemVaccineBinding binding;
+    private OnVaccineClicktHelper onVaccineClicktHelper;
+    private long testId;
 
-    private Holder(@NonNull ItemVaccineBinding binding) {
+    private Holder(@NonNull ItemVaccineBinding binding, OnVaccineClicktHelper onVaccineClicktHelper) {
       super(binding.getRoot());
       this.binding = binding;
+      this.onVaccineClicktHelper = onVaccineClicktHelper;
+      binding.getRoot().setOnClickListener(this);
     }
 
     private void bind(int position) {
@@ -71,7 +79,18 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
           (v) -> onVaccineEditHelper.onVaccineClick(vaccine.getId(), v));
       binding.vaccDelete.setOnClickListener(
           (v) -> onVaccineDeleteHelper.onVaccineClick(vaccine, v));
+      binding.getRoot().setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View view) {
+      onVaccineClicktHelper.onVaccineClick(vaccines.get(getBindingAdapterPosition()).getId(), view);
+      this.testId = vaccines.get(getBindingAdapterPosition()).getId();
+    }
+  }
+
+  public interface OnVaccineClicktHelper {
+    void onVaccineClick(long id, View view);
   }
 
   public interface OnVaccineEditHelper {
