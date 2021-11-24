@@ -16,8 +16,6 @@ import java.util.List;
 
 public class DoseRepository {
 
-  //TODO: Fix entire file
-
   private final Application context;
   private final DoseDao doseDao;
 

@@ -10,6 +10,7 @@
     android:defaultValue="@integer/future_vaccine_years_pref_default"
     app:seekBarIncrement="@integer/future_vaccine_years_pref_increment"
     app:showSeekBarValue="true"
-    android:title="@string/future_vaccine_years_pref_title"/>
+    android:title="@string/future_vaccine_years_pref_title"
+    android:icon="@drawable/ic_arrow_left_right"/>
 
 </PreferenceScreen>

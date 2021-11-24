@@ -13,14 +13,15 @@ import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoseAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoseBinding;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
 public class DoseFragment extends Fragment {
 
-  private DoseViewModel viewModel;
+  private DoseViewModel doseViewModel;
+  private VaccineViewModel vaccineViewModel;
   private FragmentDoseBinding binding;
-  private Vaccine vaccine;
+  private long vaccineId;
 
   //TODO: adding doses should increase the total number of doses in the vaccine by 1.
 
@@ -28,6 +29,8 @@ public class DoseFragment extends Fragment {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
+    DoseFragmentArgs args = DoseFragmentArgs.fromBundle(getArguments());
+    vaccineId = args.getVaccineId();
   }
 
   public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,14 +53,23 @@ public class DoseFragment extends Fragment {
 //    getLifecycle().addObserver(viewModel);
 //    viewModel.getThrowable().observe(getViewLifecycleOwner(), this::displayError);
 //    viewModel.getDoses().observe(getViewLifecycleOwner(), this::update); //observes a dose
-    viewModel = new ViewModelProvider(this).get(DoseViewModel.class);
-    viewModel
-        .getDosesForVaccineId(1)//TODO: get vaccineId from vaccine.
-        .observe(getViewLifecycleOwner(),(doses) -> {
-          DoseAdapter adapter = new DoseAdapter(getContext(), doses, this::editDose,
-              (dose,v) -> viewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
+//    doseViewModel = new ViewModelProvider(this).get(DoseViewModel.class);
+//    doseViewModel
+//        .getDosesForVaccineId(vaccineId)
+//        .observe(getViewLifecycleOwner(),(doses) -> {
+//          DoseAdapter adapter = new DoseAdapter(getContext(), doses, this::editDose,
+//              (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
+//          binding.doses.setAdapter(adapter);
+//        });
+    vaccineViewModel = new ViewModelProvider(this).get(VaccineViewModel.class);
+    vaccineViewModel
+        .getVaccine()
+        .observe(getViewLifecycleOwner(), (vaccine) -> {
+          DoseAdapter adapter = new DoseAdapter(getContext(), vaccine, this::editDose,
+              (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
           binding.doses.setAdapter(adapter);
         });
+    vaccineViewModel.setVaccineId(vaccineId);
   } //when fragment dies, then cleans up
 
 //  @Override

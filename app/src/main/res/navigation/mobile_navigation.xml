@@ -100,6 +100,12 @@
     android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.DoseFragment"
     tools:layout="@layout/fragment_dose">
 
+    <argument
+      android:name="vaccine_id"
+      app:argType="long"
+      android:defaultValue="0L"
+      />
+
     <action
       android:id="@+id/open_dose"
       app:destination="@id/nav_edit_dose">

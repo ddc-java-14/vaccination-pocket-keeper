@@ -12,12 +12,10 @@ import androidx.navigation.Navigation;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter;
-import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter;
-import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter.OnVaccineClicktHelper;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentVaccineBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
-public class VaccineFragment extends Fragment implements OnVaccineClicktHelper {
+public class VaccineFragment extends Fragment {
 
   private VaccineViewModel viewModel;
   private FragmentVaccineBinding binding;
@@ -53,7 +51,7 @@ public class VaccineFragment extends Fragment implements OnVaccineClicktHelper {
         .getVaccines()
         .observe(getViewLifecycleOwner(),(vaccines) -> {
           VaccineAdapter adapter = new VaccineAdapter(getContext(), vaccines, this::editVaccine,
-              (vaccine,v) -> viewModel.deleteVaccine(vaccine), this);//TODO: show alert confirming deletion to user (have delete vaccine method to confirm and say to delete)
+              (vaccine,v) -> viewModel.deleteVaccine(vaccine), this::showDoses);//TODO: show alert confirming deletion to user (have delete vaccine method to confirm and say to delete)
           binding.vaccines.setAdapter(adapter);
         });
   } //when fragment dies, then cleans up
@@ -106,8 +104,7 @@ public class VaccineFragment extends Fragment implements OnVaccineClicktHelper {
         .navigate(VaccineFragmentDirections.openVaccine().setVaccineId(id));
   }
 
-  @Override
-  public void onVaccineClick(long id, View view) {
+  public void showDoses(long id, View view) {
     VaccineFragmentDirections.OpenDoses toDoses
         = VaccineFragmentDirections.openDoses();
     toDoses.setVaccineId(id);

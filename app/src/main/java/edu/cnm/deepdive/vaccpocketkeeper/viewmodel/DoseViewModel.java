@@ -18,13 +18,12 @@ import java.util.List;
 
 public class DoseViewModel extends AndroidViewModel implements LifecycleObserver {
 
-  //TODO: Fix entire file
-
   private final DoseRepository repository;
   private final LiveData<Dose> dose;
   private final MutableLiveData<Long> doseId;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
+  //private final MutableLiveData<Long>
 
   public DoseViewModel(@NonNull Application application) {
     super(application);
