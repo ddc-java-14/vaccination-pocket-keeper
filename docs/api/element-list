@@ -1,0 +1,9 @@
+edu.cnm.deepdive.vaccpocketkeeper
+edu.cnm.deepdive.vaccpocketkeeper.adapter
+edu.cnm.deepdive.vaccpocketkeeper.controller
+edu.cnm.deepdive.vaccpocketkeeper.model.dao
+edu.cnm.deepdive.vaccpocketkeeper.model.entity
+edu.cnm.deepdive.vaccpocketkeeper.model.pojo
+edu.cnm.deepdive.vaccpocketkeeper.model.view
+edu.cnm.deepdive.vaccpocketkeeper.service
+edu.cnm.deepdive.vaccpocketkeeper.viewmodel
