@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <SeekBarPreference
+    android:key="@string/future_vaccine_years_pref_key"
+    app:min="@integer/future_vaccine_years_pref_min"
+    android:max="@integer/future_vaccine_years_pref_max"
+    android:defaultValue="@integer/future_vaccine_years_pref_default"
+    app:seekBarIncrement="@integer/future_vaccine_years_pref_increment"
+    app:showSeekBarValue="true"
+    android:title="@string/future_vaccine_years_pref_title"/>
+
+</PreferenceScreen>

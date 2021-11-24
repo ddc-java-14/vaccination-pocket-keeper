@@ -5,6 +5,10 @@
   android:id="@+id/mobile_navigation"
   app:startDestination="@+id/nav_home">
 
+  <action
+    android:id="@+id/open_settings"
+    app:destination="@id/nav_settings"/>
+
   <fragment
     android:id="@+id/nav_home"
     android:label="@string/menu_doctor"
@@ -23,7 +27,10 @@
     </action>
 
   </fragment>
-
+  <fragment
+    android:id="@+id/nav_settings"
+    android:label="@string/menu_settings"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.SettingsFragment"/>
   <dialog
     android:id="@+id/doctor_dialogue"
     android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.DoctorDialogueFragment"

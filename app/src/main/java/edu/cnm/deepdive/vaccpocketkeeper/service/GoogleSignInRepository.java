@@ -19,17 +19,21 @@ import io.reactivex.schedulers.Schedulers;
 
 public class GoogleSignInRepository {
 
+  private static final String BEARER_TOKEN_FORMAT = "Bearer %s"; //send this as a header; pass bearer token to our service for authentication.
+
   private static Application context;
 
   private final GoogleSignInClient client;
 
-  private GoogleSignInAccount account;
+  //private GoogleSignInAccount account;
 
   private GoogleSignInRepository() {
     GoogleSignInOptions options = new GoogleSignInOptions.Builder()
         .requestEmail()
-        .requestId() //oauth key from google
+        .requestId() //oauth key from Google
         .requestProfile()
+        // TODO: Uncomment following line after branching for example capstone client.
+//        .requestIdToken(BuildConfig.CLIENT_ID)//bearer token that we need for this client id.
         .build();
     client = GoogleSignIn.getClient(context, options);
   }
@@ -47,11 +51,16 @@ public class GoogleSignInRepository {
         .create((SingleOnSubscribe<GoogleSignInAccount>) (emitter) ->
             client
                 .silentSignIn()
-                .addOnSuccessListener(this::setAccount)
+                //.addOnSuccessListener(this::logAccount)
                 .addOnSuccessListener(emitter::onSuccess)
                 .addOnFailureListener(emitter::onError)
         )
         .observeOn(Schedulers.io());
+  }
+
+  public Single<String> refreshBearerToken() {
+    return refresh()
+        .map(this::getBearerToken);
   }
 
   public void startSignIn(ActivityResultLauncher<Intent> launcher) {
@@ -64,7 +73,7 @@ public class GoogleSignInRepository {
           try {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
             GoogleSignInAccount account = task.getResult(ApiException.class);
-            setAccount(account);
+            //logAccount(account);
             emitter.onSuccess(account);
           } catch (ApiException e) {
             emitter.onError(e);
@@ -78,21 +87,23 @@ public class GoogleSignInRepository {
         .create((emitter) ->
             client
                 .signOut() //sign out gives us a void = null, which we don't care about
-                .addOnCompleteListener((ignored) -> {
-                  setAccount(null);
-                  emitter.onComplete();
-                })
+                .addOnSuccessListener((ignored) -> emitter.onComplete())
+                //.addOnCompleteListener((ignored) -> logAccount(null))
                 .addOnFailureListener(emitter::onError)
         )
         .subscribeOn(Schedulers.io());
   }
 
-  private void setAccount(GoogleSignInAccount account) {
-    this.account = account;
+  private void logAccount(GoogleSignInAccount account) {
+    //this.account = account;
     if (account != null) {
       Log.d(getClass().getSimpleName(),
-          "account successfully set: " + account.getDisplayName());
+          account.getIdToken() != null ? getBearerToken(account) : "none");
     }
+  }
+
+  private String getBearerToken(GoogleSignInAccount account) {
+    return String.format(BEARER_TOKEN_FORMAT, account.getIdToken());
   }
 
   private static class InstanceHolder {

@@ -13,14 +13,15 @@ import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoseAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoseBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
 
 public class DoseFragment extends Fragment {
 
   private DoseViewModel viewModel;
   private FragmentDoseBinding binding;
+  private Vaccine vaccine;
 
-  //TODO: Fix entire file
   //TODO: adding doses should increase the total number of doses in the vaccine by 1.
 
   @Override
@@ -51,7 +52,7 @@ public class DoseFragment extends Fragment {
 //    viewModel.getDoses().observe(getViewLifecycleOwner(), this::update); //observes a dose
     viewModel = new ViewModelProvider(this).get(DoseViewModel.class);
     viewModel
-        .getDoses()
+        .getDosesForVaccineId(1)//TODO: get vaccineId from vaccine.
         .observe(getViewLifecycleOwner(),(doses) -> {
           DoseAdapter adapter = new DoseAdapter(getContext(), doses, this::editDose,
               (dose,v) -> viewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)

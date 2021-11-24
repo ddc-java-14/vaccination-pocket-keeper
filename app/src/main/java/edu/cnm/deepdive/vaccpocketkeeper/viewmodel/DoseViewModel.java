@@ -56,6 +56,11 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     return repository.getAll();
   }
 
+  //getAllForVaccineId
+  public LiveData<List<Dose>> getDosesForVaccineId(long id) {
+    return repository.getAllDosesForVaccineId(id);
+  }
+
   //getPastDoses
   public LiveData<List<Dose>> getPastDoses() {
     return repository.getPastDoses();

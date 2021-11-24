@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer name="future_vaccine_years_pref_min">2</integer>
+  <integer name="future_vaccine_years_pref_max">99</integer>
+  <integer name="future_vaccine_years_pref_default">5</integer>
+  <integer name="future_vaccine_years_pref_increment">1</integer>
+  
+</resources>

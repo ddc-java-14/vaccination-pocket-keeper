@@ -51,6 +51,9 @@ public interface DoseDao {
   @Query("SELECT * FROM dose WHERE administered = 1 ORDER BY date_administered DESC")
   LiveData<List<Dose>> selectPastDoses();
 
+  @Query("SELECT * FROM dose WHERE vaccine_id = :vaccineId ORDER BY date_administered DESC")
+  LiveData<List<Dose>> selectAllDosesForVaccineId(long vaccineId);
+
   @Query("SELECT * FROM dose WHERE administered = 0 ORDER BY date_administered DESC LIMIT :limit")
   LiveData<List<Dose>> selectUpcomingDoses(int limit);
 }

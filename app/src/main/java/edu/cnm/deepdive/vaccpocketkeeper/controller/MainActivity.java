@@ -1,7 +1,11 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -9,17 +13,32 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import edu.cnm.deepdive.vaccpocketkeeper.MobileNavigationDirections;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ActivityMainBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.LoginViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
   private AppBarConfiguration appBarConfiguration;
   private ActivityMainBinding binding;
+  private LoginViewModel loginViewModel;
+  private NavController navController;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+    getLifecycle().addObserver(loginViewModel);
+    loginViewModel.getAccount().observe(this, (account) -> {
+      if (account == null) {
+        //switch back to Login Screen
+        Intent intent = new Intent(this, LoginActivity.class)
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+      }
+    });//in fragment: getviewlifecycleowner(), in activity: this
 
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
@@ -29,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView = binding.navView;
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
-    appBarConfiguration = new AppBarConfiguration.Builder(
-        R.id.nav_home, R.id.nav_vaccine)//,R.id.nav_gallery, R.id.nav_slideshow//TODO: come back to this and add in other fragments
+    appBarConfiguration = new AppBarConfiguration.Builder( //changes the text in the top of the screen
+        R.id.nav_home, R.id.nav_vaccine)
         .setDrawerLayout(drawer)
         .build();
-    NavController navController = Navigation.findNavController(this,
+    navController = Navigation.findNavController(this,
         R.id.nav_host_fragment_content_main);
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     NavigationUI.setupWithNavController(navigationView, navController);
@@ -44,6 +63,22 @@ public class MainActivity extends AppCompatActivity {
     // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.main, menu);
     return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    boolean handled;
+    final int itemId = item.getItemId();
+    if (itemId == R.id.sign_out) {
+      loginViewModel.signOut();
+      handled = true;
+    } else if(itemId == R.id.action_settings) { //generated for us from overflow menu
+      navController.navigate(MobileNavigationDirections.openSettings()); //when we created the navigation under id, followied by directions
+      handled = true;
+    } else {
+      handled = super.onOptionsItemSelected(item);
+    }
+    return handled;
   }
 
   @Override

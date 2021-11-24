@@ -2,6 +2,7 @@ package edu.cnm.deepdive.vaccpocketkeeper;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
+import edu.cnm.deepdive.vaccpocketkeeper.service.GoogleSignInRepository;
 import edu.cnm.deepdive.vaccpocketkeeper.service.VaccpocketkeeperDatabase;
 import io.reactivex.schedulers.Schedulers;
 
@@ -17,6 +18,7 @@ public class VaccPocketKeeperApplication extends Application {
     super.onCreate();
     Stetho.initializeWithDefaults(this);
     VaccpocketkeeperDatabase.setContext(this);
+    GoogleSignInRepository.setContext(this);
     VaccpocketkeeperDatabase
         .getInstance()
         .getVaccineDao()

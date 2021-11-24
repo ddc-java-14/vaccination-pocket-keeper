@@ -35,6 +35,10 @@ public class DoseRepository {
     return doseDao.selectAll();
   }
 
+  public LiveData<List<Dose>> getAllDosesForVaccineId(long vaccineId) {
+    return doseDao.selectAllDosesForVaccineId(vaccineId);
+  }
+
   public LiveData<List<Dose>> getPastDoses() {
     return doseDao.selectPastDoses();
   }
