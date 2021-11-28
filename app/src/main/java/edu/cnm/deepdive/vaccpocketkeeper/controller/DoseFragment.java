@@ -7,12 +7,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoseAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoseBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
@@ -22,6 +25,7 @@ public class DoseFragment extends Fragment {
   private VaccineViewModel vaccineViewModel;
   private FragmentDoseBinding binding;
   private long vaccineId;
+  private VaccineWithDoses vaccine;
 
   //TODO: adding doses should increase the total number of doses in the vaccine by 1.
 
@@ -58,10 +62,15 @@ public class DoseFragment extends Fragment {
 //        .getDosesForVaccineId(vaccineId)
 //        .observe(getViewLifecycleOwner(),(doses) -> {
 //          DoseAdapter adapter = new DoseAdapter(getContext(), doses, this::editDose,
-//              (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
+//              (dose,v) -> doseViewModel.deleteDose(dose));
 //          binding.doses.setAdapter(adapter);
 //        });
     vaccineViewModel = new ViewModelProvider(this).get(VaccineViewModel.class);
+    vaccineViewModel
+        .getVaccine()
+        .observe(getViewLifecycleOwner(), (vaccine) -> {
+          binding.doseVaccineName.setText(vaccine.getName());
+        });
     vaccineViewModel
         .getVaccine()
         .observe(getViewLifecycleOwner(), (vaccine) -> {

@@ -49,7 +49,7 @@ public interface VaccineDao {
 
   @Transaction
   @Query("SELECT * FROM vaccine WHERE vaccine_id = :vaccineId")
-  LiveData<VaccineWithDoses> select(long vaccineId );
+  LiveData<VaccineWithDoses> select(long vaccineId);
 
   @Query("SELECT * FROM vaccine_summary WHERE administered = 1 ORDER BY date_administered DESC")
   LiveData<List<VaccineSummary>> selectPastVaccines();

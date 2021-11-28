@@ -34,6 +34,10 @@ public class VaccineRepository {
     return vaccineDao.select(vaccineId);
   }
 
+  public LiveData<VaccineWithDoses> getVaccine(long vaccineId) {
+    return vaccineDao.select(vaccineId);
+  }
+
   public LiveData<List<Vaccine>> getAll() {
     return vaccineDao.selectAll();
   }

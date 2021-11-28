@@ -41,6 +41,10 @@ public class VaccineViewModel extends AndroidViewModel implements LifecycleObser
     return vaccine;
   }
 
+  public String getVaccineName(long vaccineId) {
+    return vaccine.getValue().getName();
+  }
+
   public void setVaccineId(long id) {
     vaccineId.setValue(
         id);//if someone is observing this, it will cause a refresh of note assignment in constructor
