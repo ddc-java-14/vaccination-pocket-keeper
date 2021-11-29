@@ -62,8 +62,7 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   public void setDoseId(long id) {
-    doseId.setValue(
-        id);//if someone is observing this, it will cause a refresh of note assignment in constructor
+    doseId.setValue(id);//if someone is observing this, it will cause a refresh of note assignment in constructor
   }
 
   public LiveData<Throwable> getThrowable() {

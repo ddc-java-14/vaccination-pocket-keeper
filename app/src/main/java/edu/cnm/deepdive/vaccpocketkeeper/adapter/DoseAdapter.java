@@ -1,27 +1,35 @@
 package edu.cnm.deepdive.vaccpocketkeeper.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ItemDoseBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
+import edu.cnm.deepdive.vaccpocketkeeper.service.DoctorRepository;
+import edu.cnm.deepdive.vaccpocketkeeper.service.DoseRepository;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
 import java.text.DateFormat;
 import java.util.List;
 
 public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
-  //TODO: change fragment_edit_dose layouts to doctor spinner dropdown and datepicker widgets
   private final LayoutInflater inflator;
   private final DateFormat dateFormat;
   private final VaccineWithDoses vaccine;
   private final List<Dose> doses;
+  //private final Doctor doctor;
   private final OnDoseEditHelper onDoseEditHelper;
   private final OnDoseDeleteHelper onDoseDeleteHelper;
-
+  private DoctorViewModel doctorViewModel;
 
   public DoseAdapter(Context context, VaccineWithDoses vaccine,
       OnDoseEditHelper onDoseEditHelper,
@@ -32,6 +40,11 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     this.onDoseDeleteHelper = onDoseDeleteHelper;
     this.vaccine = vaccine;
     this.doses = vaccine.getDoses();
+    //this.doctor = doctor;
+    /*doses.forEach((dose)-> {dose.getDoctorId();
+        doctorViewModel.getDoctor().observe(getViewLifecycleOwner(), (doctor) -> {
+        this.doctor = doctor;}););*/
+    //lifecycle = new LifecycleRegistry(this);
   }
 
   @NonNull
@@ -50,6 +63,12 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     return doses.size();
   }
 
+//  @NonNull
+//  @Override
+//  public Lifecycle getLifecycle() {
+//    return lifecycle;
+//  }
+
   class Holder extends RecyclerView.ViewHolder {
 
     private final ItemDoseBinding binding;
@@ -60,13 +79,16 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     }
 
     private void bind(int position) {
+      //Log.d(getClass().getSimpleName(), "value: "+value);
       //Use contents of model object to set contents of binding fields.
       Dose dose = doses.get(position);
-      binding.doseName.setText(dose.getName());//TODO get this from nav argument/database
+      binding.doseName.setText(dose.getName());
       if (dose.getDoctorId() != null) {
-        binding.doseDoctor.setText(dose.getDoctorId().toString());//TODO retrieve this from database
+          //doctorViewModel.getDoctor().observe(getViewLifecycleOwner(), (doctor) -> {
+          //this.doctor = doctor;});
+        binding.doseDoctor.setText(dose.getDoctorId().toString());
       }
-      binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));//TODO double check this line doesn't cause the app to crash
+      binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));
       binding.doseEdit.setOnClickListener(
           (v) -> onDoseEditHelper.onDoseClick(dose.getId(), v));
       binding.doseDelete.setOnClickListener(
