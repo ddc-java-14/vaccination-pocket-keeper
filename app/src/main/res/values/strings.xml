@@ -47,4 +47,7 @@
 
   <string name="future_vaccine_years_pref_title">Future Vaccine Years Outlook</string>
   <string name="future_vaccine_years_pref_key">future_vaccine_years_pref</string>
+  <string name="menu_all_future_doses">All Future Doses</string>
+  <string name="future_doses">Future Doses</string>
+  <string name="future_doses_pref_key">future_doses</string>
 </resources>

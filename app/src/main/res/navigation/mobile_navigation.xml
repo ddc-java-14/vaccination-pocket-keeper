@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/mobile_navigation"
-  app:startDestination="@+id/nav_home">
+  app:startDestination="@id/nav_home">
 
   <action
     android:id="@+id/open_settings"
@@ -53,8 +54,8 @@
       app:argType="long"
       android:defaultValue="0L"
       />
-
   </dialog>
+
   <fragment
     android:id="@+id/nav_vaccine"
     android:label="@string/menu_vaccine"
@@ -71,17 +72,18 @@
         android:defaultValue="0L"
         />
     </action>
-      <action
-        android:id="@+id/open_doses"
-        app:destination="@id/nav_doses">
+    <action
+      android:id="@+id/open_doses"
+      app:destination="@id/nav_doses">
 
-        <argument
-          android:name="vaccine_id"
-          app:argType="long"
-          android:defaultValue="0L"
-          />
+      <argument
+        android:name="vaccine_id"
+        app:argType="long"
+        android:defaultValue="0L"
+        />
     </action>
   </fragment>
+
   <dialog
     android:id="@+id/nav_edit_vaccine"
     android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditVaccineFragment"
@@ -94,6 +96,7 @@
       />
 
   </dialog>
+
   <fragment
     android:id="@+id/nav_doses"
     android:label="@string/menu_dose"
@@ -146,7 +149,32 @@
       app:argType="long"
       android:defaultValue="0L"
       />
-
   </dialog>
+
+  <fragment
+    android:id="@+id/nav_future_doses"
+    android:label="@string/future_doses"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.AllFutureDosesFragment"
+    tools:layout="@layout/fragment_all_future_doses">
+    <action
+      android:id="@+id/open_dose"
+      app:destination="@id/nav_edit_dose">
+
+      <argument
+        android:name="dose_id"
+        app:argType="long"
+        android:defaultValue="0L"
+        />
+    </action>
+<!--    <dialog-->
+<!--      android:id="@+id/all_future_doses_dialogue"-->
+<!--      android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.AllFutureDosesDialogueFragment"-->
+<!--      tools:layout="@layout/fragment_all_doses_dialogue">-->
+<!--    </dialog>-->
+<!--    <action-->
+<!--      android:id="@+id/open_all_future_doses"-->
+<!--      app:destination="@id/nav_edit_all_future_doses">-->
+<!--    </action>-->
+  </fragment>
 
 </navigation>

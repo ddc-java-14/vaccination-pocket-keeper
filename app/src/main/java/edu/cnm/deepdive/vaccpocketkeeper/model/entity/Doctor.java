@@ -63,4 +63,10 @@ public class Doctor {
   public List<Dose> getDoses() {
     return doses;
   }
+
+  @NonNull
+  @Override
+  public String toString() {
+    return name;
+  }
 }

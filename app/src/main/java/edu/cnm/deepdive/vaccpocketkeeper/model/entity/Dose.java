@@ -41,6 +41,10 @@ public class Dose {
   @ColumnInfo(name = "doctor_id", index = true) //type affinity, if the type doesn't match one of the types in SQLite, can use type affinity; pimarykey is automatically indexed and automatically unique
   private Long doctorId;
 
+  @NonNull
+  @ColumnInfo
+  private String name = "";
+
   @ColumnInfo(name = "date_administered")
   private Date dateAdministered;
 
@@ -80,6 +84,15 @@ public class Dose {
 
   public void setDoctorId(Long doctorId) {
     this.doctorId = doctorId;
+  }
+
+  @NonNull
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@NonNull String name) {
+    this.name = name;
   }
 
   public Date getDateAdministered() {

@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,25 +9,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
+import edu.cnm.deepdive.vaccpocketkeeper.adapter.AllFutureDosesAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoseAdapter;
+import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentAllFutureDosesBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoseBinding;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
-public class DoseFragment extends Fragment {
+public class AllFutureDosesFragment extends Fragment {
 
   private DoseViewModel doseViewModel;
   private VaccineViewModel vaccineViewModel;
-  private FragmentDoseBinding binding;
+  private FragmentAllFutureDosesBinding binding;
   private long vaccineId;
-  private VaccineWithDoses vaccine;
 
   //TODO: adding doses should increase the total number of doses in the vaccine by 1.
 
@@ -33,13 +35,12 @@ public class DoseFragment extends Fragment {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
-    DoseFragmentArgs args = DoseFragmentArgs.fromBundle(getArguments());
-    vaccineId = args.getVaccineId();
+    //DoseFragmentArgs args = DoseFragmentArgs.fromBundle(getArguments());
   }
 
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
-    binding = FragmentDoseBinding.inflate(inflater, container, false);
+    binding = FragmentAllFutureDosesBinding.inflate(inflater, container, false);
     //binding.submit.setOnClickListener((v) ->
     //    viewModel.submitGuess(binding.guess.getText().toString().trim()));
     //binding.guess.setFilters(new InputFilter[]{this});
@@ -65,21 +66,14 @@ public class DoseFragment extends Fragment {
 //              (dose,v) -> doseViewModel.deleteDose(dose));
 //          binding.doses.setAdapter(adapter);
 //        });
-    vaccineViewModel = new ViewModelProvider(this).get(VaccineViewModel.class);
-    vaccineViewModel
-        .getVaccine()
-        .observe(getViewLifecycleOwner(), (vaccine) -> {
-          binding.doseVaccineName.setText("Doses for " + vaccine.getName());
-        });
-    vaccineViewModel
-        .getVaccine()
-        .observe(getViewLifecycleOwner(), (vaccine) -> {
-          DoseAdapter adapter = new DoseAdapter(getContext(), vaccine,
-              (id, view1) -> editDose(id, view1),
+    doseViewModel = new ViewModelProvider(this).get(DoseViewModel.class);
+    doseViewModel
+        .getDoses()
+        .observe(getViewLifecycleOwner(), (doses) -> {
+          AllFutureDosesAdapter adapter = new AllFutureDosesAdapter(getContext(), doses, this::editDose,
               (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
           binding.doses.setAdapter(adapter);
         });
-    vaccineViewModel.setVaccineId(vaccineId);
   } //when fragment dies, then cleans up
 
 //  @Override
@@ -127,7 +121,7 @@ public class DoseFragment extends Fragment {
 
   public void editDose(long id, View view) {
     Navigation.findNavController(binding.getRoot())
-        .navigate(DoseFragmentDirections.openDose().setDoseId(id));
+        .navigate(AllFutureDosesFragmentDirections.openDose().setDoseId(id));
   }
 
 }

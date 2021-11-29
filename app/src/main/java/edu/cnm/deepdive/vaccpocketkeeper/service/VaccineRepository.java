@@ -60,6 +60,7 @@ public class VaccineRepository {
         Dose dose = new Dose();
         cal.add(Calendar.YEAR, vaccine.getFrequency());
         dose.setDateAdministered(cal.getTime());
+        dose.setName("DoseNumber"+(i+1));
         vaccine.getDoses().add(dose);
       }
       task = vaccineDao

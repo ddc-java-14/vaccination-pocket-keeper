@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   tools:showIn="navigation_view">
 
@@ -11,7 +12,10 @@
 <!--      android:id="@+id/nav_home"-->
 <!--      android:icon="@drawable/ic_menu_camera"-->
 <!--      android:title="@string/menu_home"/>-->
-
+    <item
+      android:id="@+id/nav_future_doses"
+      android:icon="@drawable/ic_menu_gallery"
+      android:title="@string/menu_all_future_doses"/>
     <item
       android:id="@+id/nav_vaccine"
       android:icon="@drawable/ic_menu_gallery"
@@ -20,10 +24,6 @@
       android:id="@+id/nav_home"
       android:icon="@drawable/ic_menu_camera"
       android:title="@string/menu_doctors"/>
-<!--    <item-->
-<!--      android:id="@+id/nav_slideshow"-->
-<!--      android:icon="@drawable/ic_menu_slideshow"-->
-<!--      android:title="@string/menu_slideshow"/>-->
   </group>
   <group
     android:id="@+id/basic_settings"

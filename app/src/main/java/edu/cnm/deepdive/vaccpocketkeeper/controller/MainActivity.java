@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     appBarConfiguration = new AppBarConfiguration.Builder( //changes the text in the top of the screen
-        R.id.nav_home, R.id.nav_vaccine)
+        R.id.nav_future_doses, R.id.nav_home, R.id.nav_vaccine)
         .setDrawerLayout(drawer)
         .build();
     navController = Navigation.findNavController(this,

@@ -4,5 +4,6 @@
   <integer name="future_vaccine_years_pref_max">99</integer>
   <integer name="future_vaccine_years_pref_default">5</integer>
   <integer name="future_vaccine_years_pref_increment">1</integer>
-  
+  <integer name="future_doses_pref_default">5</integer>
+
 </resources>

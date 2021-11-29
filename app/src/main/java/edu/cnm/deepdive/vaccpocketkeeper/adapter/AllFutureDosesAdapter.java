@@ -13,25 +13,23 @@ import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import java.text.DateFormat;
 import java.util.List;
 
-public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
+public class AllFutureDosesAdapter extends RecyclerView.Adapter<AllFutureDosesAdapter.Holder> {
   //TODO: change fragment_edit_dose layouts to doctor spinner dropdown and datepicker widgets
   private final LayoutInflater inflator;
   private final DateFormat dateFormat;
-  private final VaccineWithDoses vaccine;
   private final List<Dose> doses;
   private final OnDoseEditHelper onDoseEditHelper;
   private final OnDoseDeleteHelper onDoseDeleteHelper;
 
 
-  public DoseAdapter(Context context, VaccineWithDoses vaccine,
+  public AllFutureDosesAdapter(Context context, List<Dose> doses,
       OnDoseEditHelper onDoseEditHelper,
       OnDoseDeleteHelper onDoseDeleteHelper) {
     inflator = LayoutInflater.from(context);
     dateFormat = android.text.format.DateFormat.getDateFormat(context);
     this.onDoseEditHelper = onDoseEditHelper;
     this.onDoseDeleteHelper = onDoseDeleteHelper;
-    this.vaccine = vaccine;
-    this.doses = vaccine.getDoses();
+    this.doses = doses;
   }
 
   @NonNull
@@ -63,9 +61,7 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
       //Use contents of model object to set contents of binding fields.
       Dose dose = doses.get(position);
       binding.doseName.setText(dose.getName());//TODO get this from nav argument/database
-      if (dose.getDoctorId() != null) {
-        binding.doseDoctor.setText(dose.getDoctorId().toString());//TODO retrieve this from database
-      }
+      binding.doseDoctor.setText(dose.getDoctorId().toString());
       binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));//TODO double check this line doesn't cause the app to crash
       binding.doseEdit.setOnClickListener(
           (v) -> onDoseEditHelper.onDoseClick(dose.getId(), v));
