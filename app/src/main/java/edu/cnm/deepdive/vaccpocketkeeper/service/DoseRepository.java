@@ -1,8 +1,12 @@
 package edu.cnm.deepdive.vaccpocketkeeper.service;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
+import androidx.preference.PreferenceManager;
+import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
@@ -20,11 +24,19 @@ public class DoseRepository {
 
   private final Application context;
   private final DoseDao doseDao;
+  private final SharedPreferences preferences;
+  private final String futureDosesPrefKey;
+  private final int futureDosesPrefDefault;
 
   public DoseRepository(Application context) {
     this.context = context;
     VaccpocketkeeperDatabase database = VaccpocketkeeperDatabase.getInstance();
     doseDao = database.getDoseDao();
+
+    preferences = PreferenceManager.getDefaultSharedPreferences(context);
+    Resources resources = context.getResources();
+    futureDosesPrefKey = resources.getString(R.string.future_vaccine_years_pref_key);
+    futureDosesPrefDefault = resources.getInteger(R.integer.future_vaccine_years_pref_default);
   }
 
   public LiveData<Dose> get(long doseId) {
@@ -43,9 +55,16 @@ public class DoseRepository {
     return doseDao.selectPastDoses();
   }
 
-  public LiveData<List<Dose>> getUpcomingDoses(int limit) {
-    Log.d(getClass().getSimpleName(), "size of returned list: " + String.valueOf(doseDao.selectUpcomingDoses(limit).getValue().size()));
-    return doseDao.selectUpcomingDoses(limit);
+  public LiveData<List<DoseWithDoctor>> getUpcomingDoses() {
+    //Log.d(getClass().getSimpleName(), "size of returned list: " + String.valueOf(doseDao.selectUpcomingDoses(startDate, endDate).getValue().size()));
+    int futureDosesPref = preferences.getInt(futureDosesPrefKey, futureDosesPrefDefault);
+    Calendar calendar = Calendar.getInstance();
+    Date startDate = calendar.getTime();
+    calendar.add(Calendar.YEAR,futureDosesPref);
+    Log.d(getClass().getSimpleName(), "Calendar: " + calendar.toString());
+    Date endDate = calendar.getTime();
+
+    return doseDao.selectUpcomingDoses(startDate, endDate);
   }
 
   public Single<Dose> save(Dose dose) {

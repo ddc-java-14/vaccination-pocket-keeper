@@ -52,11 +52,11 @@ public interface VaccineDao {
   LiveData<VaccineWithDoses> select(long vaccineId);
 
   @Transaction
-  @Query("SELECT * FROM vaccine_summary WHERE administered = 1 ORDER BY date_administered DESC")
+  @Query("SELECT * FROM vaccine_summary ORDER BY date_administered DESC")
   LiveData<List<VaccineSummary>> selectPastVaccines();
 
   @Transaction
-  @Query("SELECT * FROM vaccine_summary WHERE administered = 0 ORDER BY date_administered DESC LIMIT :limit")
+  @Query("SELECT * FROM vaccine_summary ORDER BY date_administered DESC LIMIT :limit")
   LiveData<List<VaccineSummary>> selectUpcomingVaccines(int limit);
 
 }

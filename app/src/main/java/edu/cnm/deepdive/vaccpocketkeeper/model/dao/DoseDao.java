@@ -5,12 +5,14 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import io.reactivex.Single;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -58,6 +60,7 @@ public interface DoseDao {
   @Query("SELECT * FROM dose WHERE vaccine_id = :vaccineId ORDER BY date_administered ASC")
   LiveData<List<Dose>> selectAllDosesForVaccineId(long vaccineId);
 
-  @Query("SELECT * FROM dose ORDER BY date_administered DESC LIMIT :limit")
-  LiveData<List<Dose>> selectUpcomingDoses(int limit);
+  @Transaction
+  @Query("SELECT * FROM dose WHERE date_administered >= :startDate and date_administered <= :endDate ORDER BY date_administered ASC")
+  LiveData<List<DoseWithDoctor>> selectUpcomingDoses(Date startDate, Date endDate);
 }

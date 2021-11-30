@@ -74,8 +74,11 @@ dependencies {
     def camerax_version = "1.0.0-beta05"
     implementation "androidx.camera:camera-camera2:${camerax_version}"
     implementation "androidx.camera:camera-lifecycle:${camerax_version}"
-    implementation"androidx.camera:camera-view:1.0.0-alpha12"
+    implementation "androidx.camera:camera-view:1.0.0-alpha12"
     implementation "androidx.camera:camera-extensions:1.0.0-alpha12"
+
+    //CSV Parser
+    implementation 'org.apache.commons:commons-csv:1.9.0'
 
     // Basic Android Support Libraries
     implementation 'androidx.appcompat:appcompat:1.4.0'

@@ -33,8 +33,7 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   private final String futureDosesPrefKey;
   private final int futureDosesPrefDefault;
   private final MutableLiveData<Integer> futureDosesLimit;
-  private final LiveData<List<Dose>> futureDoses;
-
+  //private final LiveData<List<Dose>> futureDoses;
 
 
   public DoseViewModel(@NonNull Application application) {
@@ -55,9 +54,9 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     int futureDosesPref = preferences.getInt(futureDosesPrefKey, futureDosesPrefDefault);
     futureDosesLimit = new MutableLiveData<>(futureDosesPref);
     //sortedByTime = new MutableLiveData<>(false);
-    FilterLiveData trigger =
-        new FilterLiveData(futureDosesLimit);
-    futureDoses = Transformations.switchMap(trigger, (params) -> repository.getUpcomingDoses(params.futureDoses));
+//    FilterLiveData trigger =
+//        new FilterLiveData(futureDosesLimit);
+//    futureDoses = Transformations.switchMap(trigger, (params) -> repository.getUpcomingDoses(params.futureDoses));
   }
 
   public LiveData<Dose> getDose() {
@@ -74,7 +73,7 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
 
   //getAll
   public LiveData<List<DoseWithDoctor>> getDoses() {
-    return repository.getAll();
+    return repository.getUpcomingDoses();
   }
 
   //getAllForVaccineId
