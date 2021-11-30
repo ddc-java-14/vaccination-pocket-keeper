@@ -48,9 +48,6 @@ public class Dose {
   @ColumnInfo(name = "date_administered")
   private Date dateAdministered;
 
-  @ColumnInfo(index = true)
-  private boolean administered = false;
-
   private String image;
 
   public long getId() {
@@ -101,14 +98,6 @@ public class Dose {
 
   public void setDateAdministered(Date dateAdministered) {
     this.dateAdministered = dateAdministered;
-  }
-
-  public boolean isAdministered() {
-    return administered;
-  }
-
-  public void setAdministered(boolean administered) {
-    this.administered = administered;
   }
 
   public String getImage() {

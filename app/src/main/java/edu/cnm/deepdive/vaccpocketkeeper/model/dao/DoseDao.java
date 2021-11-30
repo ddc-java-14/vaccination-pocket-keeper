@@ -52,12 +52,12 @@ public interface DoseDao {
   @Query("SELECT * FROM dose WHERE dose_id = :doseId")
   LiveData<Dose> select(long doseId);
 
-  @Query("SELECT * FROM dose WHERE administered = 1 ORDER BY date_administered ASC")
+  @Query("SELECT * FROM dose ORDER BY date_administered ASC")
   LiveData<List<Dose>> selectPastDoses();
 
   @Query("SELECT * FROM dose WHERE vaccine_id = :vaccineId ORDER BY date_administered ASC")
   LiveData<List<Dose>> selectAllDosesForVaccineId(long vaccineId);
 
-  @Query("SELECT * FROM dose WHERE administered = 0 ORDER BY date_administered DESC LIMIT :limit")
+  @Query("SELECT * FROM dose ORDER BY date_administered DESC LIMIT :limit")
   LiveData<List<Dose>> selectUpcomingDoses(int limit);
 }

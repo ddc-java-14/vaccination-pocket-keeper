@@ -80,3 +80,7 @@ These additional resources will be integrated into the WebView:
 
 **Note**
 These resources are subject to change as additional information is discovered.
+
+## Copyright Notice
+
+Copyright 2021 Cynthia Nikolai. All rights reserved.
