@@ -6,8 +6,9 @@
   android:background="#FF000000"
   >
 
+
   <androidx.camera.view.PreviewView
-    android:id="@+id/camera"
+    android:id="@+id/previewView"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_marginBottom="8dp"
@@ -32,7 +33,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/camera">
+    app:layout_constraintTop_toBottomOf="@+id/previewView">
 
     <androidx.cardview.widget.CardView
       android:id="@+id/capture"
@@ -47,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/capture"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_menu_camera" />
 
     </androidx.cardview.widget.CardView>
 

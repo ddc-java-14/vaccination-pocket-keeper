@@ -120,17 +120,17 @@
     </action>
   </fragment>
 
-<!--  <fragment-->
-<!--    android:id="@+id/nav_camera"-->
-<!--    android:label="@string/menu_camera"-->
-<!--    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.CameraFragment"-->
-<!--    tools:layout="@layout/activity_camera">-->
+  <activity
+    android:id="@+id/nav_camera"
+    android:label="@string/menu_camera"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.CameraActivity"
+    tools:layout="@layout/activity_camera">
 
 <!--  <action-->
 <!--    android:id="@+id/open_camera"-->
 <!--    app:destination="@id/nav_open_camera">-->
 <!--  </action>-->
-<!--  </fragment>-->
+  </activity>
 
   <fragment
     android:id="@+id/nav_settings"
@@ -138,11 +138,11 @@
     android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.SettingsFragment">
   </fragment>
 
-<!--  <dialog-->
-<!--    android:id="@+id/nav_open_camera"-->
-<!--    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.CameraFragment"-->
-<!--    tools:layout="@layout/activity_camera">-->
-<!--  </dialog>-->
+  <dialog
+    android:id="@+id/nav_open_camera"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.CameraActivity"
+    tools:layout="@layout/activity_camera">
+  </dialog>
 
   <dialog
     android:id="@+id/doctor_dialogue"

@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
     return true;
   }
 
-  @Override
-  public boolean onNavigationItemSelected(MenuItem menuItem) {
-    return true;
-  }
+//  @Override
+//  public boolean onNavigationItemSelected(MenuItem menuItem) {
+//    return true;
+//  }
 
     @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -82,12 +82,16 @@ public class MainActivity extends AppCompatActivity {
       navController.navigate(
           MobileNavigationDirections.openSettings()); //when we created the navigation under id, followied by directions
       handled = true;
-    } else if (itemId == R.id.nav_camera) {
-      Intent newIntent = new Intent(getApplicationContext(), CameraActivity.class);
-      newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-      startActivity(newIntent);
-      handled = true;
-    } else {
+    }
+
+//    else if (itemId == R.id.nav_camera) {
+//      Intent newIntent = new Intent(getApplicationContext(), CameraActivity.class);
+//      newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//      startActivity(newIntent);
+//      handled = true;
+//    }
+
+    else {
       handled = super.onOptionsItemSelected(item);
     }
     return handled;
