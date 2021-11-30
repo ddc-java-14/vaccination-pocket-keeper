@@ -35,7 +35,7 @@ public class DoctorViewModel extends AndroidViewModel implements LifecycleObserv
     pending = new CompositeDisposable();
     doctorId = new MutableLiveData<>();
     //whenever the contents of this vaccineId changes, it invokes the lambda
-    doctor = Transformations.switchMap(doctorId, repository::get
+    doctor = Transformations.switchMap(doctorId, doctorId1 -> repository.get(doctorId1)
         //but query doesn't execute unless someone is observing that livedata.
     );//triggers a refresh of live data
   }
@@ -51,6 +51,10 @@ public class DoctorViewModel extends AndroidViewModel implements LifecycleObserv
 
   public LiveData<Throwable> getThrowable() {
     return throwable;
+  }
+
+  public LiveData<Doctor> getDoctorById(long id) {
+    return repository.get(id);
   }
 
   //getAll

@@ -27,11 +27,12 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
   private final VaccineWithDoses vaccine;
   private final List<Dose> doses;
   //private final Doctor doctor;
+  private final List<Doctor> doctors;
   private final OnDoseEditHelper onDoseEditHelper;
   private final OnDoseDeleteHelper onDoseDeleteHelper;
   private DoctorViewModel doctorViewModel;
 
-  public DoseAdapter(Context context, VaccineWithDoses vaccine,
+  public DoseAdapter(Context context, VaccineWithDoses vaccine, List<Doctor> doctors,
       OnDoseEditHelper onDoseEditHelper,
       OnDoseDeleteHelper onDoseDeleteHelper) {
     inflator = LayoutInflater.from(context);
@@ -41,6 +42,7 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     this.vaccine = vaccine;
     this.doses = vaccine.getDoses();
     //this.doctor = doctor;
+    this.doctors = doctors;
     /*doses.forEach((dose)-> {dose.getDoctorId();
         doctorViewModel.getDoctor().observe(getViewLifecycleOwner(), (doctor) -> {
         this.doctor = doctor;}););*/
@@ -83,10 +85,13 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
       //Use contents of model object to set contents of binding fields.
       Dose dose = doses.get(position);
       binding.doseName.setText(dose.getName());
+      //if (doctors != null) {
       if (dose.getDoctorId() != null) {
           //doctorViewModel.getDoctor().observe(getViewLifecycleOwner(), (doctor) -> {
           //this.doctor = doctor;});
+        //doctor.getName()
         binding.doseDoctor.setText(dose.getDoctorId().toString());
+        //binding.doseDoctor.setText(doctors.get(dose.getDoctorId()));
       }
       binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));
       binding.doseEdit.setOnClickListener(

@@ -37,6 +37,7 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
   private Spinner doctorSelector;
   private ArrayAdapter<Doctor> adapter;
   private Doctor doctor;
+  private String doctorName;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -51,13 +52,13 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    Doctor doctor;
     binding = FragmentEditDoseBinding.inflate(inflater, container, false);
     binding.doseName.addTextChangedListener(this);
     binding.doctorNameSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        EditDoseFragment.this.doctor = (Doctor) parent.getItemAtPosition(position);
+        doctor = (Doctor) parent.getItemAtPosition(position);
+        //doctorName = doctor.getName();
       }
 
       @Override
@@ -117,7 +118,7 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
         binding.dateAdministered.updateDate(dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
         if (doctor != null) {
           int selectedPosition = adapter.getPosition(doctor);
-          //String selectedItem = adapter.getItemAtPosition(selectedPosition).toString();
+          String selectedItem = adapter.getItem(selectedPosition).getName();
           binding.doctorNameSelector.setSelection(selectedPosition);
         }
         binding.doseName.setText(dose.getName());
@@ -125,17 +126,17 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
     } else { //new dose
       dose = new Dose();
     }
-    doctorViewModel = new ViewModelProvider(this).get(DoctorViewModel.class);
-    doctorViewModel
-        .getDoctors()
-        .observe(getViewLifecycleOwner(), (doctors) -> {
-          if (doctors != null) {
-            adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,
-                doctors);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            binding.doctorNameSelector.setAdapter(adapter);
-          }
-        });
+//    doctorViewModel = new ViewModelProvider(this).get(DoctorViewModel.class);
+//    doctorViewModel
+//        .getDoctors()
+//        .observe(getViewLifecycleOwner(), (doctors) -> {
+//          if (doctors != null) {
+//            adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,
+//                doctors);
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//            binding.doctorNameSelector.setAdapter(adapter);
+//          }
+//        });
   }
 
   @Override

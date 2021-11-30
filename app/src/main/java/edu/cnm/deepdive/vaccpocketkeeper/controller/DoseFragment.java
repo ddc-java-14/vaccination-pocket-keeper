@@ -14,18 +14,24 @@ import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoseAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoseBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
+import java.util.List;
 
 public class DoseFragment extends Fragment {
 
   private DoseViewModel doseViewModel;
   private VaccineViewModel vaccineViewModel;
+  private DoctorViewModel doctorViewModel;
   private FragmentDoseBinding binding;
   private long vaccineId;
   private VaccineWithDoses vaccine;
+  private Doctor doctor;
+  private List<Doctor> doctors;
 
   //TODO: adding doses should increase the total number of doses in the vaccine by 1.
 
@@ -71,10 +77,17 @@ public class DoseFragment extends Fragment {
         .observe(getViewLifecycleOwner(), (vaccine) -> {
           binding.doseVaccineName.setText("Doses for " + vaccine.getName());
         });
+    doctorViewModel = new ViewModelProvider(this).get(DoctorViewModel.class);
+    doctorViewModel
+        .getDoctors()
+        //.getDoctorById(2)
+        .observe(getViewLifecycleOwner(), (doctors) -> {
+      //this.doctor = doctor;
+        this.doctors = doctors;});
     vaccineViewModel
         .getVaccine()
         .observe(getViewLifecycleOwner(), (vaccine) -> {
-          DoseAdapter adapter = new DoseAdapter(getContext(), vaccine,
+          DoseAdapter adapter = new DoseAdapter(getContext(), vaccine, doctors,
               (id, view1) -> editDose(id, view1),
               (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
           binding.doses.setAdapter(adapter);
