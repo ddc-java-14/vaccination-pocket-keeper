@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class DoseFragment extends Fragment {
     setHasOptionsMenu(true);
     DoseFragmentArgs args = DoseFragmentArgs.fromBundle(getArguments());
     vaccineId = args.getVaccineId();
+    Log.d(getClass().getSimpleName(),"VaccineId (inside DoseFragment): "+vaccineId);
   }
 
   public View onCreateView(@NonNull LayoutInflater inflater,
@@ -51,7 +53,7 @@ public class DoseFragment extends Fragment {
     //binding.guess.setFilters(new InputFilter[]{this});
     //compiler infers that v is a view : (View v)
     binding.addDose.setOnClickListener(
-        v -> editDose(0,v));
+        v -> editDose(0,vaccineId, v));
     return binding.getRoot();
   }
 
@@ -88,7 +90,7 @@ public class DoseFragment extends Fragment {
         .getVaccine()
         .observe(getViewLifecycleOwner(), (vaccine) -> {
           DoseAdapter adapter = new DoseAdapter(getContext(), vaccine, doctors,
-              (id, view1) -> editDose(id, view1),
+              (doseId, view1) -> editDose(doseId, vaccineId, view1),
               (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
           binding.doses.setAdapter(adapter);
         });
@@ -138,9 +140,11 @@ public class DoseFragment extends Fragment {
     }
   }
 
-  public void editDose(long id, View view) {
+  public void editDose(long doseId, long vaccineId, View view) {
     Navigation.findNavController(binding.getRoot())
-        .navigate(DoseFragmentDirections.openDose().setDoseId(id));
+        .navigate(DoseFragmentDirections.openDose()
+            .setVaccineId(vaccineId)
+            .setDoseId(doseId));
   }
 
 }

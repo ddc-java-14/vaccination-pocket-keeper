@@ -50,8 +50,7 @@ public class DoctorRepository {
               doctor
           );
     }
-    return task.subscribeOn(
-        Schedulers.io()); //give task back to viewModel to subscribe to (background thread)
+    return task.subscribeOn(Schedulers.io()); //give task back to viewModel to subscribe to (background thread)
   }
 
   public Completable delete(Doctor doctor) {

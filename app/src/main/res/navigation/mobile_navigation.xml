@@ -4,7 +4,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/mobile_navigation"
-  app:startDestination="@id/nav_home">
+  app:startDestination="@+id/nav_home">
 
   <action
     android:id="@+id/open_settings"
@@ -26,35 +26,7 @@
         android:defaultValue="0L"
         />
     </action>
-
   </fragment>
-  <fragment
-    android:id="@+id/nav_settings"
-    android:label="@string/menu_settings"
-    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.SettingsFragment"/>
-  <dialog
-    android:id="@+id/doctor_dialogue"
-    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.DoctorDialogueFragment"
-    tools:layout="@layout/fragment_doctor_dialogue">
-
-    <argument
-      android:name="doctor_id"
-      app:argType="long"
-      android:defaultValue="0L"
-      />
-  </dialog>
-
-  <dialog
-    android:id="@+id/nav_edit_doctor"
-    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditDoctorFragment"
-    tools:layout="@layout/fragment_edit_doctor">
-
-    <argument
-      android:name="doctor_id"
-      app:argType="long"
-      android:defaultValue="0L"
-      />
-  </dialog>
 
   <fragment
     android:id="@+id/nav_vaccine"
@@ -84,19 +56,6 @@
     </action>
   </fragment>
 
-  <dialog
-    android:id="@+id/nav_edit_vaccine"
-    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditVaccineFragment"
-    tools:layout="@layout/fragment_edit_doctor">
-
-    <argument
-      android:name="vaccine_id"
-      app:argType="long"
-      android:defaultValue="0L"
-      />
-
-  </dialog>
-
   <fragment
     android:id="@+id/nav_doses"
     android:label="@string/menu_dose"
@@ -120,7 +79,6 @@
         />
     </action>
   </fragment>
-
   <fragment
     android:id="@+id/nav_dose"
     android:label="@string/menu_dose"
@@ -136,20 +94,13 @@
         app:argType="long"
         android:defaultValue="0L"
         />
+      <argument
+        android:name="vaccine_id"
+        app:argType="long"
+        android:defaultValue="0L"
+        />
     </action>
   </fragment>
-
-  <dialog
-    android:id="@+id/nav_edit_dose"
-    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditDoseFragment"
-    tools:layout="@layout/fragment_edit_dose">
-
-    <argument
-      android:name="dose_id"
-      app:argType="long"
-      android:defaultValue="0L"
-      />
-  </dialog>
 
   <fragment
     android:id="@+id/nav_future_doses"
@@ -166,15 +117,65 @@
         android:defaultValue="0L"
         />
     </action>
-<!--    <dialog-->
-<!--      android:id="@+id/all_future_doses_dialogue"-->
-<!--      android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.AllFutureDosesDialogueFragment"-->
-<!--      tools:layout="@layout/fragment_all_doses_dialogue">-->
-<!--    </dialog>-->
-<!--    <action-->
-<!--      android:id="@+id/open_all_future_doses"-->
-<!--      app:destination="@id/nav_edit_all_future_doses">-->
-<!--    </action>-->
   </fragment>
+  <fragment
+    android:id="@+id/nav_settings"
+    android:label="@string/menu_settings"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.SettingsFragment"/>
+
+  <dialog
+    android:id="@+id/doctor_dialogue"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.DoctorDialogueFragment"
+    tools:layout="@layout/fragment_doctor_dialogue">
+
+    <argument
+      android:name="doctor_id"
+      app:argType="long"
+      android:defaultValue="0L"
+      />
+  </dialog>
+
+  <dialog
+    android:id="@+id/nav_edit_doctor"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditDoctorFragment"
+    tools:layout="@layout/fragment_edit_doctor">
+
+    <argument
+      android:name="doctor_id"
+      app:argType="long"
+      android:defaultValue="0L"
+      />
+  </dialog>
+
+
+  <dialog
+    android:id="@+id/nav_edit_vaccine"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditVaccineFragment"
+    tools:layout="@layout/fragment_edit_doctor">
+
+    <argument
+      android:name="vaccine_id"
+      app:argType="long"
+      android:defaultValue="0L"
+      />
+
+  </dialog>
+
+  <dialog
+    android:id="@+id/nav_edit_dose"
+    android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.EditDoseFragment"
+    tools:layout="@layout/fragment_edit_dose">
+
+    <argument
+      android:name="dose_id"
+      app:argType="long"
+      android:defaultValue="0L"
+      />
+    <argument
+      android:name="vaccine_id"
+      app:argType="long"
+      android:defaultValue="0L"
+      />
+  </dialog>
 
 </navigation>

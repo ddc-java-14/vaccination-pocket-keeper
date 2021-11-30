@@ -48,15 +48,14 @@ public class DoseRepository {
   }
 
   public Single<Dose> save(Dose dose) {
-    //FIXME Check to see if this works
     Single<Dose> task;
     if (dose.getId() == 0) {
-      Dose dose2 = new Dose();
+      dose.setCreated(new Date());
       task = doseDao
-          .insert(dose2)
+          .insert(dose)
           .map((id) -> {
-            dose2.setId(id);//id of record added, then puts dose back on the conveyor belt
-            return dose2;
+            dose.setId(id);//id of record added, then puts dose back on the conveyor belt
+            return dose;
           });
     } else {
       task = doseDao
@@ -65,8 +64,7 @@ public class DoseRepository {
               dose
           );
     }
-    return task.subscribeOn(
-        Schedulers.io()); //give task back to viewModel to subscribe to (background thread)
+    return task.subscribeOn(Schedulers.io()); //give task back to viewModel to subscribe to (background thread)
   }
 
   public Completable delete(Dose dose) {

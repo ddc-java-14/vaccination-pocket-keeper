@@ -52,7 +52,6 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     futureDosesPrefKey = resources.getString(R.string.future_doses_pref_key);
     futureDosesPrefDefault = resources.getInteger(R.integer.future_doses_pref_default);
     int futureDosesPref = preferences.getInt(futureDosesPrefKey, futureDosesPrefDefault);
-     //repository.getUpcomingDoses(2).getValue().size()));
     futureDosesLimit = new MutableLiveData<>(futureDosesPref);
     //sortedByTime = new MutableLiveData<>(false);
     FilterLiveData trigger =
