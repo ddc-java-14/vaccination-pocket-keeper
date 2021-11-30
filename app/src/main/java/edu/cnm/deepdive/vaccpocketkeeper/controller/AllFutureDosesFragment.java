@@ -45,8 +45,6 @@ public class AllFutureDosesFragment extends Fragment {
     //    viewModel.submitGuess(binding.guess.getText().toString().trim()));
     //binding.guess.setFilters(new InputFilter[]{this});
     //compiler infers that v is a view : (View v)
-    binding.addDose.setOnClickListener(
-        v -> editDose(0,v));
     return binding.getRoot();
   }
 

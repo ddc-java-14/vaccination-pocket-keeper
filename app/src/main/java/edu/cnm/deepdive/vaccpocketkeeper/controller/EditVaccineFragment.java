@@ -64,8 +64,12 @@ public class EditVaccineFragment extends BottomSheetDialogFragment implements Te
         this.vaccine = vaccine;
         binding.vaccVaccineName.setText(vaccine.getName());
         binding.vaccDescription.setText(vaccine.getDescription());
-        binding.vaccFrequency.setText(String.valueOf(vaccine.getFrequency()));
-        binding.vaccTotalNumberOfDoses.setText(String.valueOf(vaccine.getTotalNumberOfDoses()));
+        //binding.vaccFrequency.setEnabled(false);
+        binding.vaccFrequencyLayout.setVisibility(View.GONE);
+            //.setText(String.valueOf(vaccine.getFrequency()));
+        //binding.vaccTotalNumberOfDoses.setEnabled(false);
+        binding.vaccTotalNumberOfDosesLayout.setVisibility(View.GONE);
+        //.setText(String.valueOf(vaccine.getTotalNumberOfDoses()));
         binding.vaccAgeRangeLowerLimit.setText(String.valueOf(vaccine.getAgeRangeLowerLimit()));
         binding.vaccAgeRangeUpperLimit.setText(String.valueOf(vaccine.getAgeRangeUpperLimit()));
       });

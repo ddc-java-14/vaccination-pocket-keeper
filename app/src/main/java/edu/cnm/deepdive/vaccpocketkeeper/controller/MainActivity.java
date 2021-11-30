@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
-import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.navigation.NavigationView;
 import edu.cnm.deepdive.vaccpocketkeeper.MobileNavigationDirections;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ActivityMainBinding;
@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView = binding.navView;
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
-    appBarConfiguration = new AppBarConfiguration.Builder( //changes the text in the top of the screen
-        R.id.nav_future_doses, R.id.nav_home, R.id.nav_vaccine)
+    appBarConfiguration = new AppBarConfiguration.Builder(
+        //changes the text in the top of the screen
+        R.id.nav_future_doses, R.id.nav_home, R.id.nav_vaccine, R.id.nav_camera)
         .setDrawerLayout(drawer)
         .build();
     navController = Navigation.findNavController(this,
@@ -66,20 +67,32 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @Override
+  public boolean onNavigationItemSelected(MenuItem menuItem) {
+    return true;
+  }
+
+    @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     boolean handled;
     final int itemId = item.getItemId();
     if (itemId == R.id.sign_out) {
       loginViewModel.signOut();
       handled = true;
-    } else if(itemId == R.id.action_settings) { //generated for us from overflow menu
-      navController.navigate(MobileNavigationDirections.openSettings()); //when we created the navigation under id, followied by directions
+    } else if (itemId == R.id.action_settings) { //generated for us from overflow menu
+      navController.navigate(
+          MobileNavigationDirections.openSettings()); //when we created the navigation under id, followied by directions
+      handled = true;
+    } else if (itemId == R.id.nav_camera) {
+      Intent newIntent = new Intent(getApplicationContext(), CameraActivity.class);
+      newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(newIntent);
       handled = true;
     } else {
       handled = super.onOptionsItemSelected(item);
     }
     return handled;
   }
+
 
   @Override
   public boolean onSupportNavigateUp() {

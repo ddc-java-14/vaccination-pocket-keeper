@@ -69,6 +69,14 @@ android {
 }
 
 dependencies {
+
+    //Camera Support Libraries
+    def camerax_version = "1.0.0-beta05"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation"androidx.camera:camera-view:1.0.0-alpha12"
+    implementation "androidx.camera:camera-extensions:1.0.0-alpha12"
+
     // Basic Android Support Libraries
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'

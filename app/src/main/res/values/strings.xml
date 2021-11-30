@@ -50,4 +50,7 @@
   <string name="menu_all_future_doses">All Future Doses</string>
   <string name="future_doses">Future Doses</string>
   <string name="future_doses_pref_key">future_doses</string>
+  <string name="capture">Capture Image</string>
+  <string name="preview_area">Preview Area</string>
+  <string name="menu_camera">Take Picture</string>
 </resources>
