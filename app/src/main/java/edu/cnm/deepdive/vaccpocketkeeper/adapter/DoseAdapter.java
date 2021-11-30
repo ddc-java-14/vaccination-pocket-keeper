@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ItemDoseBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
@@ -26,7 +27,7 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
   private final DateFormat dateFormat;
   private final VaccineWithDoses vaccine;
   private final List<Dose> doses;
-  //private final Doctor doctor;
+  private LiveData<Doctor> doctor;
   private final List<Doctor> doctors;
   private final OnDoseEditHelper onDoseEditHelper;
   private final OnDoseDeleteHelper onDoseDeleteHelper;
@@ -87,11 +88,12 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
       binding.doseName.setText(dose.getName());
       //if (doctors != null) {
       if (dose.getDoctorId() != null) {
-          //doctorViewModel.getDoctor().observe(getViewLifecycleOwner(), (doctor) -> {
+          //doctorViewModel.getDoctorById(dose.getDoctorId())
+          //    .observe(getViewLifecycleOwner(), (doctor) -> {
           //this.doctor = doctor;});
         //doctor.getName()
         binding.doseDoctor.setText(dose.getDoctorId().toString());
-        //binding.doseDoctor.setText(doctors.get(dose.getDoctorId()));
+        //binding.doseDoctor.setText(doctors.get(doctor.getValue().getName());
       }
       binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));
       binding.doseEdit.setOnClickListener(

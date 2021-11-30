@@ -118,7 +118,7 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
         binding.dateAdministered.updateDate(dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
         if (doctor != null) {
           int selectedPosition = adapter.getPosition(doctor);
-          String selectedItem = adapter.getItem(selectedPosition).getName();
+          //String selectedItem = adapter.getItem(selectedPosition).getName();
           binding.doctorNameSelector.setSelection(selectedPosition);
         }
         binding.doseName.setText(dose.getName());
@@ -126,17 +126,17 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
     } else { //new dose
       dose = new Dose();
     }
-//    doctorViewModel = new ViewModelProvider(this).get(DoctorViewModel.class);
-//    doctorViewModel
-//        .getDoctors()
-//        .observe(getViewLifecycleOwner(), (doctors) -> {
-//          if (doctors != null) {
-//            adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,
-//                doctors);
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//            binding.doctorNameSelector.setAdapter(adapter);
-//          }
-//        });
+    doctorViewModel = new ViewModelProvider(this).get(DoctorViewModel.class);
+    doctorViewModel
+        .getDoctors()
+        .observe(getViewLifecycleOwner(), (doctors) -> {
+          if (doctors != null) {
+            adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,
+                doctors);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.doctorNameSelector.setAdapter(adapter);
+          }
+        });
   }
 
   @Override
