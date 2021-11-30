@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.vaccpocketkeeper.service;
 
 import android.app.Application;
+import android.util.Log;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
@@ -41,9 +42,9 @@ public class DoseRepository {
     return doseDao.selectPastDoses();
   }
 
-  public LiveData<List<Dose>> getUpcomingDoses() {
-    //TODO: get limit from shared preferences
-    return doseDao.selectUpcomingDoses(5);
+  public LiveData<List<Dose>> getUpcomingDoses(int limit) {
+    Log.d(getClass().getSimpleName(), "size of returned list: " + String.valueOf(doseDao.selectUpcomingDoses(limit).getValue().size()));
+    return doseDao.selectUpcomingDoses(limit);
   }
 
   public Single<Dose> save(Dose dose) {

@@ -16,7 +16,6 @@ import androidx.lifecycle.Transformations;
 import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
-import edu.cnm.deepdive.vaccpocketkeeper.model.view.DoseSummary;
 import edu.cnm.deepdive.vaccpocketkeeper.service.DoseRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
@@ -32,6 +31,10 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   private final SharedPreferences preferences;
   private final String futureDosesPrefKey;
   private final int futureDosesPrefDefault;
+  private final MutableLiveData<Integer> futureDosesLimit;
+  private final LiveData<List<Dose>> futureDoses;
+
+
 
   public DoseViewModel(@NonNull Application application) {
     super(application);
@@ -48,13 +51,13 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     Resources resources = application.getResources();
     futureDosesPrefKey = resources.getString(R.string.future_doses_pref_key);
     futureDosesPrefDefault = resources.getInteger(R.integer.future_doses_pref_default);
-
-//    futureDosesLimit = new MutableLiveData<>(futureDosesPref);
-//    //sortedByTime = new MutableLiveData<>(false);
-//    ScoreboardFilterLiveData trigger =
-//        new ScoreboardFilterLiveData(codeLength, poolSize, sortedByTime);
-//    scoreboard = Transformations.switchMap(trigger, (params) -> params.sortedByTime
-//        ? repository.getOrderedByTotalTime(params.poolSize, params.codeLength) : repository.getOrderedByGuessCount(params.poolSize, params.codeLength));
+    int futureDosesPref = preferences.getInt(futureDosesPrefKey, futureDosesPrefDefault);
+     //repository.getUpcomingDoses(2).getValue().size()));
+    futureDosesLimit = new MutableLiveData<>(futureDosesPref);
+    //sortedByTime = new MutableLiveData<>(false);
+    FilterLiveData trigger =
+        new FilterLiveData(futureDosesLimit);
+    futureDoses = Transformations.switchMap(trigger, (params) -> repository.getUpcomingDoses(params.futureDoses));
   }
 
   public LiveData<Dose> getDose() {
@@ -85,9 +88,9 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   //getFutureDoses
-  public LiveData<List<Dose>> getFutureDoses() {
-    return repository.getUpcomingDoses();
-  }
+//  public LiveData<List<Dose>> getFutureDoses() {
+//    return repository.getUpcomingDoses();
+//  }
 
   //save
   public void save(Dose dose) {
@@ -129,11 +132,11 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   private static class Params {
 
     private final int futureDoses;
-    private final boolean sortedByTime;
+    //private final boolean sortedByTime;
 
-    private Params(int futureDoses, boolean sortedByTime) {
+    private Params(int futureDoses) {
       this.futureDoses = futureDoses;
-      this.sortedByTime = sortedByTime;
+      //this.sortedByTime = sortedByTime;
     }
   }
 
@@ -141,12 +144,12 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
 
     @SuppressWarnings("ConstantConditions")
     public FilterLiveData(
-        @NonNull LiveData<Integer> futureDoses,
-        @NonNull LiveData<Boolean> sortedByTime
+        @NonNull LiveData<Integer> futureDoses
+        //@NonNull LiveData<Boolean> sortedByTime
     ) {
       //combination treated as livedata rather than individual pieces
-      addSource(futureDoses, (years) -> setValue(new Params(years, sortedByTime.getValue())));
-      addSource(sortedByTime, (sorted) -> setValue(new Params(futureDoses.getValue(), sorted)));
+      addSource(futureDoses, (years) -> setValue(new Params(years)));
+      //addSource(sortedByTime, (sorted) -> setValue(new Params(futureDoses.getValue(), sorted)));
     }
   }
 }

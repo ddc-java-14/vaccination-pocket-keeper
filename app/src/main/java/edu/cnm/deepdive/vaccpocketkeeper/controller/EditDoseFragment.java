@@ -1,8 +1,11 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
+import static java.time.MonthDay.now;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,10 +83,12 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
       //SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
       Calendar calendar = Calendar.getInstance();
       try {
-        calendar.set(Calendar.MONTH, binding.dateAdministered.getMonth());
-        calendar.set(Calendar.YEAR, binding.dateAdministered.getYear());
-        calendar.set(Calendar.DAY_OF_WEEK, binding.dateAdministered.getDayOfMonth());
+        //calendar.set(Calendar.MONTH, binding.dateAdministered.getMonth());
+        //calendar.set(Calendar.YEAR, binding.dateAdministered.getYear());
+        //calendar.set(Calendar.DAY_OF_WEEK, binding.dateAdministered.getDayOfMonth());
+        calendar.set(dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
         Date dt = calendar.getTime();
+        Log.d(getClass().getSimpleName(), "Calendar Date/Time: "+dt);
         dose.setDateAdministered(dt);
       } catch (Exception e) {
         e.printStackTrace();
@@ -110,12 +115,16 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
       doseViewModel.getDose().observe(getViewLifecycleOwner(), (dose) -> {
         this.dose = dose;
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.MONTH, dose.getDateAdministered().getMonth());
-        calendar.set(Calendar.YEAR, dose.getDateAdministered().getYear());
-        calendar.set(Calendar.DAY_OF_WEEK, dose.getDateAdministered().getDay());
+        //calendar.set(Calendar.MONTH, dose.getDateAdministered().getMonth());
+        calendar.set(dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
+        //calendar.set(Calendar.YEAR, dose.getDateAdministered().getYear());
+        //calendar.set(Calendar.DAY_OF_WEEK, dose.getDateAdministered().getDay());
         //calendar.setTime(dose.getDateAdministered());
             //dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
-        binding.dateAdministered.updateDate(dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
+        //Time now = new Time();
+        //now.setToNow();
+        //now.year, now.month,now.monthDay
+        binding.dateAdministered.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
         if (doctor != null) {
           int selectedPosition = adapter.getPosition(doctor);
           //String selectedItem = adapter.getItem(selectedPosition).getName();

@@ -60,9 +60,11 @@ public class AllFutureDosesAdapter extends RecyclerView.Adapter<AllFutureDosesAd
     private void bind(int position) {
       //Use contents of model object to set contents of binding fields.
       Dose dose = doses.get(position);
-      binding.doseName.setText(dose.getName());//TODO get this from nav argument/database
-      binding.doseDoctor.setText(dose.getDoctorId().toString());
-      binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));//TODO double check this line doesn't cause the app to crash
+      binding.doseName.setText(dose.getName());
+      if (dose.getDoctorId() != null) {
+        binding.doseDoctor.setText(dose.getDoctorId().toString());
+      }
+      binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));
       binding.doseEdit.setOnClickListener(
           (v) -> onDoseEditHelper.onDoseClick(dose.getId(), v));
       binding.doseDelete.setOnClickListener(
