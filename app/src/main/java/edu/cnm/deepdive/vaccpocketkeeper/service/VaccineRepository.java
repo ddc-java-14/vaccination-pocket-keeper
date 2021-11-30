@@ -7,6 +7,7 @@ import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.VaccineDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import io.reactivex.Completable;
@@ -57,7 +58,7 @@ public class VaccineRepository {
       vaccine.setCreated(new Date());
       Calendar cal = Calendar.getInstance();
       for (int i = 0; i < vaccine.getTotalNumberOfDoses(); i++) { //TODO: getTotalNumberOfDoses is empty
-        Dose dose = new Dose();
+        DoseWithDoctor dose = new DoseWithDoctor();
         cal.add(Calendar.YEAR, vaccine.getFrequency());
         dose.setDateAdministered(cal.getTime());
         dose.setName("DoseNumber"+(i+1));
@@ -75,7 +76,7 @@ public class VaccineRepository {
           .flatMap((savedVaccine) -> doseDao.insert(savedVaccine.getDoses()))
           .map((ids) -> {
             Iterator<Long> idIterator = ids.iterator();
-            Iterator<Dose> doseIterator = vaccine.getDoses().iterator();
+            Iterator<DoseWithDoctor> doseIterator = vaccine.getDoses().iterator();
             while (idIterator.hasNext()) {
               Dose dose = doseIterator.next();
               Long id = idIterator.next();

@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.DoseSummary;
 import io.reactivex.Completable;
@@ -30,7 +31,7 @@ public class DoseRepository {
     return doseDao.select(doseId);
   }
 
-  public LiveData<List<Dose>> getAll() {
+  public LiveData<List<DoseWithDoctor>> getAll() {
     return doseDao.selectAll();
   }
 

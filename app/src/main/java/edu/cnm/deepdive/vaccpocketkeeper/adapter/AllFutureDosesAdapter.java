@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ItemDoseBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import java.text.DateFormat;
 import java.util.List;
@@ -17,12 +18,12 @@ public class AllFutureDosesAdapter extends RecyclerView.Adapter<AllFutureDosesAd
   //TODO: change fragment_edit_dose layouts to doctor spinner dropdown and datepicker widgets
   private final LayoutInflater inflator;
   private final DateFormat dateFormat;
-  private final List<Dose> doses;
+  private final List<DoseWithDoctor> doses;
   private final OnDoseEditHelper onDoseEditHelper;
   private final OnDoseDeleteHelper onDoseDeleteHelper;
 
 
-  public AllFutureDosesAdapter(Context context, List<Dose> doses,
+  public AllFutureDosesAdapter(Context context, List<DoseWithDoctor> doses,
       OnDoseEditHelper onDoseEditHelper,
       OnDoseDeleteHelper onDoseDeleteHelper) {
     inflator = LayoutInflater.from(context);
@@ -59,10 +60,10 @@ public class AllFutureDosesAdapter extends RecyclerView.Adapter<AllFutureDosesAd
 
     private void bind(int position) {
       //Use contents of model object to set contents of binding fields.
-      Dose dose = doses.get(position);
+      DoseWithDoctor dose = doses.get(position);
       binding.doseName.setText(dose.getName());
       if (dose.getDoctorId() != null) {
-        binding.doseDoctor.setText(dose.getDoctorId().toString());
+        binding.doseDoctor.setText(dose.getDoctor().getName());
       }
       binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));
       binding.doseEdit.setOnClickListener(

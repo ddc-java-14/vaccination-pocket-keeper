@@ -89,7 +89,7 @@ public class DoseFragment extends Fragment {
     vaccineViewModel
         .getVaccine()
         .observe(getViewLifecycleOwner(), (vaccine) -> {
-          DoseAdapter adapter = new DoseAdapter(getContext(), vaccine, doctors,
+          DoseAdapter adapter = new DoseAdapter(getContext(), vaccine,
               (doseId, view1) -> editDose(doseId, vaccineId, view1),
               (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
           binding.doses.setAdapter(adapter);

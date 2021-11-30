@@ -13,13 +13,13 @@ public class VaccineWithDoses extends Vaccine {
       entityColumn = "vaccine_id",
       parentColumn = "vaccine_id"
   )
-  private List<Dose> doses = new LinkedList<>();
+  private List<DoseWithDoctor> doses = new LinkedList<>();
 
-  public List<Dose> getDoses() {
+  public List<DoseWithDoctor> getDoses() {
     return doses;
   }
 
-  public void setDoses(List<Dose> doses) {
+  public void setDoses(List<DoseWithDoctor> doses) {
     this.doses = doses;
   }
 }

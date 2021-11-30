@@ -16,6 +16,7 @@ import androidx.lifecycle.Transformations;
 import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.service.DoseRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
@@ -72,7 +73,7 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   //getAll
-  public LiveData<List<Dose>> getDoses() {
+  public LiveData<List<DoseWithDoctor>> getDoses() {
     return repository.getAll();
   }
 

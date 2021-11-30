@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import io.reactivex.Single;
 import java.util.Collection;
@@ -22,7 +23,7 @@ public interface DoseDao {
   Single<List<Long>> insert(Dose... doses);
 
   @Insert
-  Single<List<Long>> insert(Collection<Dose> doses);
+  Single<List<Long>> insert(Collection<? extends Dose> doses);
 
   @Update
   Single<Integer> update(Dose dose);//return type is number of records affected by the operation
@@ -31,7 +32,7 @@ public interface DoseDao {
   Single<Integer> update(Dose... doses);
 
   @Update
-  Single<Integer> update(Collection<Dose> doses);
+  Single<Integer> update(Collection<? extends Dose> doses);
 
   @Delete
   Single<Integer> delete(Dose dose);
@@ -40,10 +41,10 @@ public interface DoseDao {
   Single<Integer> delete(Dose... doses);
 
   @Delete
-  Single<Integer> delete(Collection<Dose> doses);
+  Single<Integer> delete(Collection<? extends Dose> doses);
 
   @Query("SELECT * FROM dose ORDER BY created DESC") //we named our table dose
-  LiveData<List<Dose>> selectAll();
+  LiveData<List<DoseWithDoctor>> selectAll();
 
   @Query("SELECT * FROM dose ORDER BY date_administered ASC") //we named our table dose
   LiveData<List<Dose>> selectAllFutureDoses();

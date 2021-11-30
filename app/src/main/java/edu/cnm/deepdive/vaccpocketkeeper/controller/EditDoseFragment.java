@@ -126,10 +126,10 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
         this.dose = dose;
         Calendar calendar = Calendar.getInstance();
         //calendar.set(Calendar.MONTH, dose.getDateAdministered().getMonth());
-        calendar.set(dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
+//        calendar.set(dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
         //calendar.set(Calendar.YEAR, dose.getDateAdministered().getYear());
         //calendar.set(Calendar.DAY_OF_WEEK, dose.getDateAdministered().getDay());
-        //calendar.setTime(dose.getDateAdministered());
+        calendar.setTime(dose.getDateAdministered());
             //dose.getDateAdministered().getYear(), dose.getDateAdministered().getMonth(), dose.getDateAdministered().getDay());
         //Time now = new Time();
         //now.setToNow();

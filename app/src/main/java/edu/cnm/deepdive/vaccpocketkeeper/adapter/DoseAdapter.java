@@ -15,6 +15,7 @@ import edu.cnm.deepdive.vaccpocketkeeper.databinding.ItemDoseBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.service.DoctorRepository;
 import edu.cnm.deepdive.vaccpocketkeeper.service.DoseRepository;
@@ -26,14 +27,13 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
   private final LayoutInflater inflator;
   private final DateFormat dateFormat;
   private final VaccineWithDoses vaccine;
-  private final List<Dose> doses;
+  private final List<DoseWithDoctor> doses;
   private LiveData<Doctor> doctor;
-  private final List<Doctor> doctors;
   private final OnDoseEditHelper onDoseEditHelper;
   private final OnDoseDeleteHelper onDoseDeleteHelper;
   private DoctorViewModel doctorViewModel;
 
-  public DoseAdapter(Context context, VaccineWithDoses vaccine, List<Doctor> doctors,
+  public DoseAdapter(Context context, VaccineWithDoses vaccine,
       OnDoseEditHelper onDoseEditHelper,
       OnDoseDeleteHelper onDoseDeleteHelper) {
     inflator = LayoutInflater.from(context);
@@ -43,7 +43,6 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     this.vaccine = vaccine;
     this.doses = vaccine.getDoses();
     //this.doctor = doctor;
-    this.doctors = doctors;
     /*doses.forEach((dose)-> {dose.getDoctorId();
         doctorViewModel.getDoctor().observe(getViewLifecycleOwner(), (doctor) -> {
         this.doctor = doctor;}););*/
@@ -84,7 +83,7 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     private void bind(int position) {
       //Log.d(getClass().getSimpleName(), "value: "+value);
       //Use contents of model object to set contents of binding fields.
-      Dose dose = doses.get(position);
+      DoseWithDoctor dose = doses.get(position);
       binding.doseName.setText(dose.getName());
       //if (doctors != null) {
       if (dose.getDoctorId() != null) {
@@ -92,7 +91,7 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
           //    .observe(getViewLifecycleOwner(), (doctor) -> {
           //this.doctor = doctor;});
         //doctor.getName()
-        binding.doseDoctor.setText(dose.getDoctorId().toString());
+        binding.doseDoctor.setText(dose.getDoctor().getName());
         //binding.doseDoctor.setText(doctors.get(doctor.getValue().getName());
       }
       binding.dateAdministered.setText(String.valueOf(dose.getDateAdministered()));
