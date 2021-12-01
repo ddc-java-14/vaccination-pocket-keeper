@@ -40,14 +40,14 @@ This app includes several features which enable vaccination tracking and history
 
 ## Persistent data
 
-* Vaccinations and all metadata about vaccinations (e.g.)
-  * vaccination name
-  * description of vaccination
-  * recommended age range to get vaccination
-  * name of doctor who administered the last vaccination of its type
-  * date vaccination was last administered
-  * upcoming vaccination dates that are needed over the lifetime of the individual
-  * photo of proof of vaccination for each dose
+Vaccinations and all metadata about vaccinations (e.g.)
+* vaccination name
+* description of vaccination
+* recommended age range to get vaccination
+* name of doctor who administered the last vaccination of its type
+* date vaccination was last administered
+* upcoming vaccination dates that are needed over the lifetime of the individual
+* photo of proof of vaccination for each dose
 
 ## Device/external services
 
@@ -68,7 +68,7 @@ These additional resources will be integrated into the WebView:
 * [Recommended Immunization Schedule for Adults](https://www.cdc.gov/vaccines/schedules/hcp/imz/adult.html)
 
 **Note**
-These resources are subject to change as additional information is discovered.
+These resources are subject to increase as additional information is discovered.
 
 ## Summary of current state of the app
 
@@ -127,13 +127,13 @@ List of aesthetic/cosmetic (not functional) enhancements
 
 ### List of Android permissions required to run the app
 
-* Permissions Required to Run the App
-  * Safe permissions
-    * None
-  * Dangerous permissions
-    * Camera
-      * Write and read to external storage
-         * If the user does not allow both of these permissions, then the user cannot store a photo to file storage on the phone.  
+Permissions Required to Run the App
+* Safe permissions
+  * None
+* Dangerous permissions
+  * Camera
+    * Write and read to external storage
+       * If the user does not allow both of these permissions, then the user cannot store a photo to file storage on the phone.  
 
 ### A list of the external services consumed by the app
 
@@ -152,27 +152,22 @@ List of aesthetic/cosmetic (not functional) enhancements
 
 #### Clone/download the repository
 
-The repository can be cloned from the following link.
-
+1. The repository can be cloned from the following link.
 [Github link to repository](https://github.com/ddc-java-14/vaccination-pocket-keeper/)
-
-Import the project into Android Studio/IntelliJ IDEA.
-
-A standard clone from VCS will import the project into IntelliJ
-
-Execute the build.
-
-There are no special build instructions.  
+2. Import the project into Android Studio/IntelliJ IDEA.
+3. A standard clone from VCS will import the project into IntelliJ
+4. Execute the build. 
+5. There are no special build instructions.  
 
 ## Basic user instructions
 
-Sign in to the app using a google sign in account.
-The app comes pre-loaded with several doctors, vaccines, and doses. 
-Add new/edit/delete vaccines, doctors, and doses.
-When on the vaccines screen, clicking on a vaccine will take the user to a detailed dose for each vaccine screen.
-Take a photo of a vaccination card (e.g. COVID-19 proof of vaccination).  
-- Select a Dose to associate the picture with. 
-- This is stored in the local database under the applicable Dose.
+1. Sign in to the app using a google sign in account.
+2. The app comes pre-loaded with several doctors, vaccines, and doses. 
+3. Add new/edit/delete vaccines, doctors, and doses.
+4. When on the vaccines screen, clicking on a vaccine will take the user to a detailed dose for each vaccine screen.
+5. Take a photo of a vaccination card (e.g. COVID-19 proof of vaccination).
+   * Select a Dose to associate the picture with. 
+   * This is stored in the local database under the applicable Dose.
 
 ## Implementation
 
