@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -147,6 +147,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">DoseViewModel</span>
 extends <a href="https://developer.android.com/reference/androidx/lifecycle/AndroidViewModel.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">AndroidViewModel</a>
 implements <a href="https://developer.android.com/reference/androidx/lifecycle/LifecycleObserver.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LifecycleObserver</a></pre>
+<div class="block">Implements the business logic behind the application.  Interacts with the DoseRepository to perform CRUD operations on the database.</div>
 </li>
 </ul>
 </div>
@@ -168,7 +169,9 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(android.app.Application)">DoseViewModel</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;application)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Class constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -191,42 +194,67 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteDose(edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose)">deleteDose</a></span>&#8203;(<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&nbsp;dose)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the DoseRepository to get delete a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object from the database.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDose()">getDose</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns the local dose variable.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/pojo/DoseWithDoctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo">DoseWithDoctor</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDoses()">getDoses</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDoseById(long)">getDoseById</a></span>&#8203;(long&nbsp;doseId)</code></th>
+<td class="colLast">
+<div class="block">Interacts with the DoseRepository to get a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object as specified by the doseId parameter.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDosesForVaccineId(long)">getDosesForVaccineId</a></span>&#8203;(long&nbsp;id)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/pojo/DoseWithDoctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo">DoseWithDoctor</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDoses()">getDoses</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Interacts with the DoseRepository to get a list of all upcoming <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> objects in the database.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPastDoses()">getPastDoses</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDosesForVaccineId(long)">getDosesForVaccineId</a></span>&#8203;(long&nbsp;vaccineId)</code></th>
+<td class="colLast">
+<div class="block">Interacts with the DoseRepository to get a list of all <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> objects that belong to the vaccine specified by the
+ vaccineId in the database.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang" class="externalLink">Throwable</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThrowable()">getThrowable</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPastDoses(java.util.Date)">getPastDoses</a></span>&#8203;(<a href="https://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util" class="externalLink">Date</a>&nbsp;fromDate)</code></th>
+<td class="colLast">
+<div class="block">Interacts with the DoseRepository to get a list of all past <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> objects
+ before the specified date.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#save(edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose)">save</a></span>&#8203;(<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&nbsp;dose)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang" class="externalLink">Throwable</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThrowable()">getThrowable</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the local variable throwable.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#save(edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose)">save</a></span>&#8203;(<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&nbsp;dose)</code></th>
+<td class="colLast">
+<div class="block">Interacts with the DoseRepository to get save a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object to the database.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDoseId(long)">setDoseId</a></span>&#8203;(long&nbsp;id)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets the local doseId variable.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -274,6 +302,12 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <h4>DoseViewModel</h4>
 <pre>public&nbsp;DoseViewModel&#8203;(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html?is-external=true" title="class or interface in androidx.annotation" class="externalLink">@NonNull</a>
                      <a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;application)</pre>
+<div class="block">Class constructor.  Instantiates local class variables. Additionally, reads future dose
+ values from SharedPreferences.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>application</code> - an application.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -293,6 +327,27 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <li class="blockList">
 <h4>getDose</h4>
 <pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&nbsp;getDose()</pre>
+<div class="block">Returns the local dose variable.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> object of type <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a>.</dd>
+</dl>
+</li>
+</ul>
+<a id="getDoseById(long)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDoseById</h4>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&nbsp;getDoseById&#8203;(long&nbsp;doseId)</pre>
+<div class="block">Interacts with the DoseRepository to get a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object as specified by the doseId parameter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>doseId</code> - a unique identifier for a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> object of type <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="setDoseId(long)">
@@ -302,6 +357,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <li class="blockList">
 <h4>setDoseId</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setDoseId&#8203;(long&nbsp;id)</pre>
+<div class="block">Sets the local doseId variable. If an object is observing this, it will cause a refresh of dose assignment in constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>id</code> - a unique identifier for a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object.</dd>
+</dl>
 </li>
 </ul>
 <a id="getThrowable()">
@@ -311,6 +371,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <li class="blockList">
 <h4>getThrowable</h4>
 <pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang" class="externalLink">Throwable</a>&gt;&nbsp;getThrowable()</pre>
+<div class="block">Returns the local variable throwable.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the local variable throwable.</dd>
+</dl>
 </li>
 </ul>
 <a id="getDoses()">
@@ -320,6 +385,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <li class="blockList">
 <h4>getDoses</h4>
 <pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/pojo/DoseWithDoctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo">DoseWithDoctor</a>&gt;&gt;&nbsp;getDoses()</pre>
+<div class="block">Interacts with the DoseRepository to get a list of all upcoming <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> objects in the database.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> <a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink"><code>List</code></a> object of type <a href="../model/pojo/DoseWithDoctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo"><code>DoseWithDoctor</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="getDosesForVaccineId(long)">
@@ -328,16 +398,32 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <ul class="blockList">
 <li class="blockList">
 <h4>getDosesForVaccineId</h4>
-<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&gt;&nbsp;getDosesForVaccineId&#8203;(long&nbsp;id)</pre>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&gt;&nbsp;getDosesForVaccineId&#8203;(long&nbsp;vaccineId)</pre>
+<div class="block">Interacts with the DoseRepository to get a list of all <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> objects that belong to the vaccine specified by the
+ vaccineId in the database.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vaccineId</code> - a unique identifier for a Vaccine object.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> <a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink"><code>List</code></a> object of type <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a>.</dd>
+</dl>
 </li>
 </ul>
-<a id="getPastDoses()">
+<a id="getPastDoses(java.util.Date)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getPastDoses</h4>
-<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&gt;&nbsp;getPastDoses()</pre>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&gt;&gt;&nbsp;getPastDoses&#8203;(<a href="https://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util" class="externalLink">Date</a>&nbsp;fromDate)</pre>
+<div class="block">Interacts with the DoseRepository to get a list of all past <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> objects
+ before the specified date.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>fromDate</code> - a <a href="https://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util" class="externalLink"><code>Date</code></a> before which we are getting past <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> objects.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> <a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink"><code>List</code></a> object of type <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="save(edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose)">
@@ -347,6 +433,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <li class="blockList">
 <h4>save</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;save&#8203;(<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&nbsp;dose)</pre>
+<div class="block">Interacts with the DoseRepository to get save a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object to the database.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dose</code> - the <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object to be saved.</dd>
+</dl>
 </li>
 </ul>
 <a id="deleteDose(edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose)">
@@ -356,6 +447,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <li class="blockList">
 <h4>deleteDose</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;deleteDose&#8203;(<a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Dose</a>&nbsp;dose)</pre>
+<div class="block">Interacts with the DoseRepository to get delete a <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object from the database.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dose</code> - the <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a> object to be deleted.</dd>
+</dl>
 </li>
 </ul>
 </li>

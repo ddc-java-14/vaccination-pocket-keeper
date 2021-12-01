@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -176,6 +176,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">CameraActivity</span>
 extends <a href="https://developer.android.com/reference/androidx/appcompat/app/AppCompatActivity.html?is-external=true" title="class or interface in androidx.appcompat.app" class="externalLink">AppCompatActivity</a></pre>
+<div class="block">Implements methods that enable a user to take a photgraph from their phone,
+ store the photograph in local storage and associate the picture with a particular <a href="../model/entity/Dose.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Dose</code></a>
+ in the database.  Interacts with the <a href="../viewmodel/DoseViewModel.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.viewmodel"><code>DoseViewModel</code></a> to store the photo file location in the
+ database. Uses the visual layout for the Take Picture screen as specified by the activity_camera
+ layout in res/layout.  Requests user permission to access the camera and to read and write to external storage.</div>
 </li>
 </ul>
 </div>
@@ -266,21 +271,20 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBatchDirectoryName()">getBatchDirectoryName</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/ViewModelStore.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">ViewModelStore</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getViewModelStore()">getViewModelStore</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Instantiates a <a href="https://developer.android.com/reference/androidx/lifecycle/ViewModelStore.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>ViewModelStore</code></a> object</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://developer.android.com/reference/android/graphics/Bitmap.html?is-external=true" title="class or interface in android.graphics" class="externalLink">Bitmap</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadFromUri(android.net.Uri)">loadFromUri</a></span>&#8203;(<a href="https://developer.android.com/reference/android/net/Uri.html?is-external=true" title="class or interface in android.net" class="externalLink">Uri</a>&nbsp;photoUri)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(<a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the onCreate method in AppCompatActivity.</div>
+</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onRequestPermissionsResult(int,java.lang.String%5B%5D,int%5B%5D)">onRequestPermissionsResult</a></span>&#8203;(int&nbsp;requestCode,
                           <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>[]&nbsp;permissions,
@@ -307,7 +311,7 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;androidx.activity.<a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true" title="class or interface in androidx.activity" class="externalLink">ComponentActivity</a></h3>
-<code><a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#addOnContextAvailableListener(androidx.activity.contextaware.OnContextAvailableListener)" title="class or interface in androidx.activity" class="externalLink">addOnContextAvailableListener</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getActivityResultRegistry()" title="class or interface in androidx.activity" class="externalLink">getActivityResultRegistry</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getDefaultViewModelProviderFactory()" title="class or interface in androidx.activity" class="externalLink">getDefaultViewModelProviderFactory</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getLastCustomNonConfigurationInstance()" title="class or interface in androidx.activity" class="externalLink">getLastCustomNonConfigurationInstance</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getLifecycle()" title="class or interface in androidx.activity" class="externalLink">getLifecycle</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getOnBackPressedDispatcher()" title="class or interface in androidx.activity" class="externalLink">getOnBackPressedDispatcher</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getSavedStateRegistry()" title="class or interface in androidx.activity" class="externalLink">getSavedStateRegistry</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getViewModelStore()" title="class or interface in androidx.activity" class="externalLink">getViewModelStore</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onBackPressed()" title="class or interface in androidx.activity" class="externalLink">onBackPressed</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onRetainCustomNonConfigurationInstance()" title="class or interface in androidx.activity" class="externalLink">onRetainCustomNonConfigurationInstance</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onRetainNonConfigurationInstance()" title="class or interface in androidx.activity" class="externalLink">onRetainNonConfigurationInstance</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onSaveInstanceState(android.os.Bundle)" title="class or interface in androidx.activity" class="externalLink">onSaveInstanceState</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#peekAvailableContext()" title="class or interface in androidx.activity" class="externalLink">peekAvailableContext</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#registerForActivityResult(androidx.activity.result.contract.ActivityResultContract,androidx.activity.result.ActivityResultCallback)" title="class or interface in androidx.activity" class="externalLink">registerForActivityResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#registerForActivityResult(androidx.activity.result.contract.ActivityResultContract,androidx.activity.result.ActivityResultRegistry,androidx.activity.result.ActivityResultCallback)" title="class or interface in androidx.activity" class="externalLink">registerForActivityResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#removeOnContextAvailableListener(androidx.activity.contextaware.OnContextAvailableListener)" title="class or interface in androidx.activity" class="externalLink">removeOnContextAvailableListener</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#reportFullyDrawn()" title="class or interface in androidx.activity" class="externalLink">reportFullyDrawn</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startActivityForResult(android.content.Intent,int)" title="class or interface in androidx.activity" class="externalLink">startActivityForResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startActivityForResult(android.content.Intent,int,android.os.Bundle)" title="class or interface in androidx.activity" class="externalLink">startActivityForResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startIntentSenderForResult(android.content.IntentSender,int,android.content.Intent,int,int,int)" title="class or interface in androidx.activity" class="externalLink">startIntentSenderForResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startIntentSenderForResult(android.content.IntentSender,int,android.content.Intent,int,int,int,android.os.Bundle)" title="class or interface in androidx.activity" class="externalLink">startIntentSenderForResult</a></code></li>
+<code><a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#addOnContextAvailableListener(androidx.activity.contextaware.OnContextAvailableListener)" title="class or interface in androidx.activity" class="externalLink">addOnContextAvailableListener</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getActivityResultRegistry()" title="class or interface in androidx.activity" class="externalLink">getActivityResultRegistry</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getDefaultViewModelProviderFactory()" title="class or interface in androidx.activity" class="externalLink">getDefaultViewModelProviderFactory</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getLastCustomNonConfigurationInstance()" title="class or interface in androidx.activity" class="externalLink">getLastCustomNonConfigurationInstance</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getLifecycle()" title="class or interface in androidx.activity" class="externalLink">getLifecycle</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getOnBackPressedDispatcher()" title="class or interface in androidx.activity" class="externalLink">getOnBackPressedDispatcher</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getSavedStateRegistry()" title="class or interface in androidx.activity" class="externalLink">getSavedStateRegistry</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onBackPressed()" title="class or interface in androidx.activity" class="externalLink">onBackPressed</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onRetainCustomNonConfigurationInstance()" title="class or interface in androidx.activity" class="externalLink">onRetainCustomNonConfigurationInstance</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onRetainNonConfigurationInstance()" title="class or interface in androidx.activity" class="externalLink">onRetainNonConfigurationInstance</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#onSaveInstanceState(android.os.Bundle)" title="class or interface in androidx.activity" class="externalLink">onSaveInstanceState</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#peekAvailableContext()" title="class or interface in androidx.activity" class="externalLink">peekAvailableContext</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#registerForActivityResult(androidx.activity.result.contract.ActivityResultContract,androidx.activity.result.ActivityResultCallback)" title="class or interface in androidx.activity" class="externalLink">registerForActivityResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#registerForActivityResult(androidx.activity.result.contract.ActivityResultContract,androidx.activity.result.ActivityResultRegistry,androidx.activity.result.ActivityResultCallback)" title="class or interface in androidx.activity" class="externalLink">registerForActivityResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#removeOnContextAvailableListener(androidx.activity.contextaware.OnContextAvailableListener)" title="class or interface in androidx.activity" class="externalLink">removeOnContextAvailableListener</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#reportFullyDrawn()" title="class or interface in androidx.activity" class="externalLink">reportFullyDrawn</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startActivityForResult(android.content.Intent,int)" title="class or interface in androidx.activity" class="externalLink">startActivityForResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startActivityForResult(android.content.Intent,int,android.os.Bundle)" title="class or interface in androidx.activity" class="externalLink">startActivityForResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startIntentSenderForResult(android.content.IntentSender,int,android.content.Intent,int,int,int)" title="class or interface in androidx.activity" class="externalLink">startIntentSenderForResult</a>, <a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#startIntentSenderForResult(android.content.IntentSender,int,android.content.Intent,int,int,int,android.os.Bundle)" title="class or interface in androidx.activity" class="externalLink">startIntentSenderForResult</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.androidx.core.app.ComponentActivity">
@@ -400,34 +404,23 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <li class="blockList">
 <h4>onCreate</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;onCreate&#8203;(<a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</pre>
+<div class="block">Overrides the onCreate method in AppCompatActivity.  Instantiates local variables.
+ Specifically, uses the visual layout for the Take Picture screen as specified by the
+ activity_camera layout in res/layout. Interacts with the <a href="../viewmodel/DoseViewModel.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.viewmodel"><code>DoseViewModel</code></a> to get
+ a dropdown list of all of the doses in the database.  Requests user permission to access
+ the camera and to read and write to external storage.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true#onCreate(android.os.Bundle)" title="class or interface in androidx.fragment.app" class="externalLink">onCreate</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">FragmentActivity</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>savedInstanceState</code> - a <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink"><code>Bundle</code></a>.</dd>
 </dl>
-</li>
-</ul>
-<a id="loadFromUri(android.net.Uri)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>loadFromUri</h4>
-<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap.html?is-external=true" title="class or interface in android.graphics" class="externalLink">Bitmap</a>&nbsp;loadFromUri&#8203;(<a href="https://developer.android.com/reference/android/net/Uri.html?is-external=true" title="class or interface in android.net" class="externalLink">Uri</a>&nbsp;photoUri)</pre>
-</li>
-</ul>
-<a id="getBatchDirectoryName()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getBatchDirectoryName</h4>
-<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;getBatchDirectoryName()</pre>
 </li>
 </ul>
 <a id="onRequestPermissionsResult(int,java.lang.String[],int[])">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>onRequestPermissionsResult</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;onRequestPermissionsResult&#8203;(int&nbsp;requestCode,
@@ -440,6 +433,24 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <dd><code><a href="https://developer.android.com/reference/androidx/core/app/ActivityCompat.OnRequestPermissionsResultCallback.html?is-external=true#onRequestPermissionsResult(int,java.lang.String%5B%5D,int%5B%5D)" title="class or interface in androidx.core.app" class="externalLink">onRequestPermissionsResult</a></code>&nbsp;in interface&nbsp;<code><a href="https://developer.android.com/reference/androidx/core/app/ActivityCompat.OnRequestPermissionsResultCallback.html?is-external=true" title="class or interface in androidx.core.app" class="externalLink">ActivityCompat.OnRequestPermissionsResultCallback</a></code></dd>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true#onRequestPermissionsResult(int,java.lang.String%5B%5D,int%5B%5D)" title="class or interface in androidx.fragment.app" class="externalLink">onRequestPermissionsResult</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">FragmentActivity</a></code></dd>
+</dl>
+</li>
+</ul>
+<a id="getViewModelStore()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getViewModelStore</h4>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/ViewModelStore.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">ViewModelStore</a>&nbsp;getViewModelStore()</pre>
+<div class="block">Instantiates a <a href="https://developer.android.com/reference/androidx/lifecycle/ViewModelStore.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>ViewModelStore</code></a> object</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="https://developer.android.com/reference/androidx/lifecycle/ViewModelStoreOwner.html?is-external=true#getViewModelStore()" title="class or interface in androidx.lifecycle" class="externalLink">getViewModelStore</a></code>&nbsp;in interface&nbsp;<code><a href="https://developer.android.com/reference/androidx/lifecycle/ViewModelStoreOwner.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">ViewModelStoreOwner</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true#getViewModelStore()" title="class or interface in androidx.activity" class="externalLink">getViewModelStore</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/activity/ComponentActivity.html?is-external=true" title="class or interface in androidx.activity" class="externalLink">ComponentActivity</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a <a href="https://developer.android.com/reference/androidx/lifecycle/ViewModelStore.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>ViewModelStore</code></a> object.</dd>
 </dl>
 </li>
 </ul>

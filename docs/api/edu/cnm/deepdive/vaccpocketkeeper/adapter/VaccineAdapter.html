@@ -137,6 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">VaccineAdapter</span>
 extends <a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html?is-external=true" title="class or interface in androidx.recyclerview.widget" class="externalLink">RecyclerView.Adapter</a>&lt;edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter.Holder&gt;</pre>
+<div class="block">Populates <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a>s into a <a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.html?is-external=true" title="class or interface in androidx.recyclerview.widget" class="externalLink"><code>RecyclerView</code></a> as specified by the accompanying item layout.</div>
 </li>
 </ul>
 </div>
@@ -160,17 +161,24 @@ extends <a href="https://developer.android.com/reference/androidx/recyclerview/w
 <tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="VaccineAdapter.OnVaccineClickHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineClickHelper</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A helper class object to aid in going to a particular <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a> details object,
+ which specifies all of the Doses of a <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a>.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="VaccineAdapter.OnVaccineDeleteHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineDeleteHelper</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A helper class to aid in deleting a <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a> object.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="VaccineAdapter.OnVaccineEditHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineEditHelper</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A helper class to aid in editing a <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a> object.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -202,7 +210,9 @@ extends <a href="https://developer.android.com/reference/androidx/recyclerview/w
               <a href="VaccineAdapter.OnVaccineEditHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineEditHelper</a>&nbsp;onVaccineEditHelper,
               <a href="VaccineAdapter.OnVaccineDeleteHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineDeleteHelper</a>&nbsp;onVaccineDeleteHelper,
               <a href="VaccineAdapter.OnVaccineClickHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineClickHelper</a>&nbsp;onVaccineClickHelper)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Class constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -281,6 +291,15 @@ extends <a href="https://developer.android.com/reference/androidx/recyclerview/w
                       <a href="VaccineAdapter.OnVaccineEditHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineEditHelper</a>&nbsp;onVaccineEditHelper,
                       <a href="VaccineAdapter.OnVaccineDeleteHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineDeleteHelper</a>&nbsp;onVaccineDeleteHelper,
                       <a href="VaccineAdapter.OnVaccineClickHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">VaccineAdapter.OnVaccineClickHelper</a>&nbsp;onVaccineClickHelper)</pre>
+<div class="block">Class constructor.  Initializes local variables.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>context</code> - the context.</dd>
+<dd><code>vaccines</code> - a list of <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a>s to be populated into the <a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.html?is-external=true" title="class or interface in androidx.recyclerview.widget" class="externalLink"><code>RecyclerView</code></a></dd>
+<dd><code>onVaccineEditHelper</code> - a helper class object to aid in editing a <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a> object.</dd>
+<dd><code>onVaccineDeleteHelper</code> - a helper class object to aid in deleting a <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a> object.</dd>
+<dd><code>onVaccineClickHelper</code> - a helper class object to aid in going to a particular <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a> details object, which specifies all of the Doses of a <a href="../model/entity/Vaccine.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Vaccine</code></a>.</dd>
+</dl>
 </li>
 </ul>
 </li>

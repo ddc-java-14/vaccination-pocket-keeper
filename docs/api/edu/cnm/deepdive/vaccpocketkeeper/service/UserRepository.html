@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">UserRepository</span>
 extends <a href="https://developer.android.com/reference/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a></pre>
+<div class="block">Encapsulates a persistent UserRepository object that allows the User ViewModel to interact with the UserDao to create, read, insert, and update data to the database.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +154,9 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(android.app.Application)">UserRepository</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;context)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor for class that instantiates a VaccpocketkeeperDatabase database object as well as local fields.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -176,22 +179,31 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>io.reactivex.Completable</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delete(edu.cnm.deepdive.vaccpocketkeeper.model.entity.User)">delete</a></span>&#8203;(<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&nbsp;user)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to delete a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object from the database.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/pojo/UserWithVaccines.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo">UserWithVaccines</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(long)">get</a></span>&#8203;(long&nbsp;userId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to get a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object from the database where
+ the user_id equals the user_id passed in from the caller.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAll()">getAll</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to get all <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> objects from the database.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>io.reactivex.Single&lt;<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#save(edu.cnm.deepdive.vaccpocketkeeper.model.entity.User)">save</a></span>&#8203;(<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&nbsp;user)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to save a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object to the database.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -224,6 +236,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>UserRepository</h4>
 <pre>public&nbsp;UserRepository&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;context)</pre>
+<div class="block">Constructor for class that instantiates a VaccpocketkeeperDatabase database object as well as local fields.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>context</code> - the application context</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -243,6 +260,14 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>get</h4>
 <pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/pojo/UserWithVaccines.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo">UserWithVaccines</a>&gt;&nbsp;get&#8203;(long&nbsp;userId)</pre>
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to get a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object from the database where
+ the user_id equals the user_id passed in from the caller.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>userId</code> - a long primitive that uniquely identifies the <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> object of type <a href="../model/pojo/UserWithVaccines.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo"><code>UserWithVaccines</code></a> object.</dd>
+</dl>
 </li>
 </ul>
 <a id="getAll()">
@@ -252,6 +277,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>getAll</h4>
 <pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&gt;&gt;&nbsp;getAll()</pre>
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to get all <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> objects from the database.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> <a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink"><code>List</code></a> of <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> objects.</dd>
+</dl>
 </li>
 </ul>
 <a id="save(edu.cnm.deepdive.vaccpocketkeeper.model.entity.User)">
@@ -261,6 +291,15 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>save</h4>
 <pre class="methodSignature">public&nbsp;io.reactivex.Single&lt;<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&gt;&nbsp;save&#8203;(<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&nbsp;user)</pre>
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to save a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object to the database.
+ If the user_id is zero, then it creates a new <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object;
+ Otherwise, it saves the current <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>user</code> - a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object that needs to be saved to the database</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <code>Single</code> of type <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="delete(edu.cnm.deepdive.vaccpocketkeeper.model.entity.User)">
@@ -270,6 +309,15 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>delete</h4>
 <pre class="methodSignature">public&nbsp;io.reactivex.Completable&nbsp;delete&#8203;(<a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">User</a>&nbsp;user)</pre>
+<div class="block">Interacts with the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a> to delete a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object from the database.
+ If the user_id is zero, then the <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object has not been saved to the database;
+ Then there is no point in deleting it; Otherwise, deletes the <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object from the database.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>user</code> - a <a href="../model/entity/User.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>User</code></a> object that needs to be deleted from the database</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <code>Completable</code>.</dd>
+</dl>
 </li>
 </ul>
 </li>

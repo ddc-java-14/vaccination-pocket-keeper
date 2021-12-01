@@ -137,6 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">DoctorAdapter</span>
 extends <a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html?is-external=true" title="class or interface in androidx.recyclerview.widget" class="externalLink">RecyclerView.Adapter</a>&lt;edu.cnm.deepdive.vaccpocketkeeper.adapter.DoctorAdapter.Holder&gt;</pre>
+<div class="block">Populates <a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Doctor</code></a>s into a <a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.html?is-external=true" title="class or interface in androidx.recyclerview.widget" class="externalLink"><code>RecyclerView</code></a> as specified by the accompanying item layout.</div>
 </li>
 </ul>
 </div>
@@ -160,12 +161,16 @@ extends <a href="https://developer.android.com/reference/androidx/recyclerview/w
 <tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="DoctorAdapter.OnDoctorDeleteHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">DoctorAdapter.OnDoctorDeleteHelper</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A helper class to aid in deleting a <a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Doctor</code></a> object.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="DoctorAdapter.OnDoctorEditHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">DoctorAdapter.OnDoctorEditHelper</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A helper class to aid in editing a <a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Doctor</code></a> object.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -196,7 +201,9 @@ extends <a href="https://developer.android.com/reference/androidx/recyclerview/w
              <a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Doctor</a>&gt;&nbsp;doctors,
              <a href="DoctorAdapter.OnDoctorEditHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">DoctorAdapter.OnDoctorEditHelper</a>&nbsp;onDoctorEditHelper,
              <a href="DoctorAdapter.OnDoctorDeleteHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">DoctorAdapter.OnDoctorDeleteHelper</a>&nbsp;onDoctorDeleteHelper)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Class constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -274,6 +281,14 @@ extends <a href="https://developer.android.com/reference/androidx/recyclerview/w
                      <a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity">Doctor</a>&gt;&nbsp;doctors,
                      <a href="DoctorAdapter.OnDoctorEditHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">DoctorAdapter.OnDoctorEditHelper</a>&nbsp;onDoctorEditHelper,
                      <a href="DoctorAdapter.OnDoctorDeleteHelper.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.adapter">DoctorAdapter.OnDoctorDeleteHelper</a>&nbsp;onDoctorDeleteHelper)</pre>
+<div class="block">Class constructor.  Initializes local variables.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>context</code> - the context.</dd>
+<dd><code>doctors</code> - a list of <a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Doctor</code></a>s to be populated into the <a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.html?is-external=true" title="class or interface in androidx.recyclerview.widget" class="externalLink"><code>RecyclerView</code></a></dd>
+<dd><code>onDoctorEditHelper</code> - a helper class object to aid in editing a <a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Doctor</code></a> object.</dd>
+<dd><code>onDoctorDeleteHelper</code> - a helper class object to aid in deleting a <a href="../model/entity/Doctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.entity"><code>Doctor</code></a> object.</dd>
+</dl>
 </li>
 </ul>
 </li>

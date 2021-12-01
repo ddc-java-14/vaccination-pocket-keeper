@@ -176,6 +176,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">LoginActivity</span>
 extends <a href="https://developer.android.com/reference/androidx/appcompat/app/AppCompatActivity.html?is-external=true" title="class or interface in androidx.appcompat.app" class="externalLink">AppCompatActivity</a></pre>
+<div class="block">Interacts with the <a href="../viewmodel/LoginViewModel.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.viewmodel"><code>LoginViewModel</code></a> to log the user into the application. Uses the visual layout for the login screen as specified by the activity_main layout in res/layout.</div>
 </li>
 </ul>
 </div>
@@ -268,7 +269,9 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(<a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the onCreate method in AppCompatActivity.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -383,9 +386,12 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <li class="blockList">
 <h4>onCreate</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;onCreate&#8203;(<a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</pre>
+<div class="block">Overrides the onCreate method in AppCompatActivity.  Instantiates local variables. Specifically, starts and completes the SignIn process through screens as defined in the activity_login layout in res/layout.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true#onCreate(android.os.Bundle)" title="class or interface in androidx.fragment.app" class="externalLink">onCreate</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">FragmentActivity</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>savedInstanceState</code> - a <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink"><code>Bundle</code></a>.</dd>
 </dl>
 </li>
 </ul>

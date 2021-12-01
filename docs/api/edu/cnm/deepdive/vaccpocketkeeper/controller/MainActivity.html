@@ -176,6 +176,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">MainActivity</span>
 extends <a href="https://developer.android.com/reference/androidx/appcompat/app/AppCompatActivity.html?is-external=true" title="class or interface in androidx.appcompat.app" class="externalLink">AppCompatActivity</a></pre>
+<div class="block">Interacts with the <a href="../viewmodel/LoginViewModel.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.viewmodel"><code>LoginViewModel</code></a> to log the user into the application.
+ Uses the visual layout for the login screen as specified by the activity_login layout in res/layout.
+ Sets up the navigation structure that allows users to navigate throughout the app.</div>
 </li>
 </ul>
 </div>
@@ -268,17 +271,23 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(<a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the onCreate method in AppCompatActivity.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu</a></span>&#8203;(<a href="https://developer.android.com/reference/android/view/Menu.html?is-external=true" title="class or interface in android.view" class="externalLink">Menu</a>&nbsp;menu)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the onCreateOptionsMenu method in AppCompatActivity.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected</a></span>&#8203;(<a href="https://developer.android.com/reference/android/view/MenuItem.html?is-external=true" title="class or interface in android.view" class="externalLink">MenuItem</a>&nbsp;item)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the onOptionsItemSelected method in AppCompatActivity.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -398,9 +407,14 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <li class="blockList">
 <h4>onCreate</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;onCreate&#8203;(<a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</pre>
+<div class="block">Overrides the onCreate method in AppCompatActivity.  Instantiates local variables.
+ Specifically, uses layout screens as defined in the activity_main layout in res/layout.
+ Sets up the navigation structure that allows users to navigate throughout the app.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true#onCreate(android.os.Bundle)" title="class or interface in androidx.fragment.app" class="externalLink">onCreate</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">FragmentActivity</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>savedInstanceState</code> - a <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink"><code>Bundle</code></a>.</dd>
 </dl>
 </li>
 </ul>
@@ -411,9 +425,15 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <li class="blockList">
 <h4>onCreateOptionsMenu</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;onCreateOptionsMenu&#8203;(<a href="https://developer.android.com/reference/android/view/Menu.html?is-external=true" title="class or interface in android.view" class="externalLink">Menu</a>&nbsp;menu)</pre>
+<div class="block">Overrides the onCreateOptionsMenu method in AppCompatActivity. Creates two menu options
+ (Sign out and Settings) as specified in the res/menu main.xml file.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/android/app/Activity.html?is-external=true#onCreateOptionsMenu(android.view.Menu)" title="class or interface in android.app" class="externalLink">onCreateOptionsMenu</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app" class="externalLink">Activity</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>menu</code> - a menu item.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a boolean representing if the menu was created successfully or not.</dd>
 </dl>
 </li>
 </ul>
@@ -425,9 +445,15 @@ extends <a href="https://developer.android.com/reference/androidx/appcompat/app/
 <h4>onOptionsItemSelected</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;onOptionsItemSelected&#8203;(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html?is-external=true" title="class or interface in androidx.annotation" class="externalLink">@NonNull</a>
                                      <a href="https://developer.android.com/reference/android/view/MenuItem.html?is-external=true" title="class or interface in android.view" class="externalLink">MenuItem</a>&nbsp;item)</pre>
+<div class="block">Overrides the onOptionsItemSelected method in AppCompatActivity.  Specifies what to do if
+  the user clicks on each menu item (Sign out versus Settings).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/android/app/Activity.html?is-external=true#onOptionsItemSelected(android.view.MenuItem)" title="class or interface in android.app" class="externalLink">onOptionsItemSelected</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app" class="externalLink">Activity</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>item</code> - a menu item.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a boolean representing if the item was handled successfully or not.</dd>
 </dl>
 </li>
 </ul>

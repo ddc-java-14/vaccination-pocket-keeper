@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -141,6 +141,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">VaccineFragment</span>
 extends <a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">Fragment</a></pre>
+<div class="block">Implements the layout and functionality associated with displaying a list of all Vaccines to the user.
+ Uses the layout as specified in res/layout/fragment_vaccine.xml.</div>
 </li>
 </ul>
 </div>
@@ -218,38 +220,30 @@ extends <a href="https://developer.android.com/reference/androidx/fragment/app/F
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#editVaccine(long,android.view.View)">editVaccine</a></span>&#8203;(long&nbsp;id,
-           <a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink">View</a>&nbsp;view)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(<a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink">View</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)">onCreateView</a></span>&#8203;(<a href="https://developer.android.com/reference/android/view/LayoutInflater.html?is-external=true" title="class or interface in android.view" class="externalLink">LayoutInflater</a>&nbsp;inflater,
             <a href="https://developer.android.com/reference/android/view/ViewGroup.html?is-external=true" title="class or interface in android.view" class="externalLink">ViewGroup</a>&nbsp;container,
             <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the onCreateView method in Fragment.</div>
+</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onDestroyView()">onDestroyView</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onViewCreated(android.view.View,android.os.Bundle)">onViewCreated</a></span>&#8203;(<a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink">View</a>&nbsp;view,
              <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showDoses(long,android.view.View)">showDoses</a></span>&#8203;(long&nbsp;id,
-         <a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink">View</a>&nbsp;view)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the onViewCreated method in Fragment.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -325,9 +319,15 @@ extends <a href="https://developer.android.com/reference/androidx/fragment/app/F
                          <a href="https://developer.android.com/reference/android/view/LayoutInflater.html?is-external=true" title="class or interface in android.view" class="externalLink">LayoutInflater</a>&nbsp;inflater,
                          <a href="https://developer.android.com/reference/android/view/ViewGroup.html?is-external=true" title="class or interface in android.view" class="externalLink">ViewGroup</a>&nbsp;container,
                          <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</pre>
+<div class="block">Overrides the onCreateView method in Fragment.  Instantiates local variables.
+ Inflates (sets up and displays) the layout as specified in fragment_vaccine.xml.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html?is-external=true#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)" title="class or interface in androidx.fragment.app" class="externalLink">onCreateView</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">Fragment</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>savedInstanceState</code> - a <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink"><code>Bundle</code></a>.</dd>
+<dd><code>container</code> - a <a href="https://developer.android.com/reference/android/view/ViewGroup.html?is-external=true" title="class or interface in android.view" class="externalLink"><code>ViewGroup</code></a>.</dd>
+<dd><code>inflater</code> - a <a href="https://developer.android.com/reference/android/view/LayoutInflater.html?is-external=true" title="class or interface in android.view" class="externalLink"><code>LayoutInflater</code></a>.</dd>
 </dl>
 </li>
 </ul>
@@ -341,16 +341,21 @@ extends <a href="https://developer.android.com/reference/androidx/fragment/app/F
                           <a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink">View</a>&nbsp;view,
                           <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html?is-external=true" title="class or interface in androidx.annotation" class="externalLink">@Nullable</a>
                           <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink">Bundle</a>&nbsp;savedInstanceState)</pre>
+<div class="block">Overrides the onViewCreated method in Fragment.  Specifically, interacts with the
+ <a href="../viewmodel/VaccineViewModel.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.viewmodel"><code>VaccineViewModel</code></a> to get a list of vaccines from the database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html?is-external=true#onViewCreated(android.view.View,android.os.Bundle)" title="class or interface in androidx.fragment.app" class="externalLink">onViewCreated</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">Fragment</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>view</code> - a <a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink"><code>View</code></a>.</dd>
+<dd><code>savedInstanceState</code> - a <a href="https://developer.android.com/reference/android/os/Bundle.html?is-external=true" title="class or interface in android.os" class="externalLink"><code>Bundle</code></a>.</dd>
 </dl>
 </li>
 </ul>
 <a id="onDestroyView()">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>onDestroyView</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;onDestroyView()</pre>
@@ -358,26 +363,6 @@ extends <a href="https://developer.android.com/reference/androidx/fragment/app/F
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html?is-external=true#onDestroyView()" title="class or interface in androidx.fragment.app" class="externalLink">onDestroyView</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html?is-external=true" title="class or interface in androidx.fragment.app" class="externalLink">Fragment</a></code></dd>
 </dl>
-</li>
-</ul>
-<a id="editVaccine(long,android.view.View)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>editVaccine</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;editVaccine&#8203;(long&nbsp;id,
-                        <a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink">View</a>&nbsp;view)</pre>
-</li>
-</ul>
-<a id="showDoses(long,android.view.View)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>showDoses</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;showDoses&#8203;(long&nbsp;id,
-                      <a href="https://developer.android.com/reference/android/view/View.html?is-external=true" title="class or interface in android.view" class="externalLink">View</a>&nbsp;view)</pre>
 </li>
 </ul>
 </li>

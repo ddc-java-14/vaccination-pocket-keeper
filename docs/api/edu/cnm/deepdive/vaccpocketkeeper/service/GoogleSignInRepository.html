@@ -132,6 +132,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">GoogleSignInRepository</span>
 extends <a href="https://developer.android.com/reference/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a></pre>
+<div class="block">Uses Google Sign In services to validate and authenticate a User and creates a Bearer token that can be used to
+ validate and authenticate a user to the application.</div>
 </li>
 </ul>
 </div>
@@ -155,37 +157,51 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>io.reactivex.Single&lt;<a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink">GoogleSignInAccount</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#completeSignIn(androidx.activity.result.ActivityResult)">completeSignIn</a></span>&#8203;(androidx.activity.result.ActivityResult&nbsp;result)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Signs a user into the application using a User Google account from Google Sign In services.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="GoogleSignInRepository.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.service">GoogleSignInRepository</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getInstance()">getInstance</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Loads a GoogleSignInRepository into memory.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>io.reactivex.Single&lt;<a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink">GoogleSignInAccount</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#refresh()">refresh</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Refreshes the validation and authentication of the account.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>io.reactivex.Single&lt;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#refreshBearerToken()">refreshBearerToken</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Refreshes the Bearer Token for this application.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setContext(android.app.Application)">setContext</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;context)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets the Application context to the local context variable.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>io.reactivex.Completable</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#signOut()">signOut</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Signs the User out of their Google account.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#startSignIn(androidx.activity.result.ActivityResultLauncher)">startSignIn</a></span>&#8203;(androidx.activity.result.ActivityResultLauncher&lt;<a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&gt;&nbsp;launcher)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Begins the application sign in process.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -218,6 +234,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>setContext</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;setContext&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;context)</pre>
+<div class="block">Sets the Application context to the local context variable.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>context</code> - an Application context.</dd>
+</dl>
 </li>
 </ul>
 <a id="getInstance()">
@@ -227,6 +248,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>getInstance</h4>
 <pre class="methodSignature">public static&nbsp;<a href="GoogleSignInRepository.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.service">GoogleSignInRepository</a>&nbsp;getInstance()</pre>
+<div class="block">Loads a GoogleSignInRepository into memory.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an Instance of the GoogleSignInRepository.</dd>
+</dl>
 </li>
 </ul>
 <a id="refresh()">
@@ -236,6 +262,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>refresh</h4>
 <pre class="methodSignature">public&nbsp;io.reactivex.Single&lt;<a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink">GoogleSignInAccount</a>&gt;&nbsp;refresh()</pre>
+<div class="block">Refreshes the validation and authentication of the account.  It performs this refresh in the background.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <code>Single</code> of type <a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink"><code>GoogleSignInAccount</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="refreshBearerToken()">
@@ -245,6 +276,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>refreshBearerToken</h4>
 <pre class="methodSignature">public&nbsp;io.reactivex.Single&lt;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&gt;&nbsp;refreshBearerToken()</pre>
+<div class="block">Refreshes the Bearer Token for this application.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <code>Single</code> of type <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>String</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="startSignIn(androidx.activity.result.ActivityResultLauncher)">
@@ -254,6 +290,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>startSignIn</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;startSignIn&#8203;(androidx.activity.result.ActivityResultLauncher&lt;<a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&gt;&nbsp;launcher)</pre>
+<div class="block">Begins the application sign in process.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>launcher</code> - an <code>ActivityResultLauncher</code> object of type <a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink"><code>Intent</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="completeSignIn(androidx.activity.result.ActivityResult)">
@@ -263,6 +304,13 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>completeSignIn</h4>
 <pre class="methodSignature">public&nbsp;io.reactivex.Single&lt;<a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink">GoogleSignInAccount</a>&gt;&nbsp;completeSignIn&#8203;(androidx.activity.result.ActivityResult&nbsp;result)</pre>
+<div class="block">Signs a user into the application using a User Google account from Google Sign In services.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>result</code> - the result of the SignIn process</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <code>Single</code> of type <a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink"><code>GoogleSignInAccount</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="signOut()">
@@ -272,6 +320,11 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>signOut</h4>
 <pre class="methodSignature">public&nbsp;io.reactivex.Completable&nbsp;signOut()</pre>
+<div class="block">Signs the User out of their Google account.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <code>Completable</code>.</dd>
+</dl>
 </li>
 </ul>
 </li>

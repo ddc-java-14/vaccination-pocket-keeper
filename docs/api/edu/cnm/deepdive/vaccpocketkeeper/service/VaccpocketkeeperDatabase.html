@@ -137,6 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public abstract class <span class="typeNameLabel">VaccpocketkeeperDatabase</span>
 extends <a href="https://developer.android.com/reference/androidx/room/RoomDatabase.html?is-external=true" title="class or interface in androidx.room" class="externalLink">RoomDatabase</a></pre>
+<div class="block">Defines a <a href="https://developer.android.com/reference/androidx/room/Room.html?is-external=true" title="class or interface in androidx.room" class="externalLink"><code>Room</code></a> database object on which CRUD operations can be performed.</div>
 </li>
 </ul>
 </div>
@@ -160,7 +161,9 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="VaccpocketkeeperDatabase.Converters.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.service">VaccpocketkeeperDatabase.Converters</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A static class that converts <a href="https://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util" class="externalLink"><code>Date</code></a> objects to <a href="https://developer.android.com/reference/java/lang/Long.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>Long</code></a> objects and vice versa.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -228,32 +231,44 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>abstract <a href="../model/dao/DoctorDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">DoctorDao</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDoctorDao()">getDoctorDao</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/DoctorDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>DoctorDao</code></a>.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../model/dao/DoseDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">DoseDao</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDoseDao()">getDoseDao</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/DoseDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>DoseDao</code></a>.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="VaccpocketkeeperDatabase.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.service">VaccpocketkeeperDatabase</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getInstance()">getInstance</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Instantiates a single instande of the VaccpocketkeeperDatabase.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">UserDao</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getUserDao()">getUserDao</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a>.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>abstract <a href="../model/dao/VaccineDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">VaccineDao</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVaccineDao()">getVaccineDao</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/VaccineDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>VaccineDao</code></a>.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setContext(android.app.Application)">setContext</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;context)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets the application context to the local context variable.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -312,6 +327,11 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <li class="blockList">
 <h4>setContext</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;setContext&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;context)</pre>
+<div class="block">Sets the application context to the local context variable.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>context</code> - the Application context.</dd>
+</dl>
 </li>
 </ul>
 <a id="getInstance()">
@@ -321,6 +341,11 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <li class="blockList">
 <h4>getInstance</h4>
 <pre class="methodSignature">public static&nbsp;<a href="VaccpocketkeeperDatabase.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.service">VaccpocketkeeperDatabase</a>&nbsp;getInstance()</pre>
+<div class="block">Instantiates a single instande of the VaccpocketkeeperDatabase.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the <a href="VaccpocketkeeperDatabase.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.service"><code>VaccpocketkeeperDatabase</code></a> instance.</dd>
+</dl>
 </li>
 </ul>
 <a id="getDoctorDao()">
@@ -330,6 +355,11 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <li class="blockList">
 <h4>getDoctorDao</h4>
 <pre class="methodSignature">public abstract&nbsp;<a href="../model/dao/DoctorDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">DoctorDao</a>&nbsp;getDoctorDao()</pre>
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/DoctorDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>DoctorDao</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an instance of the <a href="../model/dao/DoctorDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>DoctorDao</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="getDoseDao()">
@@ -339,6 +369,11 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <li class="blockList">
 <h4>getDoseDao</h4>
 <pre class="methodSignature">public abstract&nbsp;<a href="../model/dao/DoseDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">DoseDao</a>&nbsp;getDoseDao()</pre>
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/DoseDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>DoseDao</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an instance of the <a href="../model/dao/DoseDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>DoseDao</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="getVaccineDao()">
@@ -348,6 +383,11 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <li class="blockList">
 <h4>getVaccineDao</h4>
 <pre class="methodSignature">public abstract&nbsp;<a href="../model/dao/VaccineDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">VaccineDao</a>&nbsp;getVaccineDao()</pre>
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/VaccineDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>VaccineDao</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an instance of the <a href="../model/dao/VaccineDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>VaccineDao</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="getUserDao()">
@@ -357,6 +397,11 @@ extends <a href="https://developer.android.com/reference/androidx/room/RoomDatab
 <li class="blockList">
 <h4>getUserDao</h4>
 <pre class="methodSignature">public abstract&nbsp;<a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao">UserDao</a>&nbsp;getUserDao()</pre>
+<div class="block">The declaration of a method that returns an instance of the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an instance of the <a href="../model/dao/UserDao.html" title="interface in edu.cnm.deepdive.vaccpocketkeeper.model.dao"><code>UserDao</code></a>.</dd>
+</dl>
 </li>
 </ul>
 </li>

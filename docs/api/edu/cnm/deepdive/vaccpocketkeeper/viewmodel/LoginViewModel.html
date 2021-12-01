@@ -147,6 +147,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">LoginViewModel</span>
 extends <a href="https://developer.android.com/reference/androidx/lifecycle/AndroidViewModel.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">AndroidViewModel</a>
 implements <a href="https://developer.android.com/reference/androidx/lifecycle/DefaultLifecycleObserver.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">DefaultLifecycleObserver</a></pre>
+<div class="block">Implements the business logic behind the application.  Interacts with the GoogleSignInRepository to sign a User into the application.</div>
 </li>
 </ul>
 </div>
@@ -168,7 +169,9 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(android.app.Application)">LoginViewModel</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;application)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor for class.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -191,17 +194,23 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#completeSignIn(androidx.activity.result.ActivityResult)">completeSignIn</a></span>&#8203;(androidx.activity.result.ActivityResult&nbsp;result)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the GoogleSignInRepository to sign a user into the application.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink">GoogleSignInAccount</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAccount()">getAccount</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns the GoogleSignInAccount.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang" class="externalLink">Throwable</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThrowable()">getThrowable</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns the throwable local variable.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -211,17 +220,23 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#refresh()">refresh</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the GoogleSignInRepository to refresh user credentials from the cloud.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#signOut()">signOut</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the GoogleSignInRepository to sign the User out of their Google account.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#startSignIn(androidx.activity.result.ActivityResultLauncher)">startSignIn</a></span>&#8203;(androidx.activity.result.ActivityResultLauncher&lt;<a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&gt;&nbsp;launcher)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Interacts with the GoogleSignInRepository to begins the application sign in process.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -276,6 +291,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <h4>LoginViewModel</h4>
 <pre>public&nbsp;LoginViewModel&#8203;(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html?is-external=true" title="class or interface in androidx.annotation" class="externalLink">@NonNull</a>
                       <a href="https://developer.android.com/reference/android/app/Application.html?is-external=true" title="class or interface in android.app" class="externalLink">Application</a>&nbsp;application)</pre>
+<div class="block">Constructor for class.  Instantiates local variables and causes a silent refresh if necessary.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>application</code> - an application</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -295,6 +315,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <li class="blockList">
 <h4>getAccount</h4>
 <pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink">GoogleSignInAccount</a>&gt;&nbsp;getAccount()</pre>
+<div class="block">Returns the GoogleSignInAccount.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> object of type <a href="https://developer.android.com/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html?is-external=true" title="class or interface in com.google.android.gms.auth.api.signin" class="externalLink"><code>GoogleSignInAccount</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="getThrowable()">
@@ -304,6 +329,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <li class="blockList">
 <h4>getThrowable</h4>
 <pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang" class="externalLink">Throwable</a>&gt;&nbsp;getThrowable()</pre>
+<div class="block">Returns the throwable local variable.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a reactivex <a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink"><code>LiveData</code></a> object of type <a href="https://developer.android.com/reference/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>Throwable</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="refresh()">
@@ -313,6 +343,8 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <li class="blockList">
 <h4>refresh</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;refresh()</pre>
+<div class="block">Interacts with the GoogleSignInRepository to refresh user credentials from the cloud.
+ If the refresh fails, it does not get reported as an error; The user has to log in again.</div>
 </li>
 </ul>
 <a id="startSignIn(androidx.activity.result.ActivityResultLauncher)">
@@ -322,6 +354,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <li class="blockList">
 <h4>startSignIn</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;startSignIn&#8203;(androidx.activity.result.ActivityResultLauncher&lt;<a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&gt;&nbsp;launcher)</pre>
+<div class="block">Interacts with the GoogleSignInRepository to begins the application sign in process.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>launcher</code> - an <code>ActivityResultLauncher</code> object of type <a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink"><code>Intent</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a id="completeSignIn(androidx.activity.result.ActivityResult)">
@@ -331,6 +368,11 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <li class="blockList">
 <h4>completeSignIn</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;completeSignIn&#8203;(androidx.activity.result.ActivityResult&nbsp;result)</pre>
+<div class="block">Interacts with the GoogleSignInRepository to sign a user into the application.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>result</code> - the result of the SignIn process</dd>
+</dl>
 </li>
 </ul>
 <a id="signOut()">
@@ -340,6 +382,7 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/D
 <li class="blockList">
 <h4>signOut</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;signOut()</pre>
+<div class="block">Interacts with the GoogleSignInRepository to sign the User out of their Google account.</div>
 </li>
 </ul>
 <a id="onStop(androidx.lifecycle.LifecycleOwner)">
