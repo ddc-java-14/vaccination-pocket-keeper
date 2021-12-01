@@ -23,6 +23,10 @@ import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 import java.util.List;
 
+/**
+ * Implements the layout and functionality associated with displaying a list of all Doses to the user.
+ * Uses the layout as specified in res/layout/fragment_dose.xml.
+ */
 public class DoseFragment extends Fragment {
 
   private DoseViewModel doseViewModel;
@@ -34,8 +38,11 @@ public class DoseFragment extends Fragment {
   private Doctor doctor;
   private List<Doctor> doctors;
 
-  //TODO: adding doses should increase the total number of doses in the vaccine by 1.
-
+  /**
+   * Overrides the onCreate method in Fragment.  Instantiates local variables.  Gets the vaccineId to display the
+   * Doses associated with that particular vaccine.
+   * @param savedInstanceState
+   */
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -45,6 +52,14 @@ public class DoseFragment extends Fragment {
     Log.d(getClass().getSimpleName(),"VaccineId (inside DoseFragment): "+vaccineId);
   }
 
+  /**
+   * Overrides the onCreateView method in Fragment. Inflates (sets up and displays) the layout as
+   * specified in fragment_dose.xml.
+   * @param inflater a {@link LayoutInflater}.
+   * @param container a {@link ViewGroup}.
+   * @param savedInstanceState a {@link Bundle}.
+   * @return a {@link View}.
+   */
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentDoseBinding.inflate(inflater, container, false);
@@ -57,6 +72,13 @@ public class DoseFragment extends Fragment {
     return binding.getRoot();
   }
 
+  /**
+   * Overrides the onViewCreated method in Fragment.  Specifically, interacts with the
+   * {@link VaccineViewModel} and {@link DoctorViewModel} to get a list of vaccines and doctors from the
+   * database.
+   * @param view a {@link View}.
+   * @param savedInstanceState a {@link Bundle}.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -140,7 +162,7 @@ public class DoseFragment extends Fragment {
     }
   }
 
-  public void editDose(long doseId, long vaccineId, View view) {
+  private void editDose(long doseId, long vaccineId, View view) {
     Navigation.findNavController(binding.getRoot())
         .navigate(DoseFragmentDirections.openDose()
             .setVaccineId(vaccineId)

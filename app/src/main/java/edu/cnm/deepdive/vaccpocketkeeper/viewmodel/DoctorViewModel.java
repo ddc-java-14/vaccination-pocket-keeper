@@ -20,6 +20,9 @@ import edu.cnm.deepdive.vaccpocketkeeper.service.VaccineRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 
+/**
+ * Implements the business logic behind the application.  Interacts with the DoctorRepository to perform CRUD operations on the database.
+ */
 public class DoctorViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final DoctorRepository repository;
@@ -28,41 +31,69 @@ public class DoctorViewModel extends AndroidViewModel implements LifecycleObserv
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
 
+  /**
+   * Class constructor.  Instantiates local class variables. Additionally, implements a switchmap that
+   * invokes a get operation on the database to get an object of type {@link Doctor} whenever the contents
+   * of the doctorId changes.
+   * @param application an application.
+   */
   public DoctorViewModel(@NonNull Application application) {
     super(application);
     repository = new DoctorRepository(application);
     throwable = new MutableLiveData<>();
     pending = new CompositeDisposable();
     doctorId = new MutableLiveData<>();
-    //whenever the contents of this vaccineId changes, it invokes the lambda
+    //whenever the contents of this doctorId changes, it invokes the lambda
     doctor = Transformations.switchMap(doctorId, doctorId1 -> repository.get(doctorId1)
         //but query doesn't execute unless someone is observing that livedata.
     );//triggers a refresh of live data
   }
 
+  /**
+   * Returns the local doctor variable.
+   * @return a reactivex {@link LiveData} object of type {@link Doctor}.
+   */
   public LiveData<Doctor> getDoctor() {
     return doctor;
   }
 
-  public void setDoctorId(long id) {
-    doctorId.setValue(
-        id);//if someone is observing this, it will cause a refresh of note assignment in constructor
+  /**
+   * Sets the local doctorId variable. If an object is observing this, it will cause a refresh of doctor assignment in constructor.
+   * @param doctorId a unique identifier for a {@link Doctor} object.
+   */
+  public void setDoctorId(long doctorId) {
+    this.doctorId.setValue(doctorId);//if someone is observing this, it will cause a refresh of doctor assignment in constructor
   }
 
+  /**
+   * Returns the local variable throwable.
+   * @return the local variable throwable.
+   */
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }
 
+  /**
+   * Interacts with the DoctorRepository to get a {@link Doctor} object as specified by the id parameter.
+   * @param id a unique identifier for a {@link Doctor} object.
+   * @return a reactivex {@link LiveData} object of type {@link Doctor}.
+   */
   public LiveData<Doctor> getDoctorById(long id) {
     return repository.get(id);
   }
 
-  //getAll
+  /**
+   * Interacts with the DoctorRepository to get a list of all {@link Doctor} objects in the database.
+   * @return a reactivex {@link LiveData} {@link List} object of type {@link Doctor}.
+   */
   public LiveData<List<Doctor>> getDoctors() {
     return repository.getAll();
   }
 
-  //save
+  /**
+   * Interacts with the DoctorRepository to get save a {@link Doctor} object to the database.
+   * @param doctor the {@link Doctor} object to be saved.
+   */
   public void save(Doctor doctor) {
     pending.add(
         repository
@@ -75,7 +106,10 @@ public class DoctorViewModel extends AndroidViewModel implements LifecycleObserv
     );
   }
 
-  //delete
+  /**
+   * Interacts with the DoctorRepository to get delete a {@link Doctor} object from the database.
+   * @param doctor the {@link Doctor} object to be deleted.
+   */
   public void deleteDoctor(Doctor doctor) {
     //Vaccine vaccine = new Vaccine();
     throwable.postValue(null);

@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ItemVaccineBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import java.text.DateFormat;
 import java.util.List;
 
+/**
+ * Populates {@link Vaccine}s into a {@link RecyclerView} as specified by the accompanying item layout.
+ */
 public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> {
 
   private final LayoutInflater inflator;
@@ -21,6 +25,14 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
   private final OnVaccineDeleteHelper onVaccineDeleteHelper;
   private final OnVaccineClickHelper onVaccineClickHelper;
 
+  /**
+   * Class constructor.  Initializes local variables.
+   * @param context the context.
+   * @param vaccines a list of {@link Vaccine}s to be populated into the {@link RecyclerView}
+   * @param onVaccineEditHelper a helper class object to aid in editing a {@link Vaccine} object.
+   * @param onVaccineDeleteHelper a helper class object to aid in deleting a {@link Vaccine} object.
+   * @param onVaccineClickHelper a helper class object to aid in going to a particular {@link Vaccine} details object, which specifies all of the Doses of a {@link Vaccine}.
+   */
   public VaccineAdapter(Context context, List<Vaccine> vaccines,
       OnVaccineEditHelper onVaccineEditHelper,
       OnVaccineDeleteHelper onVaccineDeleteHelper, OnVaccineClickHelper onVaccineClickHelper) {
@@ -49,6 +61,9 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
     return vaccines.size();
   }
 
+  /**
+   * A helper class that binds each {@link Vaccine} to a particular position in the {@link RecyclerView}.
+   */
   class Holder extends RecyclerView.ViewHolder {
 
     private final ItemVaccineBinding binding;
@@ -77,14 +92,24 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.Holder> 
     }
   }
 
+  /**
+   * A helper class object to aid in going to a particular {@link Vaccine} details object,
+   * which specifies all of the Doses of a {@link Vaccine}.
+   */
   public interface OnVaccineClickHelper {
     void onVaccineClick(long id, View view);
   }
 
+  /**
+   * A helper class to aid in editing a {@link Vaccine} object.
+   */
   public interface OnVaccineEditHelper {
     void onVaccineClick(long id, View view);
   }
 
+  /**
+   * A helper class to aid in deleting a {@link Vaccine} object.
+   */
   public interface OnVaccineDeleteHelper {
     void onVaccineClick(Vaccine vaccine, View view);
   }

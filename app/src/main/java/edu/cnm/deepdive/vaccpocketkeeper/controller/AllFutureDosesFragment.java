@@ -19,9 +19,14 @@ import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoseAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentAllFutureDosesBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoseBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
+/**
+ * Implements the layout and functionality associated with displaying a list of all future Doses to the user.
+ * Uses the layout as specified in res/layout/fragment_all_future_doses.xml.
+ */
 public class AllFutureDosesFragment extends Fragment {
 
   private DoseViewModel doseViewModel;
@@ -29,15 +34,20 @@ public class AllFutureDosesFragment extends Fragment {
   private FragmentAllFutureDosesBinding binding;
   private long vaccineId;
 
-  //TODO: adding doses should increase the total number of doses in the vaccine by 1.
-
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
-    //DoseFragmentArgs args = DoseFragmentArgs.fromBundle(getArguments());
   }
 
+  /**
+   * Overrides the onCreate method in Fragment. Inflates (sets up and displays) the layout as
+   * specified in fragment_all_future_doses.xml.
+   * @param inflater a {@link LayoutInflater}.
+   * @param container a {@link ViewGroup}.
+   * @param savedInstanceState a {@link Bundle}.
+   * @return a {@link View}.
+   */
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentAllFutureDosesBinding.inflate(inflater, container, false);
@@ -48,6 +58,12 @@ public class AllFutureDosesFragment extends Fragment {
     return binding.getRoot();
   }
 
+  /**
+   * Overrides the onViewCreated method in Fragment.  Specifically, interacts with the
+   * {@link DoseViewModel} to get a list of all future Doses from the database.
+   * @param view a {@link View}.
+   * @param savedInstanceState a {@link Bundle}.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -117,7 +133,7 @@ public class AllFutureDosesFragment extends Fragment {
     }
   }
 
-  public void editDose(long id, View view) {
+  private void editDose(long id, View view) {
     Navigation.findNavController(binding.getRoot())
         .navigate(AllFutureDosesFragmentDirections.openDose().setDoseId(id));
   }

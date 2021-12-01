@@ -13,8 +13,13 @@ import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.VaccineAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentVaccineBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
+/**
+ * Implements the layout and functionality associated with displaying a list of all Vaccines to the user.
+ * Uses the layout as specified in res/layout/fragment_vaccine.xml.
+ */
 public class VaccineFragment extends Fragment {
 
   private VaccineViewModel viewModel;
@@ -26,6 +31,13 @@ public class VaccineFragment extends Fragment {
     setHasOptionsMenu(true);
   }
 
+  /**
+   * Overrides the onCreateView method in Fragment.  Instantiates local variables.
+   * Inflates (sets up and displays) the layout as specified in fragment_vaccine.xml.
+   * @param savedInstanceState a {@link Bundle}.
+   * @param container a {@link ViewGroup}.
+   * @param inflater a {@link LayoutInflater}.
+   */
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentVaccineBinding.inflate(inflater, container, false);
@@ -38,6 +50,12 @@ public class VaccineFragment extends Fragment {
     return binding.getRoot();
   }
 
+  /**
+   * Overrides the onViewCreated method in Fragment.  Specifically, interacts with the
+   * {@link VaccineViewModel} to get a list of vaccines from the database.
+   * @param view a {@link View}.
+   * @param savedInstanceState a {@link Bundle}.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -99,12 +117,12 @@ public class VaccineFragment extends Fragment {
     }
   }
 
-  public void editVaccine(long id, View view) {
+  private void editVaccine(long id, View view) {
     Navigation.findNavController(binding.getRoot())
         .navigate(VaccineFragmentDirections.openVaccine().setVaccineId(id));
   }
 
-  public void showDoses(long id, View view) {
+  private void showDoses(long id, View view) {
     VaccineFragmentDirections.OpenDoses toDoses
         = VaccineFragmentDirections.openDoses();
     toDoses.setVaccineId(id);

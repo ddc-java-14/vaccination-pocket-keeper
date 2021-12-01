@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Encapsulates a persistent question object with: id, created, name, email, and birthday.
+ * Encapsulates a persistent User object with: id, created, name, email, and birthday.
  */
 @Entity(tableName = "user",
     indices = {
@@ -43,21 +43,21 @@ public class User {
   private Date birthday = new Date();
 
   /**
-   * This method returns the local id field.
+   * Returns the local id field.
    */
   public long getId() {
     return id;
   }
 
   /**
-   * This method sets the local id field to the id parameter
+   * Sets the local id field to the id parameter.
    */
   public void setId(long id) {
     this.id = id;
   }
 
   /**
-   * This method returns the local created {@link Date} field
+   * Returns the local created {@link Date} field.
    */
   @NonNull
   public Date getCreated() {
@@ -65,14 +65,14 @@ public class User {
   }
 
   /**
-   * This method set the local created {@link Date} field to the created {@link Date} argument.
+   * Set the local created {@link Date} field to the created {@link Date} argument.
    */
   public void setCreated(@NonNull Date created) {
     this.created = created;
   }
 
   /**
-   * This method returns the local name field.
+   * Returns the local name field.
    */
   @NonNull
   public String getName() {
@@ -80,14 +80,14 @@ public class User {
   }
 
   /**
-   * This method sets the local field name to the name parameter provided.
+   * Sets the local field name to the name parameter provided.
    */
   public void setName(@NonNull String name) {
     this.name = name;
   }
 
   /**
-   * This method returns the local email field.
+   * Returns the local email field.
    */
   @NonNull
   public String getEmail() {
@@ -95,14 +95,14 @@ public class User {
   }
 
   /**
-   * This method sets the local email field to the email parameter provided.
+   * Sets the local email field to the email parameter provided.
    */
   public void setEmail(@NonNull String email) {
     this.email = email;
   }
 
   /**
-   * This method returns the local birthday field.
+   * Returns the local birthday field.
    */
   @NonNull
   public Date getBirthday() {
@@ -110,7 +110,7 @@ public class User {
   }
 
   /**
-   * This method sets the local birthday field to the birthday {@link Date} parameter provided.
+   * Sets the local birthday field to the birthday {@link Date} parameter provided.
    */
   public void setBirthday(@NonNull Date birthday) {
     this.birthday = birthday;

@@ -40,6 +40,9 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
+/**
+ * Defines a {@link Room} database object on which CRUD operations can be performed.
+ */
 @Database(
     entities = {User.class, Vaccine.class, Dose.class, Doctor.class},
     views = {VaccineSummary.class, DoseSummary.class},
@@ -51,20 +54,44 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
 
   private static Application context;
 
+  /**
+   * Sets the application context to the local context variable.
+   * @param context the Application context.
+   */
   public static void setContext(Application context) {
     VaccpocketkeeperDatabase.context = context;
   }
 
+  /**
+   * Instantiates a single instande of the VaccpocketkeeperDatabase.
+   * @return the {@link VaccpocketkeeperDatabase} instance.
+   */
   public static VaccpocketkeeperDatabase getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
+  /**
+   * The declaration of a method that returns an instance of the {@link DoctorDao}.
+   * @return an instance of the {@link DoctorDao}.
+   */
   public abstract DoctorDao getDoctorDao();
 
+  /**
+   * The declaration of a method that returns an instance of the {@link DoseDao}.
+   * @return an instance of the {@link DoseDao}.
+   */
   public abstract DoseDao getDoseDao();
 
+  /**
+   * The declaration of a method that returns an instance of the {@link VaccineDao}.
+   * @return an instance of the {@link VaccineDao}.
+   */
   public abstract VaccineDao getVaccineDao();
 
+  /**
+   * The declaration of a method that returns an instance of the {@link UserDao}.
+   * @return an instance of the {@link UserDao}.
+   */
   public abstract UserDao getUserDao();
 
   private static class InstanceHolder {
@@ -75,13 +102,26 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
         .build();
   }
 
+  /**
+   * A static class that converts {@link Date} objects to {@link Long} objects and vice versa.
+   */
   public static class Converters {
 
+    /**
+     * converts a {@link Date} object to {@link Long} object.
+     * @param value a {@link Date} object.
+     * @return a {@link Long} object.
+     */
     @TypeConverter
     public static Long dateToLong(Date value) {
       return (value != null) ? value.getTime() : null;
     }
 
+    /**
+     * converts a {@link Long} object to a {@link Date} object.
+     * @param value a {@link Long} object.
+     * @return a {@link Date} object.
+     */
     @TypeConverter
     public static Date longToDate(Long value) {
       return (value != null) ? new Date(value) : null;
@@ -100,6 +140,10 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
       this.context = context;
     }
 
+    /**
+     * Preloads the database with date obtained from CSV files.
+     * @param db a {@link SupportSQLiteDatabase}.
+     */
     @Override
     public void onCreate(@NonNull SupportSQLiteDatabase db) {
       super.onCreate(db);
@@ -109,6 +153,7 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
       preloadDoctors();
       preloadVaccines();
     }
+
 
     private void preloadDoctors() {
       try (

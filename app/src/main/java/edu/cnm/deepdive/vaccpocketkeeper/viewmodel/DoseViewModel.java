@@ -15,12 +15,17 @@ import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.Transformations;
 import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.service.DoseRepository;
 import io.reactivex.disposables.CompositeDisposable;
+import java.util.Date;
 import java.util.List;
 
+/**
+ * Implements the business logic behind the application.  Interacts with the DoseRepository to perform CRUD operations on the database.
+ */
 public class DoseViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final DoseRepository repository;
@@ -35,7 +40,11 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<Integer> futureDosesLimit;
   //private final LiveData<List<Dose>> futureDoses;
 
-
+  /**
+   * Class constructor.  Instantiates local class variables. Additionally, reads future dose
+   * values from SharedPreferences.
+   * @param application an application.
+   */
   public DoseViewModel(@NonNull Application application) {
     super(application);
     repository = new DoseRepository(application);
@@ -59,35 +68,65 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
 //    futureDoses = Transformations.switchMap(trigger, (params) -> repository.getUpcomingDoses(params.futureDoses));
   }
 
+  /**
+   * Returns the local dose variable.
+   * @return a reactivex {@link LiveData} object of type {@link Dose}.
+   */
   public LiveData<Dose> getDose() {
     return dose;
   }
 
+  /**
+   * Interacts with the DoseRepository to get a {@link Dose} object as specified by the doseId parameter.
+   * @param doseId a unique identifier for a {@link Dose} object.
+   * @return a reactivex {@link LiveData} object of type {@link Dose}.
+   */
   public LiveData<Dose> getDoseById(long doseId) {
     return repository.get(doseId);
   }
 
+  /**
+   * Sets the local doseId variable. If an object is observing this, it will cause a refresh of dose assignment in constructor.
+   * @param id a unique identifier for a {@link Dose} object.
+   */
   public void setDoseId(long id) {
     doseId.setValue(id);//if someone is observing this, it will cause a refresh of note assignment in constructor
   }
 
+  /**
+   * Returns the local variable throwable.
+   * @return the local variable throwable.
+   */
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }
 
-  //getAll
+  /**
+   * Interacts with the DoseRepository to get a list of all upcoming {@link Dose} objects in the database.
+   * @return a reactivex {@link LiveData} {@link List} object of type {@link DoseWithDoctor}.
+   */
   public LiveData<List<DoseWithDoctor>> getDoses() {
     return repository.getUpcomingDoses();
   }
 
-  //getAllForVaccineId
-  public LiveData<List<Dose>> getDosesForVaccineId(long id) {
-    return repository.getAllDosesForVaccineId(id);
+  /**
+   * Interacts with the DoseRepository to get a list of all {@link Dose} objects that belong to the vaccine specified by the
+   * vaccineId in the database.
+   * @param vaccineId a unique identifier for a Vaccine object.
+   * @return a reactivex {@link LiveData} {@link List} object of type {@link Dose}.
+   */
+  public LiveData<List<Dose>> getDosesForVaccineId(long vaccineId) {
+    return repository.getAllDosesForVaccineId(vaccineId);
   }
 
-  //getPastDoses
-  public LiveData<List<Dose>> getPastDoses() {
-    return repository.getPastDoses();
+  /**
+   * Interacts with the DoseRepository to get a list of all past {@link Dose} objects
+   * before the specified date.
+   * @param fromDate a {@link Date} before which we are getting past {@link Dose} objects.
+   * @return a reactivex {@link LiveData} {@link List} object of type {@link Dose}.
+   */
+  public LiveData<List<Dose>> getPastDoses(Date fromDate) {
+    return repository.getPastDoses(fromDate);
   }
 
   //getFutureDoses
@@ -95,7 +134,10 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
 //    return repository.getUpcomingDoses();
 //  }
 
-  //save
+  /**
+   * Interacts with the DoseRepository to get save a {@link Dose} object to the database.
+   * @param dose the {@link Dose} object to be saved.
+   */
   public void save(Dose dose) {
     pending.add(
         repository
@@ -107,7 +149,10 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
-  //delete
+  /**
+   * Interacts with the DoseRepository to get delete a {@link Dose} object from the database.
+   * @param dose the {@link Dose} object to be deleted.
+   */
   public void deleteDose(Dose dose) {
     //Dose dose = new Dose();
     throwable.postValue(null);
@@ -145,6 +190,11 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
 
   private static class FilterLiveData extends MediatorLiveData<Params> {
 
+    /**
+     * Constructor for class.  Specifies a combination of data that is to be treated as livedata
+     * rather than individual pieces
+     * @param futureDoses a reactivex {@link LiveData} object of type {@link Integer}.
+     */
     @SuppressWarnings("ConstantConditions")
     public FilterLiveData(
         @NonNull LiveData<Integer> futureDoses

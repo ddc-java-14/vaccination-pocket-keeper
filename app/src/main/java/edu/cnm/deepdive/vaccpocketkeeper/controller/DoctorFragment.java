@@ -16,7 +16,12 @@ import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.adapter.DoctorAdapter;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentDoctorBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
+/**
+ * Implements the layout and functionality associated with displaying a list of all Dcotors to the user.
+ * Uses the layout as specified in res/layout/fragment_doctor.xml.
+ */
 public class DoctorFragment extends Fragment {
 
   private DoctorViewModel viewModel;
@@ -28,6 +33,13 @@ public class DoctorFragment extends Fragment {
     setHasOptionsMenu(true);
   }
 
+  /**
+   * Overrides the onCreateView method in Fragment.  Instantiates local variables.
+   * Inflates (sets up and displays) the layout as specified in fragment_doctor.xml.
+   * @param savedInstanceState a {@link Bundle}.
+   * @param container a {@link ViewGroup}.
+   * @param inflater a {@link LayoutInflater}.
+   */
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentDoctorBinding.inflate(inflater, container, false);
@@ -40,6 +52,12 @@ public class DoctorFragment extends Fragment {
     return binding.getRoot();
   }
 
+  /**
+   * Overrides the onViewCreated method in Fragment.  Specifically, interacts with the
+   * {@link DoctorViewModel} to get a list of doctors from the database.
+   * @param view a {@link View}.
+   * @param savedInstanceState a {@link Bundle}.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -117,7 +135,7 @@ public class DoctorFragment extends Fragment {
     }
   }
 
-  public void editDoctor(long id, View view) {
+  private void editDoctor(long id, View view) {
     Navigation.findNavController(binding.getRoot())
         .navigate(DoctorFragmentDirections.openDoctor().setDoctorId(id));
   }

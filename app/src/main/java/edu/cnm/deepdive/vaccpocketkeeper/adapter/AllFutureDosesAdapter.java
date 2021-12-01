@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ItemDoseBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
@@ -14,15 +15,23 @@ import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import java.text.DateFormat;
 import java.util.List;
 
+/**
+ * Populates all future {@link Dose}s of all {@link Vaccine}s into a {@link RecyclerView} as specified by the accompanying item layout.
+ */
 public class AllFutureDosesAdapter extends RecyclerView.Adapter<AllFutureDosesAdapter.Holder> {
-  //TODO: change fragment_edit_dose layouts to doctor spinner dropdown and datepicker widgets
   private final LayoutInflater inflator;
   private final DateFormat dateFormat;
   private final List<DoseWithDoctor> doses;
   private final OnDoseEditHelper onDoseEditHelper;
   private final OnDoseDeleteHelper onDoseDeleteHelper;
 
-
+  /**
+   * Class constructor.  Initializes local variables.
+   * @param context the context.
+   * @param doses a list of {@link Dose}s to be populated into the {@link RecyclerView}
+   * @param onDoseEditHelper a helper class object to aid in editing a {@link Dose} object.
+   * @param onDoseDeleteHelper a helper class object to aid in deleting a {@link Doctor} object.
+   */
   public AllFutureDosesAdapter(Context context, List<DoseWithDoctor> doses,
       OnDoseEditHelper onDoseEditHelper,
       OnDoseDeleteHelper onDoseDeleteHelper) {
@@ -49,6 +58,9 @@ public class AllFutureDosesAdapter extends RecyclerView.Adapter<AllFutureDosesAd
     return doses.size();
   }
 
+  /**
+   * A helper class that binds each {@link Dose} to a particular position in the {@link RecyclerView}.
+   */
   class Holder extends RecyclerView.ViewHolder {
 
     private final ItemDoseBinding binding;
@@ -73,10 +85,16 @@ public class AllFutureDosesAdapter extends RecyclerView.Adapter<AllFutureDosesAd
     }
   }
 
+  /**
+   * A helper class to aid in editing a {@link Dose} object.
+   */
   public interface OnDoseEditHelper {
     void onDoseClick(long id, View view);
   }
 
+  /**
+   * A helper class to aid in deleting a {@link Dose} object.
+   */
   public interface OnDoseDeleteHelper {
     void onDoseClick(Dose dose, View view);
   }

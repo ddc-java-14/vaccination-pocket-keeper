@@ -29,6 +29,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * Implements the capability to create or edit a {@link Dose} object from the user interface.  Interacts with
+ * the {@link DoseViewModel} to create or update the {@link Dose} information to the database.
+ */
 public class EditDoseFragment extends BottomSheetDialogFragment implements TextWatcher {
 
   private FragmentEditDoseBinding binding;
@@ -43,6 +47,11 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
   private Doctor doctor;
   private String doctorName;
 
+  /**
+   * Overrides the onCreate method in Fragment.  Gets the doseId to display the
+   * Dose associated with that particular id.
+   * @param savedInstanceState
+   */
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -55,6 +64,15 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
     doctor = null;
   }
 
+  /**
+   * Overrides the onConCreateViewreate method in Fragment. Inflates (sets up and displays) the layout as
+   * specified in fragment_edit_dose.xml.  Sets up a TextChangedListener on all fields, and an
+   * OnClickListener on the save and delete button.
+   * @param inflater a {@link LayoutInflater}.
+   * @param container a {@link ViewGroup}.
+   * @param savedInstanceState a {@link Bundle}.
+   * @return a {@link View}.
+   */
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -115,6 +133,12 @@ public class EditDoseFragment extends BottomSheetDialogFragment implements TextW
     return binding.getRoot();
   }
 
+  /**
+   * Overrides the onViewCreated method in Fragment.  Specifically, interacts with the
+   * {@link DoseViewModel} to create or edit a {@link Dose} from the database.
+   * @param view a {@link View}.
+   * @param savedInstanceState a {@link Bundle}.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);

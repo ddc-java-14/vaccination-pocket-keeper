@@ -23,6 +23,9 @@ import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
 import java.text.DateFormat;
 import java.util.List;
 
+/**
+ * Populates {@link Dose}s into a {@link RecyclerView} as specified by the accompanying item layout.
+ */
 public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
   private final LayoutInflater inflator;
   private final DateFormat dateFormat;
@@ -33,6 +36,13 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
   private final OnDoseDeleteHelper onDoseDeleteHelper;
   private DoctorViewModel doctorViewModel;
 
+  /**
+   * Class constructor.  Initializes local variables.
+   * @param context the context.
+   * @param vaccine a {@link VaccineWithDoses} object to be used to help populate {@link Dose}s into the {@link RecyclerView}
+   * @param onDoseEditHelper a helper class object to aid in editing a {@link Dose} object.
+   * @param onDoseDeleteHelper a helper class object to aid in deleting a {@link Dose} object.
+   */
   public DoseAdapter(Context context, VaccineWithDoses vaccine,
       OnDoseEditHelper onDoseEditHelper,
       OnDoseDeleteHelper onDoseDeleteHelper) {
@@ -71,6 +81,9 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
 //    return lifecycle;
 //  }
 
+  /**
+   * A helper class that binds each {@link Dose} to a particular position in the {@link RecyclerView}.
+   */
   class Holder extends RecyclerView.ViewHolder {
 
     private final ItemDoseBinding binding;
@@ -102,10 +115,16 @@ public class DoseAdapter extends RecyclerView.Adapter<DoseAdapter.Holder> {
     }
   }
 
+  /**
+   * A helper class to aid in editing a {@link Dose} object.
+   */
   public interface OnDoseEditHelper {
     void onDoseClick(long id, View view);
   }
 
+  /**
+   * A helper class to aid in deleting a {@link Dose} object.
+   */
   public interface OnDoseDeleteHelper {
     void onDoseClick(Dose dose, View view);
   }

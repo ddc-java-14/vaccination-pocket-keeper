@@ -12,6 +12,10 @@ import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ActivityLoginBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.LoginViewModel;
 
+
+/**
+ * Interacts with the {@link LoginViewModel} to log the user into the application. Uses the visual layout for the login screen as specified by the activity_main layout in res/layout.
+ */
 public class LoginActivity extends AppCompatActivity {
 
   private ActivityLoginBinding binding; //when added activity login layout file, automatically got created for us
@@ -19,6 +23,10 @@ public class LoginActivity extends AppCompatActivity {
   private ActivityResultLauncher<Intent> launcher;
   private boolean silent;
 
+  /**
+   * Overrides the onCreate method in AppCompatActivity.  Instantiates local variables. Specifically, starts and completes the SignIn process through screens as defined in the activity_login layout in res/layout.
+   * @param savedInstanceState a {@link Bundle}.
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

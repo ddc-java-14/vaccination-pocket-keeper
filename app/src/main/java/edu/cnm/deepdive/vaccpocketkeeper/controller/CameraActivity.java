@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,11 +39,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider.Factory;
 import androidx.lifecycle.ViewModelStore;
 import com.google.common.util.concurrent.ListenableFuture;
+import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ActivityCameraBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.LoginViewModel;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -53,6 +57,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * Implements methods that enable a user to take a photgraph from their phone,
+ * store the photograph in local storage and associate the picture with a particular {@link Dose}
+ * in the database.  Interacts with the {@link DoseViewModel} to store the photo file location in the
+ * database. Uses the visual layout for the Take Picture screen as specified by the activity_camera
+ * layout in res/layout.  Requests user permission to access the camera and to read and write to external storage.
+ */
 public class CameraActivity extends AppCompatActivity {
 
   private Executor executor = Executors.newSingleThreadExecutor();
@@ -72,6 +83,14 @@ public class CameraActivity extends AppCompatActivity {
   //PreviewView binding.previewView;
   //ImageView binding.captureImg;
 
+  /**
+   * Overrides the onCreate method in AppCompatActivity.  Instantiates local variables.
+   * Specifically, uses the visual layout for the Take Picture screen as specified by the
+   * activity_camera layout in res/layout. Interacts with the {@link DoseViewModel} to get
+   * a dropdown list of all of the doses in the database.  Requests user permission to access
+   * the camera and to read and write to external storage.
+   * @param savedInstanceState a {@link Bundle}.
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -142,7 +161,7 @@ public class CameraActivity extends AppCompatActivity {
     }, ContextCompat.getMainExecutor(this));
   }
 
-  void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
+  private void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
 
     Preview preview = new Preview.Builder()
         .build();
@@ -195,6 +214,11 @@ public class CameraActivity extends AppCompatActivity {
               //saves filename to a particular dose's iamge field
               saveDose(savedImageFilePath);
 
+//              Bitmap takenImage = BitmapFactory.decodeFile(savedImageFilePath);
+//              // Load the taken image into a preview
+//              ImageView ivPreview = (ImageView) findViewById(R.id.ivPreview);
+//              ivPreview.setImageBitmap(takenImage);
+
               //Bitmap selectedImage = loadFromUri(photoUri);
 
               // Load the selected image into a preview
@@ -221,7 +245,7 @@ public class CameraActivity extends AppCompatActivity {
           });
   }
 
-  public Bitmap loadFromUri(Uri photoUri) {
+  private Bitmap loadFromUri(Uri photoUri) {
     Bitmap image = null;
     try {
       // check version of Android on device
@@ -239,7 +263,7 @@ public class CameraActivity extends AppCompatActivity {
     return image;
   }
 
-  public String getBatchDirectoryName() {
+  private String getBatchDirectoryName() {
 
     String app_folder_path = "";
     app_folder_path = Environment.getExternalStorageDirectory().toString() + "/images";
@@ -278,7 +302,10 @@ super.onRequestPermissionsResult(requestCode,permissions, grantResults);
 //    return viewModelStore;
 //  }
 
-  @NonNull
+  /**
+   * Instantiates a {@link ViewModelStore} object
+   * @return a {@link ViewModelStore} object.
+   */
   public ViewModelStore getViewModelStore() {
     Object nonConfigurationInstance = getLastNonConfigurationInstance();
     if (nonConfigurationInstance instanceof ViewModelStore) {
@@ -290,7 +317,7 @@ super.onRequestPermissionsResult(requestCode,permissions, grantResults);
     return viewModelStore;
   }
 
-  public ViewModelProvider getViewModelProvider() {
+  private ViewModelProvider getViewModelProvider() {
     ViewModelProvider.Factory factory =
         (Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
     return new ViewModelProvider(getViewModelStore(), factory);

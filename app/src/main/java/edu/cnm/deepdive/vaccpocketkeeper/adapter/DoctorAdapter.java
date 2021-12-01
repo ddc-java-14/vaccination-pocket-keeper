@@ -11,6 +11,9 @@ import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import java.text.DateFormat;
 import java.util.List;
 
+/**
+ * Populates {@link Doctor}s into a {@link RecyclerView} as specified by the accompanying item layout.
+ */
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
 
   private final LayoutInflater inflator;
@@ -19,6 +22,13 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
   private final OnDoctorEditHelper onDoctorEditHelper;
   private final OnDoctorDeleteHelper onDoctorDeleteHelper;
 
+  /**
+   * Class constructor.  Initializes local variables.
+   * @param context the context.
+   * @param doctors a list of {@link Doctor}s to be populated into the {@link RecyclerView}
+   * @param onDoctorEditHelper a helper class object to aid in editing a {@link Doctor} object.
+   * @param onDoctorDeleteHelper a helper class object to aid in deleting a {@link Doctor} object.
+   */
   public DoctorAdapter(Context context, List<Doctor> doctors, OnDoctorEditHelper onDoctorEditHelper,
       OnDoctorDeleteHelper onDoctorDeleteHelper) {
     inflator = LayoutInflater.from(context);
@@ -45,6 +55,9 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
     return doctors.size();
   }
 
+  /**
+   * A helper class that binds each {@link Doctor} to a particular position in the {@link RecyclerView}.
+   */
   class Holder extends RecyclerView.ViewHolder {
 
     private final ItemDoctorBinding binding;
@@ -64,10 +77,16 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
 
   }
 
+  /**
+   * A helper class to aid in editing a {@link Doctor} object.
+   */
   public interface OnDoctorEditHelper {
     void onDoctorClick(long id, View view);
   }
 
+  /**
+   * A helper class to aid in deleting a {@link Doctor} object.
+   */
   public interface OnDoctorDeleteHelper {
     void onDoctorClick(Doctor doctor, View view);
   }
