@@ -90,12 +90,8 @@ public class EditVaccineFragment extends BottomSheetDialogFragment implements Te
         this.vaccine = vaccine;
         binding.vaccVaccineName.setText(vaccine.getName());
         binding.vaccDescription.setText(vaccine.getDescription());
-        //binding.vaccFrequency.setEnabled(false);
         binding.vaccFrequencyLayout.setVisibility(View.GONE);
-            //.setText(String.valueOf(vaccine.getFrequency()));
-        //binding.vaccTotalNumberOfDoses.setEnabled(false);
         binding.vaccTotalNumberOfDosesLayout.setVisibility(View.GONE);
-        //.setText(String.valueOf(vaccine.getTotalNumberOfDoses()));
         binding.vaccAgeRangeLowerLimit.setText(String.valueOf(vaccine.getAgeRangeLowerLimit()));
         binding.vaccAgeRangeUpperLimit.setText(String.valueOf(vaccine.getAgeRangeUpperLimit()));
       });
@@ -132,7 +128,6 @@ public class EditVaccineFragment extends BottomSheetDialogFragment implements Te
     String totalNumberOfDoses = binding.vaccTotalNumberOfDoses.getText().toString().trim();
     String ageRangeLowerLimt = binding.vaccAgeRangeLowerLimit.getText().toString().trim();
     String ageRangeUpperLimit = binding.vaccAgeRangeUpperLimit.getText().toString().trim();
-    //Log.d(getClass().getSimpleName(), String.format("vaccine is empty: %b, description is empty: %b, frequency is empty: %b, total number of doses is empty: %b, age range lower limit is empty: %b, age range upper limit is empty: %b%n", vaccine.isEmpty(), description.isEmpty(), frequency.isEmpty(), totalNumberOfDoses.isEmpty(), ageRangeLowerLimt.isEmpty(), ageRangeUpperLimit.isEmpty()));
     binding.save.setEnabled(!vaccine.isEmpty() && !description.isEmpty() && !frequency.isEmpty() && !totalNumberOfDoses.isEmpty() && !ageRangeLowerLimt.isEmpty() && !ageRangeUpperLimit.isEmpty());
   }
 }

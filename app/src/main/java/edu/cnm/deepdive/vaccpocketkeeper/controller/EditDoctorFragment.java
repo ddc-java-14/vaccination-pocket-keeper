@@ -13,7 +13,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.FragmentEditDoctorBinding;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoctorViewModel;
-import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.VaccineViewModel;
 
 /**
  * Implements the capability to create or edit a {@link Doctor} object from the user interface.  Interacts with

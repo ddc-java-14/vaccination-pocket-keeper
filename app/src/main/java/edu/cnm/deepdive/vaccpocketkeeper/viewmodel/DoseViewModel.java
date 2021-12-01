@@ -15,7 +15,6 @@ import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.Transformations;
 import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.service.DoseRepository;
@@ -33,12 +32,10 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<Long> doseId;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
-  //private final MutableLiveData<Long>
   private final SharedPreferences preferences;
   private final String futureDosesPrefKey;
   private final int futureDosesPrefDefault;
   private final MutableLiveData<Integer> futureDosesLimit;
-  //private final LiveData<List<Dose>> futureDoses;
 
   /**
    * Class constructor.  Instantiates local class variables. Additionally, reads future dose
@@ -62,10 +59,6 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     futureDosesPrefDefault = resources.getInteger(R.integer.future_doses_pref_default);
     int futureDosesPref = preferences.getInt(futureDosesPrefKey, futureDosesPrefDefault);
     futureDosesLimit = new MutableLiveData<>(futureDosesPref);
-    //sortedByTime = new MutableLiveData<>(false);
-//    FilterLiveData trigger =
-//        new FilterLiveData(futureDosesLimit);
-//    futureDoses = Transformations.switchMap(trigger, (params) -> repository.getUpcomingDoses(params.futureDoses));
   }
 
   /**
@@ -129,11 +122,6 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     return repository.getPastDoses(fromDate);
   }
 
-  //getFutureDoses
-//  public LiveData<List<Dose>> getFutureDoses() {
-//    return repository.getUpcomingDoses();
-//  }
-
   /**
    * Interacts with the DoseRepository to get save a {@link Dose} object to the database.
    * @param dose the {@link Dose} object to be saved.
@@ -154,7 +142,6 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
    * @param dose the {@link Dose} object to be deleted.
    */
   public void deleteDose(Dose dose) {
-    //Dose dose = new Dose();
     throwable.postValue(null);
     pending.add(
         repository
@@ -180,11 +167,9 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
   private static class Params {
 
     private final int futureDoses;
-    //private final boolean sortedByTime;
 
     private Params(int futureDoses) {
       this.futureDoses = futureDoses;
-      //this.sortedByTime = sortedByTime;
     }
   }
 
@@ -198,11 +183,9 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     @SuppressWarnings("ConstantConditions")
     public FilterLiveData(
         @NonNull LiveData<Integer> futureDoses
-        //@NonNull LiveData<Boolean> sortedByTime
     ) {
       //combination treated as livedata rather than individual pieces
       addSource(futureDoses, (years) -> setValue(new Params(years)));
-      //addSource(sortedByTime, (sorted) -> setValue(new Params(futureDoses.getValue(), sorted)));
     }
   }
 }

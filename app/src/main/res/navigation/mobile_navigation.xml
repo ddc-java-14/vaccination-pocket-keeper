@@ -125,11 +125,6 @@
     android:label="@string/menu_camera"
     android:name="edu.cnm.deepdive.vaccpocketkeeper.controller.CameraActivity"
     tools:layout="@layout/activity_camera">
-
-<!--  <action-->
-<!--    android:id="@+id/open_camera"-->
-<!--    app:destination="@id/nav_open_camera">-->
-<!--  </action>-->
   </activity>
 
   <fragment

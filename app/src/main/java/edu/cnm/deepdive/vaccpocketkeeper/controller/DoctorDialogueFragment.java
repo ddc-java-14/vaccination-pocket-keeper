@@ -43,7 +43,6 @@ public class DoctorDialogueFragment extends DialogFragment {
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
     binding = FragmentDoctorDialogueBinding.inflate(LayoutInflater.from(getContext()));
-    //binding.doctorDialogueName.getText().toString();
     return new AlertDialog.Builder(
         getContext())
         .setTitle((doctor != null) ? doctor.getName() : "No Name Available")
@@ -57,8 +56,5 @@ public class DoctorDialogueFragment extends DialogFragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     viewModel = new ViewModelProvider(getActivity()).get(DoctorViewModel.class);
-    //viewModel.getDoctor(doctorId).observe(getViewLifecycleOwner(), (doctor) -> {
-    //  this.doctor = doctor;
-    //});
   }
 }

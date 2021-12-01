@@ -1,12 +1,8 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
-import static androidx.camera.core.CameraX.getContext;
-
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
@@ -19,10 +15,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
@@ -39,13 +33,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider.Factory;
 import androidx.lifecycle.ViewModelStore;
 import com.google.common.util.concurrent.ListenableFuture;
-import edu.cnm.deepdive.vaccpocketkeeper.R;
 import edu.cnm.deepdive.vaccpocketkeeper.databinding.ActivityCameraBinding;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
-import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.LoginViewModel;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -80,9 +71,6 @@ public class CameraActivity extends AppCompatActivity {
   private Context context;
   private String savedImageFilePath;
 
-  //PreviewView binding.previewView;
-  //ImageView binding.captureImg;
-
   /**
    * Overrides the onCreate method in AppCompatActivity.  Instantiates local variables.
    * Specifically, uses the visual layout for the Take Picture screen as specified by the
@@ -99,16 +87,11 @@ public class CameraActivity extends AppCompatActivity {
 
     context = this.getApplicationContext();
     dose = null;
-//    setContentView(R.layout.activity_camera);
-//
-//    binding.previewView = findViewById(R.id.previewView);
-//    binding.captureImg = findViewById(R.id.captureImg);
     binding.doseSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String doseName = (String) parent.getItemAtPosition(position);
         itemSelected = position;
-        //doctorName = doctor.getName();
       }
 
       @Override
@@ -119,7 +102,6 @@ public class CameraActivity extends AppCompatActivity {
 
 
     doseViewModel = getViewModelProvider().get(DoseViewModel.class);
-    //doseViewModel = ViewModelProvider(this).get(DoseViewModel::class.java);
     doseViewModel
         .getDoses()
         .observe(this, (doses) -> {
@@ -205,10 +187,6 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void run() {
               Toast.makeText(CameraActivity.this, "Image Saved successfully!", Toast.LENGTH_LONG).show();
-              //Toast.makeText(CameraActivity.this, "Image Saved successfully: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
-              //Bitmap photo = (Bitmap) data.getExtras().get("data");
-              //imageView.setImageBitmap(photo);
-              //Uri photoUri = data.getData();
 
               savedImageFilePath = file.getAbsolutePath();
               //saves filename to a particular dose's iamge field
@@ -297,11 +275,6 @@ super.onRequestPermissionsResult(requestCode,permissions, grantResults);
     }
   }
 
-//  @Override
-//  public Object onRetainNonConfigurationInstance() {
-//    return viewModelStore;
-//  }
-
   /**
    * Instantiates a {@link ViewModelStore} object
    * @return a {@link ViewModelStore} object.
@@ -322,13 +295,6 @@ super.onRequestPermissionsResult(requestCode,permissions, grantResults);
         (Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
     return new ViewModelProvider(getViewModelStore(), factory);
   }
-//  private LifecycleOwner getLifecycleOwner() {
-//    Context context = this.getApplicationContext();
-//    while (!(context instanceof LifecycleOwner)) {
-//      context = ((ContextWrapper) context).getBaseContext();
-//    }
-//    return (LifecycleOwner) context;
-//  }
 
   private ArrayList<String> convertArrayListofObjectsToStringArray(List<DoseWithDoctor> arrayList) {
     ArrayList<String> str = new ArrayList<>();

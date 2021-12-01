@@ -33,7 +33,6 @@ android {
 
         buildConfigField 'String', 'BASE_URL', quoted(getLocalProperty('base_url'))
 
-        // TODO: Uncomment following lines after branching for example capstone project
         buildConfigField 'String', 'CLIENT_ID',
                 quoted(getProperty("$projectDir/../../../services/vaccpocketkeeper.properties",'client_id'))
 

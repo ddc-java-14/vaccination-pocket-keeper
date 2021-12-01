@@ -3,13 +3,9 @@ package edu.cnm.deepdive.vaccpocketkeeper.service;
 import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
-import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.UserDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.VaccineDao;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.User;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
-import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.UserWithVaccines;
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -100,15 +96,6 @@ public class UserRepository {
             .ignoreElement() //not interested in how many records deleted; .ignore turns from single to completable.  or .flatmap (takes single and daisy chains completable to it)
             .subscribeOn(Schedulers.io());
   }
-
-//  public Single<User> addNewVaccine() {
-//    return Single
-//        .fromCallable(() -> {
-//          User user = new User();
-//          return user;
-//        }) //asynchronous call
-//        .subscribeOn(Schedulers.io());
-//  }
 
   /**
    * Interacts with the {@link UserDao} to add a {@link UserWithVaccines} object to the database.

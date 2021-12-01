@@ -11,7 +11,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.User;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
@@ -30,15 +29,11 @@ public class GoogleSignInRepository {
 
   private final GoogleSignInClient client;
 
-  //private GoogleSignInAccount account;
-
   private GoogleSignInRepository() {
     GoogleSignInOptions options = new GoogleSignInOptions.Builder()
         .requestEmail()
         .requestId() //oauth key from Google
         .requestProfile()
-        // TODO: Uncomment following line after branching for example capstone client.
-//        .requestIdToken(BuildConfig.CLIENT_ID)//bearer token that we need for this client id.
         .build();
     client = GoogleSignIn.getClient(context, options);
   }
@@ -103,7 +98,6 @@ public class GoogleSignInRepository {
           try {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
             GoogleSignInAccount account = task.getResult(ApiException.class);
-            //logAccount(account);
             emitter.onSuccess(account);
           } catch (ApiException e) {
             emitter.onError(e);
@@ -122,7 +116,6 @@ public class GoogleSignInRepository {
             client
                 .signOut() //sign out gives us a void = null, which we don't care about
                 .addOnSuccessListener((ignored) -> emitter.onComplete())
-                //.addOnCompleteListener((ignored) -> logAccount(null))
                 .addOnFailureListener(emitter::onError)
         )
         .subscribeOn(Schedulers.io());
@@ -132,7 +125,6 @@ public class GoogleSignInRepository {
    * Logs the Bearer Token for the user sign in session to the console.
    */
   private void logAccount(GoogleSignInAccount account) {
-    //this.account = account;
     if (account != null) {
       Log.d(getClass().getSimpleName(),
           account.getIdToken() != null ? getBearerToken(account) : "none");

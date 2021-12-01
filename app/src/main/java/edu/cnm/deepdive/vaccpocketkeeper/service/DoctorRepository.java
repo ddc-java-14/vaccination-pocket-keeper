@@ -1,14 +1,9 @@
 package edu.cnm.deepdive.vaccpocketkeeper.service;
 
 import android.app.Application;
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoctorDao;
-import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;

@@ -32,7 +32,6 @@
     app:layout_constraintTop_toTopOf="@id/dose_name"
     app:layout_constraintTop_toBottomOf="@id/dose_name"
     />
-  <!-- TODO: add content description on images -->
 
   <ImageButton
     android:id="@+id/dose_delete"

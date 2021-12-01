@@ -53,10 +53,6 @@ public class AllFutureDosesFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentAllFutureDosesBinding.inflate(inflater, container, false);
-    //binding.submit.setOnClickListener((v) ->
-    //    viewModel.submitGuess(binding.guess.getText().toString().trim()));
-    //binding.guess.setFilters(new InputFilter[]{this});
-    //compiler infers that v is a view : (View v)
     return binding.getRoot();
   }
 
@@ -70,18 +66,6 @@ public class AllFutureDosesFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     //noinspection ConstantConditions
-//    viewModel = new ViewModelProvider(getActivity()).get(DoseViewModel.class);
-//    getLifecycle().addObserver(viewModel);
-//    viewModel.getThrowable().observe(getViewLifecycleOwner(), this::displayError);
-//    viewModel.getDoses().observe(getViewLifecycleOwner(), this::update); //observes a dose
-//    doseViewModel = new ViewModelProvider(this).get(DoseViewModel.class);
-//    doseViewModel
-//        .getDosesForVaccineId(vaccineId)
-//        .observe(getViewLifecycleOwner(),(doses) -> {
-//          DoseAdapter adapter = new DoseAdapter(getContext(), doses, this::editDose,
-//              (dose,v) -> doseViewModel.deleteDose(dose));
-//          binding.doses.setAdapter(adapter);
-//        });
     doseViewModel = new ViewModelProvider(this).get(DoseViewModel.class);
     doseViewModel
         .getDoses()
@@ -108,37 +92,12 @@ public class AllFutureDosesFragment extends Fragment {
         });
   } //when fragment dies, then cleans up
 
-//  @Override
-//  public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//    super.onCreateOptionsMenu(menu, inflater);
-//    inflater.inflate(R.menu.play_actions, menu);
-//  }
-
-//  @Override
-//  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//    //return true if menu item that we handled, otherwise return false
-//    boolean handled;
-//    if (item.getItemId() == R.id.new_game) {
-//      handled = true;
-//      binding.guess.getText().clear();
-//      viewModel.startGame();
-//    } else {
-//      handled = super.onOptionsItemSelected(item);
-//    }
-//    return handled;
-//  }
-
   @Override
   public void onDestroyView() {
     super.onDestroyView();
     binding = null;
   }
 
-//  private void update(Dose dose) { //updates the display model
-//    DoseAdapter adapter = new DoseAdapter(getContext(),
-//        dose.getName());// how we get a context in a fragment
-//    binding.dose.setAdapter(adapter);//this adapter can tell us our guesses
-//  }
 
   private void displayError(Throwable throwable) {
     if (throwable != null) {

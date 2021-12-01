@@ -3,19 +3,14 @@ package edu.cnm.deepdive.vaccpocketkeeper.model.dao;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
-import androidx.room.Ignore;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.User;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.UserWithVaccines;
-import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import io.reactivex.Single;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 /**

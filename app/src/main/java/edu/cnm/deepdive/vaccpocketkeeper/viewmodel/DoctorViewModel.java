@@ -11,12 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.Transformations;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
-import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoctorWithDoses;
-import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
-import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import edu.cnm.deepdive.vaccpocketkeeper.service.DoctorRepository;
-import edu.cnm.deepdive.vaccpocketkeeper.service.VaccineRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 

@@ -7,19 +7,14 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.vaccpocketkeeper.R;
-import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoctorDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
-import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
-import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
-import edu.cnm.deepdive.vaccpocketkeeper.model.view.DoseSummary;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**

@@ -25,14 +25,6 @@
     android:layout_margin="@dimen/half_dynamic_spacing"
     android:background="@drawable/spinner_bg"/>
 
-<!--    <ImageView-->
-<!--      android:layout_width="wrap_content"-->
-<!--      android:layout_height="wrap_content"-->
-<!--      android:layout_alignParentRight="true"-->
-<!--      android:layout_centerVertical="true"-->
-<!--      android:layout_gravity="center"-->
-<!--      android:src="@drawable/spinner_down_arrow" />-->
-
   </RelativeLayout>
 
   <androidx.camera.view.PreviewView

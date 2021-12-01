@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.RoomDatabase.Callback;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -203,7 +202,7 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
             vaccine.setCreated(new Date());
             Calendar cal = Calendar.getInstance();
             for (int i = 0; i < vaccine.getTotalNumberOfDoses();
-                i++) { //TODO: getTotalNumberOfDoses is empty
+                i++) {
               DoseWithDoctor dose = new DoseWithDoctor();
               cal.add(Calendar.YEAR, vaccine.getFrequency());
               dose.setDateAdministered(cal.getTime());
@@ -211,15 +210,13 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
               dose.setName("DoseNumber" + (i + 1));
               vaccine.getDoses().add(dose);
             }
-            vaccine.setDoses(vaccine.getDoses());//*****TODO check this out
+            vaccine.setDoses(vaccine.getDoses());
             task = vaccineDao
                 .insert(vaccine)
                 .map((id) -> {
                   vaccine.setId(id);//id of record added, then puts note back on the conveyor belt
                   for (Dose dose : vaccine.getDoses()) {
                     dose.setVaccineId(id);
-                    //dose.setId(0);
-                    //preloadDoses();
                   }
                   return vaccine;
                 })
@@ -234,17 +231,6 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
                   }
                   return vaccine;
                 });
-//            for (Dose dose : vaccine.getDoses()) {
-//              dose.setVaccineId(vaccine.getId());
-//              //dose.setId(0);
-//              doses.add(dose);
-//              VaccpocketkeeperDatabase
-//                  .getInstance()
-//                  .getDoseDao()
-//                  .insert(dose)
-//                  .subscribeOn(Schedulers.io())
-//                  .subscribe();
-//            }
           } else {
             task = vaccineDao
                 .update(vaccine)
@@ -254,8 +240,6 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
                 );
           }
           task.subscribeOn(Schedulers.io());
-//          vaccines.add(vaccine);
-//        }
           VaccpocketkeeperDatabase
               .getInstance()
               .getVaccineDao()
@@ -274,11 +258,10 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
               })
               .subscribeOn(Schedulers.io())
               .subscribe();
-          }//****
+          }
       } catch (IOException e) {
         Log.e(getClass().getSimpleName(), e.getMessage(), e);
       }
-      //preloadDoses();
     }
 
     private void preloadDoses() {

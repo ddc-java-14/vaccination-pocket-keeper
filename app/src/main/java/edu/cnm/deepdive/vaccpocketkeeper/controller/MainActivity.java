@@ -83,11 +83,6 @@ public class MainActivity extends AppCompatActivity {
     return true;
   }
 
-//  @Override
-//  public boolean onNavigationItemSelected(MenuItem menuItem) {
-//    return true;
-//  }
-
   /**
    *  Overrides the onOptionsItemSelected method in AppCompatActivity.  Specifies what to do if
    *  the user clicks on each menu item (Sign out versus Settings).
@@ -106,13 +101,6 @@ public class MainActivity extends AppCompatActivity {
           MobileNavigationDirections.openSettings()); //when we created the navigation under id, followied by directions
       handled = true;
     }
-
-//    else if (itemId == R.id.nav_camera) {
-//      Intent newIntent = new Intent(getApplicationContext(), CameraActivity.class);
-//      newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//      startActivity(newIntent);
-//      handled = true;
-//    }
 
     else {
       handled = super.onOptionsItemSelected(item);

@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.vaccpocketkeeper.service;
 
 import android.app.Application;
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.DoseDao;
 import edu.cnm.deepdive.vaccpocketkeeper.model.dao.VaccineDao;
@@ -88,7 +87,7 @@ public class VaccineRepository {
     if (vaccine.getId() == 0) {//creating a new vaccine
       vaccine.setCreated(new Date());
       Calendar cal = Calendar.getInstance();
-      for (int i = 0; i < vaccine.getTotalNumberOfDoses(); i++) { //TODO: getTotalNumberOfDoses is empty
+      for (int i = 0; i < vaccine.getTotalNumberOfDoses(); i++) {
         DoseWithDoctor dose = new DoseWithDoctor();
         cal.add(Calendar.YEAR, vaccine.getFrequency());
         dose.setDateAdministered(cal.getTime());

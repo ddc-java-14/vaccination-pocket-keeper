@@ -3,7 +3,6 @@ package edu.cnm.deepdive.vaccpocketkeeper.model.pojo;
 import androidx.room.Relation;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
-import java.util.List;
 
 /**
  * Encapsulates a persistent DosesWithDoctor object that is a join of {@link Doctor} and {@link Dose} by doctor_id.
