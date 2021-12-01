@@ -7,9 +7,12 @@ order: 0
 
 ## Summary
 
-Oftentimes, individuals would like to keep track of which vaccinations they have received.  These records are often held at doctor's offices.  However, some people who were born before 2000 have only paper copies of their vaccination history.  Also, individuals who have moved around a lot may have their vaccination histories spread across multiple doctors' offices.  Thus, it can be difficult to keep track of which vaccinations one has had and which vaccinations are needed in the near future.  With the addition of COVID-19 related illnesses, keeping track of which shots were given when is critical, and some people even require proof of vaccination for their jobs or for travel on public transportation.  This app is a personal digital record keeper that keeps track of what vaccinations an individual has had throughout their lifetime as well as what vaccinations are upcoming. 
+Oftentimes, individuals would like to keep track of which vaccinations they have received. These records are often held at doctor’s offices. However, some people who were born before 2000 have only paper copies of their vaccination history. Also, individuals who have moved around a lot may have their vaccination histories spread across multiple doctors’ offices. Thus, it can be difficult to keep track of which vaccinations one has had and which vaccinations are needed in the near future. With the addition of COVID-19 related illnesses, keeping track of which shots were given when is critical, and some people even require proof of vaccination for their jobs or for travel on public transportation. This app is a personal digital record keeper that keeps track of what vaccinations an individual has had throughout their lifetime as well as what vaccinations are upcoming.
 
-The application will keep track yearly and lifetime vaccination dates and shots.  That is, users will have the ability to see a list of vaccinations that they have received in the past as well as a list of upcoming vaccinations that they need in the near future.  In order to accomplish these functionalities, users will be able to add new vaccinations to their vaccination history, update vaccination information, and delete a vaccination from their history.  <!-- (and see a list of CDC and additional  vaccination recommendations &#40;from a phone browser&#41;.) -->
+The application tracks yearly and lifetime vaccination dates and shots in digital, easy to use format. Through this app, users have the ability to see a list of vaccinations that they have received in the past as well as a list of upcoming vaccinations that they need in the near future. In order to accomplish these functionalities, users can add new vaccinations to their vaccination history, update vaccination information, and delete a vaccination from their history.
+
+This app includes several features which enable vaccination tracking and history.  First, users can enter a set of doctors who administer a shot.  A doctor consists of a doctor name.  Users can also edit and delete a doctor entry.  Second, users can enter a vaccination.  A vaccination consists of a name, a frequency of doses, and a total number of doses to give for the vaccine, and finally, an age range of the vaccine (e.g. 0-5 years old, 5-15 years old, 25-65 years old, 65-85 years old).  Users can edit and delete a vaccine and all of its information.  Third, users can enter a number of doses for each vaccine.  A dose represents an administration of the vaccine on a particular date by a particular doctor.  Doses can also be edited and deleted.  Fourth, users can see a list of upcoming vaccines.  These are vaccines that are due in the future.  Users can specify, through a setting option, how many years in the future to view upcoming vaccinations.  Finally, users can take a picture of a vaccination card, such as a COVID-19 card, from the phone camera.
+
 
 ## Intended users
 
@@ -60,16 +63,6 @@ This app will use the following services:
   * [Sample Camera App (in Java)](https://github.com/googlearchive/android-Camera2Basic/blob/master/Application/src/main/java/com/example/android/camera2basic/Camera2BasicFragment.java)
   * This app will use the camera to take a picture of a vaccination card (such as a CDC COVID-19 card) and store the picture in the app.
   * This app will be able to function without full-time access to the camera.
-  
-## Stretch goals/possible enhancements 
-
-* The app will send friendly reminders to the user through email, notification, or SMS when vaccinations are due (for example, tetanus and COVID-19 shots).
-* The app will use OCR recognition to automatically fill in vaccination information. 
-  * [An OCR Recognition Package](https://github.com/tesseract-ocr/tesseract)
-* The app will integrate a WebView Service
-  * [Developer Documentation for WebView](https://developer.android.com/guide/webapps)
-  * This app will use the WebView to render additional resources as specified in [Additional Resources](#additional-resources)
-  * This app will be able to function without full-time access to a WebView.
 
 ### Additional Resources
 
@@ -80,6 +73,116 @@ These additional resources will be integrated into the WebView:
 
 **Note**
 These resources are subject to change as additional information is discovered.
+
+## Summary of current state of the app
+
+#### Description of the current state of completion/readiness of the app
+
+This app is a solid working prototype. The core functionality works, but there are several deficiencies.  
+
+* When a user adds a dose to a vaccine, it does not update the number of doses in the vaccine entity in the database.  
+* When a user takes a photo, it does not store the photo as a URI and put it in the database for each dose as appropriate.
+* Photos cannot be retrieved from the database; rather they must be retrieved by the user going to the photos app on the phone.  
+* Changing the slider widget in **Settings** does not update the future doses shown in the **All Future Doses**
+
+List of aesthetic/cosmetic (not functional) enhancements
+
+* A color coordinated schema would enhance this app.  
+* Changing the green background of the drawer as well as the words and email address would enhance this app.
+
+## Stretch goals/possible enhancements
+
+* There should be a listing of all past vaccinations within a certain date range.  
+* It would be nice to have the next upcoming doses calculated by taking the user birthday in conjunction with age range to determine these.  
+* It would be nice to have a list of resources that a user can have which specify what are the most common vaccines.
+* The app will send friendly reminders to the user through email, notification, or SMS when vaccinations are due (for example, tetanus and COVID-19 shots).
+* The app will use OCR recognition to automatically fill in vaccination information.
+  * [An OCR Recognition Package](https://github.com/tesseract-ocr/tesseract)
+* The app will integrate a WebView Service
+  * [Developer Documentation for WebView](https://developer.android.com/guide/webapps)
+  * This app will use the WebView to render additional resources as specified in [Additional Resources](#additional-resources)
+  * This app will be able to function without full-time access to a WebView.
+
+## Wireframe diagram
+
+[Wireframe](wireframe.md)
+
+## ERD
+
+[ERD](erd.md)
+
+## DDL
+
+[DDL](ddl.md)
+
+## Technical requirements & dependencies
+
+#### Android API versions and hardware (including emulators) on which you’ve tested
+
+* Hardware versions on which this app has been tested.
+  * Pixel 3a API 28
+* Minimum Android AP required
+  *26
+
+#### list of the 3rd-party libraries
+
+* Google Sign In
+* Gson
+* ReactiveX 
+* CameraX
+
+#### list of Android permissions required to run the app
+
+* Permissions Required to Run the App
+  * Safe permissions
+    * None
+  * Dangerous permissions
+    * Camera
+      * Write and read to external storage
+         * If the user does not allow both of these permissions, then the user cannot store a photo to file storage on the phone.  
+
+####A list of the external services consumed by the app
+
+* Google Sign In
+
+
+## Javadocs
+
+[Javadocs](javadocs.md)
+
+## Copyrights & licenses
+
+[Copyrights & Licenses](notice.md)
+
+## Build instructions
+
+#### Clone/download the repository
+
+The repository can be cloned from the following link.
+
+[Github link to repository](https://github.com/ddc-java-14/vaccination-pocket-keeper/)
+
+Import the project into Android Studio/IntelliJ IDEA.
+
+A standard clone from VCS will import the project into IntelliJ
+
+Execute the build.
+
+There are no special build instructions.  
+
+## Basic user instructions
+
+Sign in to the app using a google sign in account.
+The app comes pre-loaded with several doctors, vaccines, and doses. 
+Add new/edit/delete vaccines, doctors, and doses.
+When on the vaccines screen, clicking on a vaccine will take the user to a detailed dose for each vaccine screen.
+Take a photo of a vaccination card (e.g. COVID-19 proof of vaccination).  
+- Select a Dose to associate the picture with. 
+- This is stored in the local database under the applicable Dose.
+
+## Implementation
+
+[Implementation](implementation.md)
 
 ## Copyright Notice
 
