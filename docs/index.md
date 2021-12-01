@@ -117,21 +117,21 @@ List of aesthetic/cosmetic (not functional) enhancements
 
 ## Technical requirements & dependencies
 
-#### Android API versions and hardware (including emulators) on which you’ve tested
+### Android API versions and hardware (including emulators) on which you’ve tested
 
 * Hardware versions on which this app has been tested.
   * Pixel 3a API 28
 * Minimum Android AP required
   *26
 
-#### list of the 3rd-party libraries
+### List of the 3rd-party libraries
 
 * Google Sign In
 * Gson
 * ReactiveX 
 * CameraX
 
-#### list of Android permissions required to run the app
+### List of Android permissions required to run the app
 
 * Permissions Required to Run the App
   * Safe permissions
@@ -141,7 +141,7 @@ List of aesthetic/cosmetic (not functional) enhancements
       * Write and read to external storage
          * If the user does not allow both of these permissions, then the user cannot store a photo to file storage on the phone.  
 
-####A list of the external services consumed by the app
+### A list of the external services consumed by the app
 
 * Google Sign In
 
