@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -113,7 +115,23 @@ public class DoseFragment extends Fragment {
         .observe(getViewLifecycleOwner(), (vaccine) -> {
           DoseAdapter adapter = new DoseAdapter(getContext(), vaccine,
               (doseId, view1) -> editDose(doseId, vaccineId, view1),
-              (dose,v) -> doseViewModel.deleteDose(dose));//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
+              (dose,v) -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Are you sure you want to delete this?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int id) {
+                        doseViewModel.deleteDose(dose);
+                      }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                      }
+                    });
+                AlertDialog alert = builder.create();
+                alert.show();
+              });//TODO: show alert confirming deletion to user (have delete dose method to confirm and say to delete)
           binding.doses.setAdapter(adapter);
         });
     vaccineViewModel.setVaccineId(vaccineId);

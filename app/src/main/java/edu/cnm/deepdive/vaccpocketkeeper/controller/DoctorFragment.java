@@ -87,7 +87,7 @@ public class DoctorFragment extends Fragment {
                     });
                 AlertDialog alert = builder.create();
                 alert.show();
-              });//TODO: show alert confirming deletion to user (have delete doctor method to confirm and say to delete)
+              });
           binding.doctors.setAdapter(adapter);
         });
   } //when fragment dies, then cleans up
