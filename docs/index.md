@@ -53,16 +53,12 @@ This app includes several features which enable vaccination tracking and history
 
 This app will use the following services: 
 * Service: Google sign-in
-  * [Developer Documentation for Google Sign-in](https://developers.google.com/identity/sign-in/android/start-integrating)
-  * This app will use this service to authenticate users through a Google account.
-  * This app will not be able to function without full-time access to Google sign-in services.
+  * This app uses this service to authenticate users through a Google account.
+  * This app will not function without full-time access to Google sign-in services.
 
 * Service: Camera Integration
-  * [Developer Documentation for Camera Service](https://developer.android.com/guide/topics/media/camera)
-    * [Storing and Retrieving Images in SQLite](https://www.youtube.com/watch?v=X7T0g5kBYJk)
-  * [Sample Camera App (in Java)](https://github.com/googlearchive/android-Camera2Basic/blob/master/Application/src/main/java/com/example/android/camera2basic/Camera2BasicFragment.java)
-  * This app will use the camera to take a picture of a vaccination card (such as a CDC COVID-19 card) and store the picture in the app.
-  * This app will be able to function without full-time access to the camera.
+  * This app uses the camera to take a picture of a vaccination card (such as a CDC COVID-19 card) and store the picture in the app.
+  * This app will function without full-time access to the camera.
 
 ### Additional Resources
 
@@ -83,7 +79,6 @@ This app is a solid working prototype. The core functionality works, but there a
 * When a user adds a dose to a vaccine, it does not update the number of doses in the vaccine entity in the database.  
 * When a user takes a photo, it does not store the photo as a URI and put it in the database for each dose as appropriate.
 * Photos cannot be retrieved from the database; rather they must be retrieved by the user going to the photos app on the phone.  
-* Changing the slider widget in **Settings** does not update the future doses shown in the **All Future Doses**
 
 List of aesthetic/cosmetic (not functional) enhancements
 
@@ -94,7 +89,6 @@ List of aesthetic/cosmetic (not functional) enhancements
 
 * There should be a listing of all past vaccinations within a certain date range.  
 * It would be nice to have the next upcoming doses calculated by taking the user birthday in conjunction with age range to determine these.  
-* It would be nice to have a list of resources that a user can have which specify what are the most common vaccines.
 * The app will send friendly reminders to the user through email, notification, or SMS when vaccinations are due (for example, tetanus and COVID-19 shots).
 * The app will use OCR recognition to automatically fill in vaccination information.
   * [An OCR Recognition Package](https://github.com/tesseract-ocr/tesseract)
