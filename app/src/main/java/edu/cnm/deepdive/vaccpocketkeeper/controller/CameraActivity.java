@@ -1,11 +1,26 @@
 package edu.cnm.deepdive.vaccpocketkeeper.controller;
 
+import static androidx.camera.core.CameraX.getContext;
+
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
@@ -15,28 +30,24 @@ import androidx.camera.core.ImageCaptureException;
 import androidx.camera.core.Preview;
 import androidx.camera.extensions.HdrImageCaptureExtender;
 import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
-
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProvider.Factory;
+import androidx.lifecycle.ViewModelStore;
 import com.google.common.util.concurrent.ListenableFuture;
-
-import edu.cnm.deepdive.vaccpocketkeeper.R;
+import edu.cnm.deepdive.vaccpocketkeeper.databinding.ActivityCameraBinding;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
+import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
+import edu.cnm.deepdive.vaccpocketkeeper.viewmodel.DoseViewModel;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -47,17 +58,62 @@ public class CameraActivity extends AppCompatActivity {
   private Executor executor = Executors.newSingleThreadExecutor();
   private final int REQUEST_CODE_PERMISSIONS = 1001;
   private final String[] REQUIRED_PERMISSIONS = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE"};
+  private ActivityCameraBinding binding;
+  private DoseViewModel doseViewModel;
+  private ViewModelStore viewModelStore = null;
+  private ArrayAdapter<String> adapter;
+  private Dose dose;
+  private List<DoseWithDoctor> doses;
+  private ArrayList<String> doseArrayList;
+  private int itemSelected;
+  private Context context;
+  private String savedImageFilePath;
 
-  PreviewView mPreviewView;
-  ImageView captureImage;
+  //PreviewView binding.previewView;
+  //ImageView binding.captureImg;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_camera);
+    binding = ActivityCameraBinding.inflate(getLayoutInflater());
+    setContentView(binding.getRoot());
 
-    mPreviewView = findViewById(R.id.previewView);
-    captureImage = findViewById(R.id.captureImg);
+    context = this.getApplicationContext();
+    dose = null;
+//    setContentView(R.layout.activity_camera);
+//
+//    binding.previewView = findViewById(R.id.previewView);
+//    binding.captureImg = findViewById(R.id.captureImg);
+    binding.doseSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String doseName = (String) parent.getItemAtPosition(position);
+        itemSelected = position;
+        //doctorName = doctor.getName();
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+        CameraActivity.this.dose = null;
+      }
+    });
+
+
+    doseViewModel = getViewModelProvider().get(DoseViewModel.class);
+    //doseViewModel = ViewModelProvider(this).get(DoseViewModel::class.java);
+    doseViewModel
+        .getDoses()
+        .observe(this, (doses) -> {
+          CameraActivity.this.doses = doses;
+          doseArrayList = convertArrayListofObjectsToStringArray(doses);
+          if (doses != null) {
+            adapter = new ArrayAdapter<>(getApplicationContext(),
+                android.R.layout.simple_spinner_item,
+                doseArrayList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.doseSpinner.setAdapter(adapter);
+          }
+        });
 
     if(allPermissionsGranted()){
       startCamera(); //start camera if permission has been granted by user
@@ -113,11 +169,11 @@ public class CameraActivity extends AppCompatActivity {
         .setTargetRotation(this.getWindowManager().getDefaultDisplay().getRotation())
         .build();
 
-    preview.setSurfaceProvider(mPreviewView.createSurfaceProvider());
+    preview.setSurfaceProvider(binding.previewView.createSurfaceProvider());
 
     Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, preview, imageAnalysis, imageCapture);
 
-    captureImage.setOnClickListener(v -> {
+    binding.captureImg.setOnClickListener(v -> {
 
       SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.US);
       File file = new File(getBatchDirectoryName(), mDateFormat.format(new Date())+ ".jpg");
@@ -129,15 +185,16 @@ public class CameraActivity extends AppCompatActivity {
           new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-              Toast.makeText(CameraActivity.this, "Image Saved successfully: " + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+              Toast.makeText(CameraActivity.this, "Image Saved successfully!", Toast.LENGTH_LONG).show();
+              //Toast.makeText(CameraActivity.this, "Image Saved successfully: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
               //Bitmap photo = (Bitmap) data.getExtras().get("data");
               //imageView.setImageBitmap(photo);
               //Uri photoUri = data.getData();
 
-              //TODO: save image to a particular dose
+              savedImageFilePath = file.getAbsolutePath();
+              //saves filename to a particular dose's iamge field
+              saveDose(savedImageFilePath);
 
-              //TODO: come back here to add fragment or activity to retrieve file from database
-              // Load the image located at photoUri into selectedImage
               //Bitmap selectedImage = loadFromUri(photoUri);
 
               // Load the selected image into a preview
@@ -153,6 +210,15 @@ public class CameraActivity extends AppCompatActivity {
         }
       });
     });
+  }
+
+  private void saveDose(String savedImageFilePath) {
+    doseViewModel
+        .getDoseById(doses.get(itemSelected).getId())
+        .observe(this, (dose) -> {
+            dose.setImage(savedImageFilePath);
+            doseViewModel.save(dose);
+          });
   }
 
   public Bitmap loadFromUri(Uri photoUri) {
@@ -205,5 +271,44 @@ super.onRequestPermissionsResult(requestCode,permissions, grantResults);
         this.finish();
       }
     }
+  }
+
+//  @Override
+//  public Object onRetainNonConfigurationInstance() {
+//    return viewModelStore;
+//  }
+
+  @NonNull
+  public ViewModelStore getViewModelStore() {
+    Object nonConfigurationInstance = getLastNonConfigurationInstance();
+    if (nonConfigurationInstance instanceof ViewModelStore) {
+      viewModelStore = (ViewModelStore) nonConfigurationInstance;
+    }
+    if (viewModelStore == null) {
+      viewModelStore = new ViewModelStore();
+    }
+    return viewModelStore;
+  }
+
+  public ViewModelProvider getViewModelProvider() {
+    ViewModelProvider.Factory factory =
+        (Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
+    return new ViewModelProvider(getViewModelStore(), factory);
+  }
+//  private LifecycleOwner getLifecycleOwner() {
+//    Context context = this.getApplicationContext();
+//    while (!(context instanceof LifecycleOwner)) {
+//      context = ((ContextWrapper) context).getBaseContext();
+//    }
+//    return (LifecycleOwner) context;
+//  }
+
+  private ArrayList<String> convertArrayListofObjectsToStringArray(List<DoseWithDoctor> arrayList) {
+    ArrayList<String> str = new ArrayList<>();
+
+    for (int i = 0; i < arrayList.size(); i++) {
+      str.add(arrayList.get(i).getName());
+    }
+    return str;
   }
 }

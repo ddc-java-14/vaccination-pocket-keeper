@@ -63,6 +63,10 @@ public class DoseViewModel extends AndroidViewModel implements LifecycleObserver
     return dose;
   }
 
+  public LiveData<Dose> getDoseById(long doseId) {
+    return repository.get(doseId);
+  }
+
   public void setDoseId(long id) {
     doseId.setValue(id);//if someone is observing this, it will cause a refresh of note assignment in constructor
   }

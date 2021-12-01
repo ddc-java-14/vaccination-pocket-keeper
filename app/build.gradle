@@ -102,6 +102,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    //implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
 
     // Room Libraries & Connectors
     def roomVersion = '2.3.0'

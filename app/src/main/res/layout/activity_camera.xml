@@ -3,9 +3,37 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="#FF000000"
+  android:background="@color/black"
   >
 
+  <RelativeLayout
+    android:id="@+id/dose_spinner_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="3dp"
+    android:layout_weight=".28"
+    android:orientation="horizontal"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/previewView">
+
+  <Spinner
+    android:id="@+id/dose_spinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_dynamic_spacing"
+    android:background="@drawable/spinner_bg"/>
+
+<!--    <ImageView-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:layout_alignParentRight="true"-->
+<!--      android:layout_centerVertical="true"-->
+<!--      android:layout_gravity="center"-->
+<!--      android:src="@drawable/spinner_down_arrow" />-->
+
+  </RelativeLayout>
 
   <androidx.camera.view.PreviewView
     android:id="@+id/previewView"
@@ -17,7 +45,7 @@
     app:layout_constraintBottom_toTopOf="@+id/linearLayout"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@id/dose_spinner_container" />
 
   <LinearLayout
     android:id="@+id/linearLayout"

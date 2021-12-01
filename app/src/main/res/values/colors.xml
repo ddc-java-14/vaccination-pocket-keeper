@@ -7,4 +7,5 @@
   <color name="submit">#FF00A000</color>
   <color name="cancel">#FFFF0000</color>
   <color name="edit">#FF0000FF</color>
+  <color name="black">#FF000000</color>
 </resources>

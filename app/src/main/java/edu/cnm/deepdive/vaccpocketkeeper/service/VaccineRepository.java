@@ -53,14 +53,18 @@ public class VaccineRepository {
 
   public Single<VaccineWithDoses> save(VaccineWithDoses vaccine) {
     Single<VaccineWithDoses> task;
-    if (vaccine.getId() == 0) {
+    if (vaccine.getId() == 0) {//creating a new vaccine
       vaccine.setCreated(new Date());
       Calendar cal = Calendar.getInstance();
       for (int i = 0; i < vaccine.getTotalNumberOfDoses(); i++) { //TODO: getTotalNumberOfDoses is empty
         DoseWithDoctor dose = new DoseWithDoctor();
         cal.add(Calendar.YEAR, vaccine.getFrequency());
         dose.setDateAdministered(cal.getTime());
-        dose.setName("DoseNumber"+(i+1));
+        if (vaccine.getName().length() >= 4) {
+          dose.setName(vaccine.getName().substring(0, 4) + ":DoseNumber" + (i + 1));
+        } else {
+          dose.setName(vaccine.getName() + ":DoseNumber" + (i + 1));
+        }
         vaccine.getDoses().add(dose);
       }
       task = vaccineDao
