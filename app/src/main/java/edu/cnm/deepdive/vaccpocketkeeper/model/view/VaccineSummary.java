@@ -5,6 +5,7 @@ import static edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary.QUERY;
 
 import androidx.room.ColumnInfo;
 import androidx.room.DatabaseView;
+import androidx.room.RewriteQueriesToDropUnusedColumns;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
 

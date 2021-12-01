@@ -131,7 +131,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="../view/DoseSummary.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.view">DoseSummary</a></code>, <code><a href="../view/VaccineSummary.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.view">VaccineSummary</a></code></dd>
+<dd><code><a href="../view/DoseSummary.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.view">DoseSummary</a></code>, <code><a href="../pojo/DoseWithDoctor.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.pojo">DoseWithDoctor</a></code>, <code><a href="../view/VaccineSummary.html" title="class in edu.cnm.deepdive.vaccpocketkeeper.model.view">VaccineSummary</a></code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">Dose</span>
@@ -203,43 +203,43 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>long</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVaccineId()">getVaccineId</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isAdministered()">isAdministered</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAdministered(boolean)">setAdministered</a></span>&#8203;(boolean&nbsp;administered)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCreated(java.util.Date)">setCreated</a></span>&#8203;(<a href="https://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util" class="externalLink">Date</a>&nbsp;created)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDateAdministered(java.util.Date)">setDateAdministered</a></span>&#8203;(<a href="https://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util" class="externalLink">Date</a>&nbsp;dateAdministered)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDoctorId(java.lang.Long)">setDoctorId</a></span>&#8203;(<a href="https://developer.android.com/reference/java/lang/Long.html?is-external=true" title="class or interface in java.lang" class="externalLink">Long</a>&nbsp;doctorId)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setId(long)">setId</a></span>&#8203;(long&nbsp;id)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setImage(java.lang.String)">setImage</a></span>&#8203;(<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;image)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setName(java.lang.String)">setName</a></span>&#8203;(<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;name)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -364,6 +364,26 @@ public&nbsp;<a href="https://developer.android.com/reference/java/util/Date.html
 <pre class="methodSignature">public&nbsp;void&nbsp;setDoctorId&#8203;(<a href="https://developer.android.com/reference/java/lang/Long.html?is-external=true" title="class or interface in java.lang" class="externalLink">Long</a>&nbsp;doctorId)</pre>
 </li>
 </ul>
+<a id="getName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getName</h4>
+<pre class="methodSignature"><a href="https://developer.android.com/reference/androidx/annotation/NonNull.html?is-external=true" title="class or interface in androidx.annotation" class="externalLink">@NonNull</a>
+public&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;getName()</pre>
+</li>
+</ul>
+<a id="setName(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setName</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setName&#8203;(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html?is-external=true" title="class or interface in androidx.annotation" class="externalLink">@NonNull</a>
+                    <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;name)</pre>
+</li>
+</ul>
 <a id="getDateAdministered()">
 <!--   -->
 </a>
@@ -380,24 +400,6 @@ public&nbsp;<a href="https://developer.android.com/reference/java/util/Date.html
 <li class="blockList">
 <h4>setDateAdministered</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setDateAdministered&#8203;(<a href="https://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util" class="externalLink">Date</a>&nbsp;dateAdministered)</pre>
-</li>
-</ul>
-<a id="isAdministered()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>isAdministered</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;isAdministered()</pre>
-</li>
-</ul>
-<a id="setAdministered(boolean)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setAdministered</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setAdministered&#8203;(boolean&nbsp;administered)</pre>
 </li>
 </ul>
 <a id="getImage()">

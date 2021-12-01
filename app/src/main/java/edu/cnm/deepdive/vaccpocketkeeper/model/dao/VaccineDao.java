@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.RewriteQueriesToDropUnusedColumns;
 import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
@@ -51,12 +52,14 @@ public interface VaccineDao {
   @Query("SELECT * FROM vaccine WHERE vaccine_id = :vaccineId")
   LiveData<VaccineWithDoses> select(long vaccineId);
 
+  @RewriteQueriesToDropUnusedColumns
   @Transaction
-  @Query("SELECT * FROM vaccine_summary ORDER BY date_administered DESC")
+  @Query("SELECT * FROM vaccine_summary ORDER BY date_administered ASC")
   LiveData<List<VaccineSummary>> selectPastVaccines();
 
+  @RewriteQueriesToDropUnusedColumns
   @Transaction
-  @Query("SELECT * FROM vaccine_summary ORDER BY date_administered DESC LIMIT :limit")
-  LiveData<List<VaccineSummary>> selectUpcomingVaccines(int limit);
+  @Query("SELECT * FROM vaccine_summary ORDER BY date_administered ASC")
+  LiveData<List<VaccineSummary>> selectUpcomingVaccines();
 
 }

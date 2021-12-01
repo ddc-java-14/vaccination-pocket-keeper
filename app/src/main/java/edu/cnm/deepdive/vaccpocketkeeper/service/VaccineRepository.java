@@ -48,8 +48,7 @@ public class VaccineRepository {
   }
 
   public LiveData<List<VaccineSummary>> getUpcomingVaccines() {
-    //TODO: get limit from shared preferences
-    return vaccineDao.selectUpcomingVaccines(5);
+    return vaccineDao.selectUpcomingVaccines();
   }
 
   public Single<VaccineWithDoses> save(VaccineWithDoses vaccine) {

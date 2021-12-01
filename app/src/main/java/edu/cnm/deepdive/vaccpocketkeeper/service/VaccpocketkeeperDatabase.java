@@ -20,15 +20,20 @@ import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Doctor;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Dose;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.User;
 import edu.cnm.deepdive.vaccpocketkeeper.model.entity.Vaccine;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.DoseWithDoctor;
+import edu.cnm.deepdive.vaccpocketkeeper.model.pojo.VaccineWithDoses;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.DoseSummary;
 import edu.cnm.deepdive.vaccpocketkeeper.model.view.VaccineSummary;
 import edu.cnm.deepdive.vaccpocketkeeper.service.VaccpocketkeeperDatabase.Converters;
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.commons.csv.CSVFormat;
@@ -87,6 +92,9 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
 
     private final Context context;
     private VaccineRepository repository;
+    private VaccineDao vaccineDao;
+    private DoseDao doseDao;
+    List<Dose> doses;
 
     private Callback(Context context) {
       this.context = context;
@@ -95,7 +103,11 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
     @Override
     public void onCreate(@NonNull SupportSQLiteDatabase db) {
       super.onCreate(db);
+      VaccpocketkeeperDatabase database = VaccpocketkeeperDatabase.getInstance();
+      vaccineDao = database.getVaccineDao();
+      doseDao = database.getDoseDao();
       preloadDoctors();
+      preloadVaccines();
     }
 
     private void preloadDoctors() {
@@ -121,29 +133,118 @@ public abstract class VaccpocketkeeperDatabase extends RoomDatabase {
       }
     }
 
-    private void preloadDoses() {
+    private void preloadVaccines() {
       try (
-          InputStream input = context.getResources().openRawResource(R.raw.doses);
+          InputStream input = context.getResources().openRawResource(R.raw.vaccines);
           Reader reader = new InputStreamReader(input);
           CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
       ) {
-        List<Doctor> doctors = new LinkedList<>();
+        //name, description, frequency, totalnumberofdoses, agerangelowerlimit, agerangeupperlimit
+        List<Vaccine> vaccines = new LinkedList<>();
+        doses = new LinkedList<>();
+
         for (CSVRecord record : parser) {
-          Doctor doctor = new Doctor();
-          doctor.setName(record.get(0));
-          doctors.add(doctor);
-        }
-        VaccpocketkeeperDatabase
-            .getInstance()
-            .getDoctorDao()
-            .insert(doctors)
-            .subscribeOn(Schedulers.io())
-            .subscribe();
+          VaccineWithDoses vaccine = new VaccineWithDoses();
+          vaccine.setId(0);
+          vaccine.setName(record.get(0).trim());
+          vaccine.setDescription(record.get(1).trim());
+          vaccine.setFrequency(Integer.parseInt(record.get(2).trim()));
+          vaccine.setTotalNumberOfDoses(Integer.parseInt(record.get(3).trim()));
+          vaccine.setAgeRangeLowerLimit(Integer.parseInt(record.get(4).trim()));
+          vaccine.setAgeRangeUpperLimit(Integer.parseInt(record.get(5).trim()));
+
+          Single<VaccineWithDoses> task;
+          if (vaccine.getId() == 0) {
+            vaccine.setCreated(new Date());
+            Calendar cal = Calendar.getInstance();
+            for (int i = 0; i < vaccine.getTotalNumberOfDoses();
+                i++) { //TODO: getTotalNumberOfDoses is empty
+              DoseWithDoctor dose = new DoseWithDoctor();
+              cal.add(Calendar.YEAR, vaccine.getFrequency());
+              dose.setDateAdministered(cal.getTime());
+              dose.setCreated(new Date());
+              dose.setName("DoseNumber" + (i + 1));
+              vaccine.getDoses().add(dose);
+            }
+            vaccine.setDoses(vaccine.getDoses());//*****TODO check this out
+            task = vaccineDao
+                .insert(vaccine)
+                .map((id) -> {
+                  vaccine.setId(id);//id of record added, then puts note back on the conveyor belt
+                  for (Dose dose : vaccine.getDoses()) {
+                    dose.setVaccineId(id);
+                    //dose.setId(0);
+                    //preloadDoses();
+                  }
+                  return vaccine;
+                })
+                .flatMap((savedVaccine) -> doseDao.insert(savedVaccine.getDoses()))
+                .map((ids) -> {
+                  Iterator<Long> idIterator = ids.iterator();
+                  Iterator<DoseWithDoctor> doseIterator = vaccine.getDoses().iterator();
+                  while (idIterator.hasNext()) {
+                    Dose dose = doseIterator.next();
+                    Long id = idIterator.next();
+                    dose.setId(id);
+                  }
+                  return vaccine;
+                });
+//            for (Dose dose : vaccine.getDoses()) {
+//              dose.setVaccineId(vaccine.getId());
+//              //dose.setId(0);
+//              doses.add(dose);
+//              VaccpocketkeeperDatabase
+//                  .getInstance()
+//                  .getDoseDao()
+//                  .insert(dose)
+//                  .subscribeOn(Schedulers.io())
+//                  .subscribe();
+//            }
+          } else {
+            task = vaccineDao
+                .update(vaccine)
+                .map(
+                    (count) -> //count of records modified, then puts note back on the conveyor belt
+                        vaccine
+                );
+          }
+          task.subscribeOn(Schedulers.io());
+//          vaccines.add(vaccine);
+//        }
+          VaccpocketkeeperDatabase
+              .getInstance()
+              .getVaccineDao()
+              .insert(vaccine)
+              .map((id) -> {
+                for (Dose dose : vaccine.getDoses()) {
+                  dose.setVaccineId(id);
+                  VaccpocketkeeperDatabase
+                  .getInstance()
+                  .getDoseDao()
+                  .insert(dose)
+                  .subscribeOn(Schedulers.io())
+                  .subscribe();
+                }
+                return vaccine;
+              })
+              .subscribeOn(Schedulers.io())
+              .subscribe();
+          }//****
       } catch (IOException e) {
         Log.e(getClass().getSimpleName(), e.getMessage(), e);
       }
+      //preloadDoses();
     }
 
+    private void preloadDoses() {
+      VaccpocketkeeperDatabase
+            .getInstance()
+            .getDoseDao()
+            .insert(doses)
+            .subscribeOn(Schedulers.io())
+            .subscribe();
+    }
   }
-
 }
+
+

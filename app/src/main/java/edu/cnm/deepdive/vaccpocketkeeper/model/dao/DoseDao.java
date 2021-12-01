@@ -45,6 +45,7 @@ public interface DoseDao {
   @Delete
   Single<Integer> delete(Collection<? extends Dose> doses);
 
+  @Transaction
   @Query("SELECT * FROM dose ORDER BY created DESC") //we named our table dose
   LiveData<List<DoseWithDoctor>> selectAll();
 
