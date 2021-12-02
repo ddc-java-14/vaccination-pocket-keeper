@@ -10,15 +10,15 @@
     >
     <item
       android:id="@+id/nav_future_doses"
-      android:icon="@drawable/ic_menu_gallery"
+      android:icon="@drawable/ic_clock"
       android:title="@string/menu_all_future_doses"/>
     <item
       android:id="@+id/nav_vaccine"
-      android:icon="@drawable/ic_menu_gallery"
+      android:icon="@drawable/ic_vaccine"
       android:title="@string/menu_vaccine"/>
     <item
       android:id="@+id/nav_home"
-      android:icon="@drawable/ic_menu_gallery"
+      android:icon="@drawable/ic_doctor"
       android:title="@string/menu_doctors"/>
     <item
       android:id="@+id/nav_camera"
